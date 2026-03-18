@@ -1,276 +1,315 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { ChevronRight, Factory, ShieldCheck, Zap, Cog, Activity, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Settings, Maximize, Activity, ShieldAlert, CheckCircle2 } from "lucide-react";
+
+// Components
 import { Section } from "@/components/ui/Section";
-
-// Animated Counter Component
-function AnimatedCounter({ value, label }: { value: number; label: string }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (isInView) {
-      let start = 0;
-      const end = value;
-      const duration = 2000;
-      const incrementTime = (duration / end) * 5;
-      
-      const timer = setInterval(() => {
-        start += Math.ceil(end / 50);
-        if (start > end) {
-          setCount(end);
-          clearInterval(timer);
-        } else {
-          setCount(start);
-        }
-      }, incrementTime);
-      return () => clearInterval(timer);
-    }
-  }, [isInView, value]);
-
-  return (
-    <div ref={ref} className="text-center">
-      <div className="text-5xl md:text-6xl font-bold text-white mb-2 tracking-tight">
-        {count}<span className="text-brand-orange">+</span>
-      </div>
-      <div className="text-gray-400 font-medium uppercase tracking-wider text-sm">{label}</div>
-    </div>
-  );
-}
+import { AnimatedPipelineBg } from "@/components/ui/AnimatedPipelineBg";
+import { SolutionCard } from "@/components/ui/SolutionCard";
+import { TestimonialSlider } from "@/components/ui/TestimonialSlider";
+import { StatsBar } from "@/components/ui/StatsBar";
+import { ClientLogoSlider } from "@/components/ui/ClientLogoSlider";
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  // Client Logos Array
-  const clients = ["ExxonMobil", "Chevron", "Shell", "BP", "TotalEnergies", "ConocoPhillips", "ENI", "Equinor"];
-
   return (
-    <div className="flex flex-col min-h-screen bg-brand-dark">
+    <div className="flex flex-col min-h-screen bg-brand-dark overflow-hidden">
       
-      {/* 1. Hero Section (Parallax & Video/Image Bg) */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <motion.div 
-          className="absolute inset-0 z-0"
-          style={{ y, opacity }}
-        >
-          <Image
-            src="https://images.unsplash.com/photo-1542360663-8f4020bd5e65?q=80&w=2600&auto=format&fit=crop"
-            alt="Industrial Gas Plant at Twilight"
-            fill
-            className="object-cover opacity-40 scale-105"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-transparent to-brand-dark z-10" />
-        </motion.div>
+      {/* 🔹 1. HERO SECTION & STATS BAR */}
+      <section className="relative h-[90vh] flex items-center border-b border-gray-800">
+        <AnimatedPipelineBg />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#070a10] via-[#070a10]/80 to-transparent z-10" />
 
-        <div className="container relative z-20 px-6 max-w-7xl mx-auto text-center">
+        <div className="container relative z-20 px-6 max-w-7xl mx-auto pt-20">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
           >
-            <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
-            <span className="text-sm font-medium text-gray-200 uppercase tracking-widest">Next-Gen Industrial Engineering</span>
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-[1.1] mb-6"
-          >
-            Engineering the Future of <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-brand-orange">Gas Solutions</span>
-          </motion.h1>
+            <div className="inline-flex items-center gap-3 px-4 py-2 bg-brand-green/10 border border-brand-green/30 rounded-full mb-8">
+              <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse shadow-[0_0_10px_#39FF14]" />
+              <span className="text-xs font-bold text-brand-green uppercase tracking-widest">Precision Engineered Systems</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
+              Advanced Gas Flow <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-teal-400">
+                & Metering Solutions
+              </span>
+            </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto font-light"
-          >
-            Precision pipeline architecture, cutting-edge machinery, and an unwavering commitment to safety & scale.
-          </motion.p>
+            <p className="text-lg md:text-xl text-gray-400 font-light max-w-2xl mb-10 leading-relaxed">
+              Engineering highly precise measurement, control, and automation infrastructure for the toughest industrial environments.
+            </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <Link href="/services" className="px-8 py-4 bg-brand-orange rounded-full text-white font-semibold hover:bg-orange-600 transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] flex items-center gap-2">
-              Explore Services <ChevronRight className="w-5 h-5" />
-            </Link>
-            <Link href="/contact" className="px-8 py-4 glass text-white font-semibold rounded-full hover:bg-white/10 transition-all flex items-center gap-2">
-              Contact Engineering Team
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-5">
+              <Link href="#contact" className="px-8 py-4 bg-brand-green text-brand-dark font-black uppercase tracking-widest text-sm hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(57,255,20,0.3)] hover:shadow-[0_0_30px_rgba(57,255,20,0.5)] border border-brand-green flex items-center justify-center gap-2">
+                Get a Quote <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="#about" className="px-8 py-4 bg-transparent border border-gray-600 text-white font-bold uppercase tracking-widest text-sm hover:border-brand-green hover:text-brand-green transition-colors flex items-center justify-center">
+                Contact Us
+              </Link>
+            </div>
           </motion.div>
         </div>
+
+        {/* Floating Stats Bar at the bottom of hero */}
+        <StatsBar />
       </section>
 
-      {/* 2. About Preview / Stats */}
-      <Section className="relative z-20 -mt-20 border-b border-gray-800 pb-24">
-        <div className="glass rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden backdrop-blur-xl">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 rounded-full blur-3xl" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10 text-center divide-y md:divide-y-0 md:divide-x divide-gray-700">
-            <AnimatedCounter value={25} label="Years of Excellence" />
-            <AnimatedCounter value={400} label="Global Clients" />
-            <AnimatedCounter value={1200} label="Projects Delivered" />
+      {/* Spacer for mobile where StatsBar isn't absolute */}
+      <div className="h-0 md:h-16" />
+
+      {/* 🔹 3. CORE SOLUTIONS */}
+      <Section className="py-32 bg-[#0a0f18] relative z-20 border-b border-gray-800">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="text-center mb-20">
+            <h3 className="text-brand-green font-bold text-sm tracking-widest uppercase mb-4">Our Expertise</h3>
+            <h2 className="text-4xl md:text-5xl font-black text-white">Measure. Manage. Protect.</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <SolutionCard
+              title="Gas Measurement"
+              description="Deliver absolute accuracy in custody transfer and process monitoring with our advanced volumetric and mass flow arrays."
+              icon={Maximize}
+              imgUrl="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=800&auto=format&fit=crop"
+              delay={0}
+            />
+            <SolutionCard
+              title="Flow Regulation"
+              description="Automated, heavy-duty pressure reduction and flow control stations engineered to manage severe grid fluctuations."
+              icon={Settings}
+              imgUrl="https://images.unsplash.com/photo-1574689049596-1e6a92d4cbab?q=80&w=800&auto=format&fit=crop"
+              delay={0.1}
+            />
+            <SolutionCard
+              title="Automation"
+              description="Real-time cryptographic telemetry, SCADA integration, and predictive automation to optimize operational matrices."
+              icon={Activity}
+              imgUrl="https://images.unsplash.com/photo-1542360663-8f4020bd5e65?q=80&w=800&auto=format&fit=crop"
+              delay={0.2}
+            />
+            <SolutionCard
+              title="Safety & Calibration"
+              description="NABL-traceable calibration, slam-shut security implementation, and rigorous auditing to ensure zero-fail operations."
+              icon={ShieldAlert}
+              imgUrl="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800&auto=format&fit=crop"
+              delay={0.3}
+            />
           </div>
         </div>
       </Section>
 
-      {/* 3. Products Section */}
-      <Section>
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
-          >
-            Industrial-Grade Products
-          </motion.h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
-            Engineered for severe environments. Built to exceed international compliance protocols and maximize operational runtime.
-          </p>
-        </div>
+      {/* 🔹 4. PRODUCTS OVERVIEW */}
+      <Section className="py-32 bg-[#070a10]">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="max-w-2xl">
+              <h3 className="text-brand-green font-bold text-sm tracking-widest uppercase mb-4">Industrial Hardware</h3>
+              <h2 className="text-4xl md:text-5xl font-black text-white">Precision Instruments & Heavy Infrastructure</h2>
+            </div>
+            <Link href="#contact" className="text-brand-green font-bold uppercase tracking-widest text-sm hover:text-white transition-colors border-b border-transparent hover:border-brand-green pb-1 flex items-center gap-2">
+              View Full Catalog <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { title: "Flow Metering Skids", desc: "High-precision volumetric and mass flow measurement systems.", img: "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=800&auto=format&fit=crop" },
-            { title: "Gas Regulation Stations", desc: "Automated pressure reduction with modular safety features.", img: "https://images.unsplash.com/photo-1574689049596-1e6a92d4cbab?q=80&w=800&auto=format&fit=crop" },
-            { title: "Compression Units", desc: "Heavy-duty rotary and reciprocating compressors for pipeline transport.", img: "https://images.unsplash.com/photo-1618055663784-06ebba211910?q=80&w=800&auto=format&fit=crop" },
-          ].map((product, idx) => (
-            <motion.div
-              key={product.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.2, duration: 0.6 }}
-              whileHover={{ y: -10 }}
-              className="group relative rounded-2xl overflow-hidden bg-brand-blue border border-gray-800"
-            >
-              <div className="relative h-64 w-full overflow-hidden">
-                <Image src={product.img} alt={product.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-brand-dark/40 group-hover:bg-transparent transition-colors duration-500" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "High-Turndown Meters", desc: "Rotary, Turbine, and Coriolis systems for custody transfer." },
+              { title: "Pressure Regulators (PRS)", desc: "Active/monitor setups with integrated slam-shut safety valves." },
+              { title: "Flow Computers", desc: "Multi-stream processors with remote GSM/GPRS data transmission." }
+            ].map((prod, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group border border-gray-800 bg-[#0b111e] p-10 hover:border-brand-green/40 transition-colors"
+              >
+                <div className="w-12 h-12 bg-[#070a10] border border-gray-700 mb-8 font-mono text-brand-green flex items-center justify-center text-xl font-bold">
+                  0{idx + 1}
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-4">{prod.title}</h4>
+                <p className="text-gray-400 font-light tracking-wide">{prod.desc}</p>
+                
+                <div className="mt-8 flex justify-end">
+                  <div className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center group-hover:bg-brand-green group-hover:border-brand-green transition-colors">
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-brand-dark transition-colors" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* 🔹 5. SERVICES & WHY CHOOSE US */}
+      <Section className="py-32 bg-[#0a0f18] border-y border-gray-800 relative overflow-hidden">
+        {/* Subtle grid background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            
+            {/* Services List */}
+            <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <h3 className="text-brand-green font-bold text-sm tracking-widest uppercase mb-4">Lifecycle Support</h3>
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-10">End-to-End Engineering Services</h2>
+              
+              <div className="space-y-8">
+                {[
+                  { title: "Calibration & Testing", detail: "Eliminating drift through certified laboratory-grade testing." },
+                  { title: "Turnkey Installation (EPC)", detail: "From schematics to welding and absolute commissioning." },
+                  { title: "Preventive Maintenance", detail: "Scheduled diagnostics, filter changes, and part servicing." },
+                  { title: "Engineering Consulting", detail: "Architectural design for optimal pressure drop & CAPEX efficiency." }
+                ].map((srv, idx) => (
+                  <div key={idx} className="flex gap-4 group">
+                    <div className="w-8 h-8 rounded-full border-2 border-brand-green/30 flex items-center justify-center shrink-0 group-hover:border-brand-green transition-colors">
+                      <div className="w-2 h-2 bg-brand-green rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-white mb-1 group-hover:text-brand-green transition-colors">{srv.title}</h4>
+                      <p className="text-gray-400 font-light">{srv.detail}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-brand-orange transition-colors">{product.title}</h3>
-                <p className="text-gray-400 mb-6">{product.desc}</p>
-                <Link href="/products" className="text-brand-orange font-medium flex items-center gap-2 group/link">
-                  View Specifications <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-2" />
+            </motion.div>
+
+            {/* Why Choose Us */}
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }} 
+              whileInView={{ opacity: 1, x: 0 }} 
+              viewport={{ once: true }}
+              className="bg-[#0b111e] border border-gray-800 p-12 relative"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-green/5 blur-2xl" />
+              <h3 className="text-2xl font-bold text-white mb-8">Why Choose Us</h3>
+              <ul className="space-y-6">
+                {[
+                  "High Accuracy Systems (Zero-tolerance precision)",
+                  "Total Industry Compliance (ISO, OISD, PNGRB)",
+                  "Dedicated Expert Engineers (Rapid response team)",
+                  "End-to-End Reliable Support (From design to maintenance)"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-4 text-gray-300 font-medium">
+                    <CheckCircle2 className="w-6 h-6 text-brand-green shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-12 pt-8 border-t border-gray-800">
+                <Link href="#contact" className="text-brand-green font-bold uppercase tracking-widest text-sm hover:text-white transition-colors flex items-center gap-2">
+                  Speak to an Engineer <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </motion.div>
-          ))}
-        </div>
-      </Section>
 
-      {/* 4. Services Section */}
-      <Section className="bg-brand-blue relative overflow-hidden">
-        <div className="absolute left-[-10%] top-[-10%] w-[40%] h-[40%] bg-brand-green/5 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute right-[-10%] bottom-[-10%] w-[40%] h-[40%] bg-brand-orange/5 blur-[120px] rounded-full pointer-events-none" />
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Comprehensive Lifecycle Support</h2>
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-              From initial architectural schematics to deployment and predictive maintenance, our engineering divisions provide end-to-end operational assurance.
-            </p>
-            <div className="space-y-6">
-              {[
-                { icon: Factory, title: "EPC Contracting", desc: "Turnkey engineering, procurement, and construction." },
-                { icon: ShieldCheck, title: "Safety Auditing", desc: "Rigorous compliance checks and stress testing." },
-                { icon: Activity, title: "Predictive Maintenance", desc: "AI-driven diagnostics to prevent systemic failure." }
-              ].map((service, idx) => (
-                <motion.div 
-                  key={service.title}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="flex gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors"
-                >
-                  <div className="shrink-0 p-3 bg-brand-dark rounded-lg border border-gray-700 h-fit">
-                    <service.icon className="w-6 h-6 text-brand-orange" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-semibold text-white mb-2">{service.title}</h4>
-                    <p className="text-gray-400 text-sm">{service.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative h-[600px] rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(16,185,129,0.1)]"
-          >
-            <Image src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1000&auto=format&fit=crop" alt="Engineering Team" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent" />
-          </motion.div>
         </div>
       </Section>
 
-      {/* 5. Clients Marquee */}
-      <section className="py-20 border-y border-gray-800 bg-brand-dark/50 overflow-hidden">
-        <div className="container mx-auto px-6 mb-10 text-center">
-          <p className="text-sm font-medium tracking-widest text-gray-500 uppercase">Trusted by Global Energy Leaders</p>
-        </div>
-        <div className="flex w-[200%] md:w-[150%] animate-[marquee_20s_linear_infinite]">
-          {[...clients, ...clients].map((client, idx) => (
-            <div key={idx} className="flex-1 text-center py-4">
-              <span className="text-2xl md:text-3xl font-black text-gray-800 tracking-tighter hover:text-gray-600 transition-colors cursor-default">
-                {client}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* 🔹 6. INDUSTRIES SERVED */}
+      <Section className="py-32 bg-[#070a10]">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-white">Sectors We Empower</h2>
+          </div>
 
-      {/* 6. Sticky CTA Banner */}
-      <section className="py-32 relative overflow-hidden bg-brand-blue">
-        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2600&auto=format&fit=crop')] bg-cover bg-center mix-blend-luminosity" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-blue via-brand-blue/90 to-transparent" />
-        
-        <div className="container relative z-10 mx-auto px-6 md:px-12 max-w-7xl">
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-2xl"
-          >
-            <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-              Ready to Upgrade Your Infrastructure?
-            </h2>
-            <p className="text-xl text-gray-300 mb-10">
-              Speak with our senior engineers today to architect a custom flow solution optimized for your specific operational parameters.
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { label: "Heavy Manufacturing", img: "https://images.unsplash.com/photo-1565514020179-0c6ca803b0c2?q=80&w=800&auto=format&fit=crop" },
+              { label: "Oil & Gas Downstream", img: "https://images.unsplash.com/photo-1542360663-8f4020bd5e65?q=80&w=800&auto=format&fit=crop" },
+              { label: "Chemical Plants", img: "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=800&auto=format&fit=crop" },
+              { label: "Commercial Utilities", img: "https://images.unsplash.com/photo-1574689049596-1e6a92d4cbab?q=80&w=800&auto=format&fit=crop" }
+            ].map((ind, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group relative h-80 overflow-hidden cursor-pointer bg-brand-blue"
+              >
+                <Image src={ind.img} alt={ind.label} fill className="object-cover opacity-20 filter grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-700" />
+                <div className="absolute inset-0 flex items-center justify-center p-6 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent group-hover:via-transparent transition-all duration-500">
+                  <h3 className="text-2xl font-bold text-white text-center transform group-hover:-translate-y-2 transition-transform duration-500">{ind.label}</h3>
+                </div>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-green scale-x-0 group-hover:scale-x-100 transform origin-left transition-transform duration-500" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* 🔹 8 & 9. TESTIMONIALS & ABOUT */}
+      <Section className="py-24 bg-[#0a0f18] border-y border-gray-800">
+        <TestimonialSlider />
+        <div className="mt-20 pt-16 border-t border-gray-800 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <ClientLogoSlider />
+          <div>
+            <h3 className="text-brand-green font-bold text-sm tracking-widest uppercase mb-4">Our Vision</h3>
+            <p className="text-gray-300 font-light leading-relaxed mb-6">
+              We don't just supply equipment; we architect secure, fail-safe pulmonary systems for industrial operations. Our mission is to set the definitive standard for flow accuracy and safety across the subcontinent.
             </p>
-            <Link href="/contact" className="inline-flex items-center gap-3 px-8 py-4 bg-brand-green text-brand-dark font-bold text-lg rounded-full hover:bg-emerald-400 hover:scale-105 transition-all shadow-lg shadow-emerald-900/50 group">
-              Schedule Consultation <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Link href="/about" className="text-white font-bold underline decoration-brand-green underline-offset-8 hover:text-brand-green transition-colors">
+              Read Our Full Story
             </Link>
-          </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* 🔹 10. CONTACT SECTION */}
+      <section id="contact" className="py-32 bg-[#070a10]">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            
+            {/* Contact Info */}
+            <div>
+              <h2 className="text-5xl font-black text-white mb-6">Ready to upgrade your infrastructure?</h2>
+              <p className="text-xl text-brand-green mb-12">Speak with our experts today.</p>
+
+              <div className="space-y-8 text-gray-400 font-mono text-sm leading-loose">
+                <div>
+                  <strong className="text-white uppercase tracking-widest block mb-2 font-sans font-bold">Headquarters</strong>
+                  Industrial Zone, Sector 4<br />
+                  Tech Park Avenue, 40001
+                </div>
+                <div>
+                  <strong className="text-white uppercase tracking-widest block mb-2 font-sans font-bold">Contact Direct</strong>
+                  Main: +91 800-GAS-FLOW<br />
+                  Support: support@gasflowsolutions.in
+                </div>
+              </div>
+            </div>
+
+            {/* Form */}
+            <div className="bg-[#0b111e] p-10 border border-gray-800">
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <input type="text" placeholder="Full Name *" className="w-full bg-[#070a10] border-b border-gray-700 px-4 py-4 text-white focus:outline-none focus:border-brand-green transition-colors placeholder:text-gray-600" />
+                  <input type="text" placeholder="Company Name" className="w-full bg-[#070a10] border-b border-gray-700 px-4 py-4 text-white focus:outline-none focus:border-brand-green transition-colors placeholder:text-gray-600" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <input type="email" placeholder="Email Address *" className="w-full bg-[#070a10] border-b border-gray-700 px-4 py-4 text-white focus:outline-none focus:border-brand-green transition-colors placeholder:text-gray-600" />
+                  <input type="tel" placeholder="Phone Number" className="w-full bg-[#070a10] border-b border-gray-700 px-4 py-4 text-white focus:outline-none focus:border-brand-green transition-colors placeholder:text-gray-600" />
+                </div>
+                <textarea rows={4} placeholder="Tell us about your technical requirements..." className="w-full bg-[#070a10] border-b border-gray-700 px-4 py-4 text-white focus:outline-none focus:border-brand-green transition-colors resize-none placeholder:text-gray-600" />
+                <button type="button" className="w-full bg-brand-green text-brand-dark font-black tracking-widest uppercase py-5 hover:bg-white hover:text-brand-dark transition-all">
+                  Transmit Inquiry
+                </button>
+              </form>
+            </div>
+
+          </div>
         </div>
       </section>
 
-      {/* Add Custom Animations inline for Marquee */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}} />
     </div>
   );
 }
