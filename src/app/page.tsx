@@ -7,7 +7,6 @@ import { ArrowRight, Settings, Maximize, Activity, ShieldAlert, CheckCircle2 } f
 
 // Components
 import { Section } from "@/components/ui/Section";
-import { AnimatedPipelineBg } from "@/components/ui/AnimatedPipelineBg";
 import { SolutionCard } from "@/components/ui/SolutionCard";
 import { TestimonialSlider } from "@/components/ui/TestimonialSlider";
 import { StatsBar } from "@/components/ui/StatsBar";
@@ -16,10 +15,9 @@ import { ClientLogoSlider } from "@/components/ui/ClientLogoSlider";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-brand-dark overflow-hidden">
-      
       {/* 🔹 1. HERO SECTION & STATS BAR */}
       <section className="relative h-[90vh] flex items-center border-b border-gray-800">
-        <AnimatedPipelineBg />
+        <Image src="https://www.kimpexflow.com/img/banner1.png" alt="Industrial Flow Systems" fill className="object-cover opacity-50" priority />
         <div className="absolute inset-0 bg-gradient-to-r from-[#070a10] via-[#070a10]/80 to-transparent z-10" />
 
         <div className="container relative z-20 px-6 max-w-7xl mx-auto pt-20">
@@ -33,7 +31,7 @@ export default function Home() {
               <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse shadow-[0_0_10px_#39FF14]" />
               <span className="text-xs font-bold text-brand-green uppercase tracking-widest">Precision Engineered Systems</span>
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
               Advanced Gas Flow <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-teal-400">
@@ -76,28 +74,28 @@ export default function Home() {
               title="Gas Measurement"
               description="Deliver absolute accuracy in custody transfer and process monitoring with our advanced volumetric and mass flow arrays."
               icon={Maximize}
-              imgUrl="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=800&auto=format&fit=crop"
+              imgUrl="https://www.kimpexflow.com/img/solution1.png"
               delay={0}
             />
             <SolutionCard
               title="Flow Regulation"
               description="Automated, heavy-duty pressure reduction and flow control stations engineered to manage severe grid fluctuations."
               icon={Settings}
-              imgUrl="https://images.unsplash.com/photo-1574689049596-1e6a92d4cbab?q=80&w=800&auto=format&fit=crop"
+              imgUrl="https://www.kimpexflow.com/img/solution2.jpg"
               delay={0.1}
             />
             <SolutionCard
               title="Automation"
               description="Real-time cryptographic telemetry, SCADA integration, and predictive automation to optimize operational matrices."
               icon={Activity}
-              imgUrl="https://images.unsplash.com/photo-1542360663-8f4020bd5e65?q=80&w=800&auto=format&fit=crop"
+              imgUrl="https://www.kimpexflow.com/img/solution3.jpg"
               delay={0.2}
             />
             <SolutionCard
               title="Safety & Calibration"
               description="NABL-traceable calibration, slam-shut security implementation, and rigorous auditing to ensure zero-fail operations."
               icon={ShieldAlert}
-              imgUrl="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800&auto=format&fit=crop"
+              imgUrl="https://www.kimpexflow.com/img/worker7.png"
               delay={0.3}
             />
           </div>
@@ -119,9 +117,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "High-Turndown Meters", desc: "Rotary, Turbine, and Coriolis systems for custody transfer." },
-              { title: "Pressure Regulators (PRS)", desc: "Active/monitor setups with integrated slam-shut safety valves." },
-              { title: "Flow Computers", desc: "Multi-stream processors with remote GSM/GPRS data transmission." }
+              { title: "Turbine Gas Meters – FMT Series", desc: "High-flow turbine meters engineered for precise industrial measurement." },
+              { title: "Pressure Regulators – ERG-SR", desc: "High-performance double-stage arrays with redundant safety." },
+              { title: "MacR6 – Gas Data Logger", desc: "Compact logging device and telemetry by ISO/AGA standards." }
             ].map((prod, idx) => (
               <motion.div
                 key={idx}
@@ -136,7 +134,7 @@ export default function Home() {
                 </div>
                 <h4 className="text-2xl font-bold text-white mb-4">{prod.title}</h4>
                 <p className="text-gray-400 font-light tracking-wide">{prod.desc}</p>
-                
+
                 <div className="mt-8 flex justify-end">
                   <div className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center group-hover:bg-brand-green group-hover:border-brand-green transition-colors">
                     <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-brand-dark transition-colors" />
@@ -152,15 +150,15 @@ export default function Home() {
       <Section className="py-32 bg-[#0a0f18] border-y border-gray-800 relative overflow-hidden">
         {/* Subtle grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        
+
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            
+
             {/* Services List */}
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <h3 className="text-brand-green font-bold text-sm tracking-widest uppercase mb-4">Lifecycle Support</h3>
               <h2 className="text-4xl md:text-5xl font-black text-white mb-10">End-to-End Engineering Services</h2>
-              
+
               <div className="space-y-8">
                 {[
                   { title: "Calibration & Testing", detail: "Eliminating drift through certified laboratory-grade testing." },
@@ -182,9 +180,9 @@ export default function Home() {
             </motion.div>
 
             {/* Why Choose Us */}
-            <motion.div 
-              initial={{ opacity: 0, x: 40 }} 
-              whileInView={{ opacity: 1, x: 0 }} 
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="bg-[#0b111e] border border-gray-800 p-12 relative"
             >
@@ -221,12 +219,11 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-black text-white">Sectors We Empower</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
-              { label: "Heavy Manufacturing", img: "https://images.unsplash.com/photo-1565514020179-0c6ca803b0c2?q=80&w=800&auto=format&fit=crop" },
-              { label: "Oil & Gas Downstream", img: "https://images.unsplash.com/photo-1542360663-8f4020bd5e65?q=80&w=800&auto=format&fit=crop" },
-              { label: "Chemical Plants", img: "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=800&auto=format&fit=crop" },
-              { label: "Commercial Utilities", img: "https://images.unsplash.com/photo-1574689049596-1e6a92d4cbab?q=80&w=800&auto=format&fit=crop" }
+              { label: "Heavy Manufacturing", img: "https://www.kimpexflow.com/img/bg-manufacturer1.jpg" },
+              { label: "Oil & Gas Downstream", img: "https://www.kimpexflow.com/img/Oil%20&%20Gas.jpg" },
+              { label: "Commercial Utilities", img: "https://www.kimpexflow.com/img/worker2.jpg" }
             ].map((ind, idx) => (
               <motion.div
                 key={idx}
@@ -268,7 +265,7 @@ export default function Home() {
       <section id="contact" className="py-32 bg-[#070a10]">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-            
+
             {/* Contact Info */}
             <div>
               <h2 className="text-5xl font-black text-white mb-6">Ready to upgrade your infrastructure?</h2>

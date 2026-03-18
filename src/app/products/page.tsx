@@ -10,50 +10,50 @@ export default function Products() {
   const products = [
     {
       id: "metering",
-      title: "Flow Metering Systems",
-      desc: "Ultra-precise mass and volumetric flow measurement skids designed for custody transfer and internal allocation.",
+      title: "Turbine Gas Meters – FMT Series",
+      desc: "High-flow turbine meters for industrial usage and precision custody transfer.",
       features: ["0.05% Accuracy Class", "Cryogenic to +400°C", "Integrated Flow Computers"],
       icon: Gauge,
-      img: "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=1200&auto=format&fit=crop"
+      img: "https://www.kimpexflow.com/img/kimpex-product/Turbine-Type-Gas-Meters.png"
     },
     {
       id: "regulation",
-      title: "Pressure Regulation",
-      desc: "Modular pressure reduction stations capable of handling volatile grid fluctuations autonomously.",
+      title: "Pressure Regulators – ERG-SR Series",
+      desc: "High-performance double-stage regulator capable of handling volatile grid fluctuations autonomously.",
       features: ["Redundant Safety Shut-offs", "Silent Operation Tech", "Smart Grid Ready"],
       icon: Settings2,
-      img: "https://images.unsplash.com/photo-1574689049596-1e6a92d4cbab?q=80&w=1200&auto=format&fit=crop"
+      img: "https://www.kimpexflow.com/img/kimpex-product/ERG-SR.png"
     },
     {
-      id: "compression",
-      title: "Gas Compression",
-      desc: "High-horsepower reciprocating and centrifugal compressors built for continuous duty across massive transport networks.",
+      id: "logging",
+      title: "MacR6 – Gas Meter Data Logger",
+      desc: "Compact and reliable logging device for complete telemetry and continuous duty operations.",
       features: ["Anti-Surge Control", "Vibration Analytics", "Zero-Emission Seals"],
       icon: Droplet,
-      img: "https://images.unsplash.com/photo-1618055663784-06ebba211910?q=80&w=1200&auto=format&fit=crop"
+      img: "https://www.kimpexflow.com/img/kimpex-product/macr6_1.png"
     },
     {
-      id: "filtration",
-      title: "Advanced Filtration",
-      desc: "Multi-stage coalescing and dry gas filters removing nominal particles down to 0.3 microns.",
+      id: "detection",
+      title: "Gas Leak Detectors – GDPC",
+      desc: "Durable detector for harsh environments and multi-stage heavy industrial facilities.",
       features: ["ASME U-Stamp Certified", "Quick-Opening Closures", "Automated Draining"],
       icon: Shield,
-      img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1200&auto=format&fit=crop"
+      img: "https://www.kimpexflow.com/img/kimpex-product/GDPC.png"
     }
   ];
 
   return (
     <div className="flex flex-col min-h-screen bg-brand-dark pt-28 pb-20">
-      
+
       <div className="container mx-auto px-6 max-w-7xl mb-20 text-center">
         <motion.div
-           initial={{ opacity: 0, scale: 0.9 }}
-           animate={{ opacity: 1, scale: 1 }}
-           className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
         >
           <span className="text-brand-orange text-sm font-bold tracking-widest uppercase">Hardware Portfolio</span>
         </motion.div>
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -67,9 +67,9 @@ export default function Products() {
         {products.map((product, idx) => (
           <Section key={product.id} className="!py-0">
             <div className={`flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 lg:gap-20 items-center`}>
-              
+
               <div className="w-full md:w-1/2">
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.95, rotate: idx % 2 === 0 ? -2 : 2 }}
                   whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                   viewport={{ once: true }}
@@ -95,7 +95,7 @@ export default function Products() {
                   <p className="text-xl text-gray-400 mb-8 leading-relaxed">
                     {product.desc}
                   </p>
-                  
+
                   <ul className="space-y-4 mb-10">
                     {product.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-4 text-gray-300">

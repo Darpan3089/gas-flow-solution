@@ -19,7 +19,7 @@ export default function About() {
       {/* Hero */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2600&auto=format&fit=crop"
+          src="https://www.kimpexflow.com/img/bg-manufacturer1.jpg"
           alt="Engineering Laboratory"
           fill
           className="object-cover opacity-30"
@@ -76,7 +76,7 @@ export default function About() {
             viewport={{ once: true }}
             className="relative h-[600px] rounded-3xl overflow-hidden"
           >
-             <Image src="https://images.unsplash.com/photo-1565514020179-0c6ca803b0c2?q=80&w=1000&auto=format&fit=crop" alt="Industrial Facility" fill className="object-cover" />
+             <Image src="https://www.kimpexflow.com/img/worker2.jpg" alt="Industrial Facility" fill className="object-cover" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 50 }}
