@@ -13,7 +13,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
       let start = 0;
       const duration = 2000;
       const incrementTime = (duration / value) * 5;
-      
+
       const timer = setInterval(() => {
         start += Math.ceil(value / 30) || 1;
         if (start >= value) {
@@ -28,7 +28,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
   }, [isInView, value]);
 
   return (
-    <div ref={ref} className="text-4xl md:text-5xl font-black text-white tracking-tighter">
+    <div ref={ref} className="text-4xl md:text-5xl font-black text-brand-ink tracking-tighter">
       {count}<span className="text-brand-green">{suffix}</span>
     </div>
   );
@@ -43,17 +43,17 @@ export function StatsBar() {
   ];
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.5 }}
       className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-full max-w-6xl px-6 z-30 hidden md:block"
     >
-      <div className="glass-green border border-brand-green/30 rounded-none shadow-[0_20px_50px_rgba(0,0,0,0.5)] grid grid-cols-4 divide-x divide-gray-800">
+      <div className="border border-brand-border rounded-none shadow-[0_20px_50px_rgba(15,23,42,0.08)] grid grid-cols-4 divide-x divide-brand-border overflow-hidden">
         {stats.map((stat, idx) => (
-          <div key={idx} className="p-8 text-center bg-[#070a10]/40 backdrop-blur-xl hover:bg-brand-green/5 transition-colors duration-500">
+          <div key={idx} className="p-8 text-center bg-white/90 backdrop-blur-xl hover:bg-brand-green-soft transition-colors duration-500">
             <AnimatedNumber value={stat.value} suffix={stat.suffix} />
-            <div className="text-xs text-gray-400 font-bold uppercase tracking-widest mt-2">{stat.label}</div>
+            <div className="text-xs text-brand-subtle font-bold uppercase tracking-widest mt-2">{stat.label}</div>
           </div>
         ))}
       </div>

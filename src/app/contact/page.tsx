@@ -19,25 +19,25 @@ export default function Contact() {
     }, 1500);
   };
 
-  const inputClasses = "w-full bg-brand-dark/50 border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-transparent transition-all";
+  const inputClasses = "w-full bg-white border border-brand-border rounded-xl px-5 py-4 text-brand-ink placeholder-brand-subtle focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-all";
 
   return (
-    <div className="flex flex-col min-h-screen bg-brand-dark pt-32 pb-20">
+    <div className="flex flex-col min-h-screen bg-brand-bg pt-32 pb-20">
       
       <Section className="!py-0">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-bold text-white mb-6"
+            className="text-5xl md:text-6xl font-bold text-brand-ink mb-6"
           >
-            Initiate a <span className="text-brand-orange">Consultation</span>
+            Initiate a <span className="text-brand-green">Consultation</span>
           </motion.h1>
           <motion.p
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.1 }}
-             className="text-xl text-gray-400"
+             className="text-xl text-brand-muted"
           >
             Direct access to our senior engineering and architectural procurement teams.
           </motion.p>
@@ -52,20 +52,20 @@ export default function Contact() {
             className="lg:col-span-1 space-y-8"
           >
             <div className="glass p-8 rounded-3xl h-full">
-              <h3 className="text-2xl font-bold text-white mb-8">Global Headquarters</h3>
-              
+              <h3 className="text-2xl font-bold text-brand-ink mb-8">Global Headquarters</h3>
+
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-brand-orange text-sm font-semibold uppercase tracking-wider mb-2">Location</h4>
-                  <p className="text-gray-300">123 Industrial Ave, Tech District<br/>CityCorp Sector, 90210</p>
+                  <h4 className="text-brand-green text-sm font-semibold uppercase tracking-wider mb-2">Location</h4>
+                  <p className="text-brand-muted">123 Industrial Ave, Tech District<br/>CityCorp Sector, 90210</p>
                 </div>
                 <div>
                   <h4 className="text-brand-green text-sm font-semibold uppercase tracking-wider mb-2">Direct Line</h4>
-                  <p className="text-gray-300 text-lg">+1 (800) 555-FLOW</p>
+                  <p className="text-brand-muted text-lg">+1 (800) 555-FLOW</p>
                 </div>
                 <div>
-                  <h4 className="text-brand-orange text-sm font-semibold uppercase tracking-wider mb-2">Technical Support</h4>
-                  <p className="text-gray-300">engineering@gasflow.com</p>
+                  <h4 className="text-brand-green text-sm font-semibold uppercase tracking-wider mb-2">Technical Support</h4>
+                  <p className="text-brand-muted">engineering@gasflow.com</p>
                 </div>
               </div>
             </div>
@@ -81,11 +81,11 @@ export default function Contact() {
              {status === "success" && (
                 <motion.div 
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                  className="absolute inset-0 bg-brand-dark/95 backdrop-blur z-10 flex flex-col items-center justify-center text-center p-8"
+                  className="absolute inset-0 bg-white/95 backdrop-blur z-10 flex flex-col items-center justify-center text-center p-8"
                 >
                   <CheckCircle2 className="w-20 h-20 text-brand-green mb-6" />
-                  <h3 className="text-3xl font-bold text-white mb-4">Request Received</h3>
-                  <p className="text-gray-300">An engineering consultant will contact you within 24 operational hours.</p>
+                  <h3 className="text-3xl font-bold text-brand-ink mb-4">Request Received</h3>
+                  <p className="text-brand-muted">An engineering consultant will contact you within 24 operational hours.</p>
                 </motion.div>
              )}
 
@@ -111,7 +111,7 @@ export default function Contact() {
               <button 
                 type="submit" 
                 disabled={status === "submitting"}
-                className="w-full bg-brand-orange text-white font-bold py-5 rounded-xl flex items-center justify-center gap-3 hover:bg-orange-600 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-brand-green text-white font-bold py-5 rounded-xl flex items-center justify-center gap-3 hover:bg-brand-green-dark transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {status === "submitting" ? (
                   <>Processing <motion.span animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }}><AlertCircle className="w-5 h-5" /></motion.span></>

@@ -9,7 +9,7 @@ export function WhatsAppCTA() {
       href="https://wa.me/1234567890" // Placeholder number
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 p-4 bg-brand-green text-white rounded-full shadow-lg hover:bg-emerald-600 transition-colors focus:outline-none focus:ring-4 focus:ring-emerald-500/50"
+      className="fixed bottom-6 right-6 z-50 p-4 bg-brand-green text-white rounded-full shadow-lg shadow-brand-green/25 hover:bg-brand-green-dark transition-colors focus:outline-none focus:ring-4 focus:ring-brand-green/40"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{

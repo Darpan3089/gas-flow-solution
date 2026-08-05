@@ -16,9 +16,9 @@ export function InteractiveFlowSimulation() {
       {/* Simulation Container */}
       <div className="glass-green rounded-3xl p-8 relative overflow-hidden">
         {/* Animated particle flow in background */}
-        <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-800 -translate-y-1/2 z-0">
+        <div className="absolute top-1/2 left-0 right-0 h-1 bg-brand-border -translate-y-1/2 z-0">
           <motion.div
-            className="h-full w-24 bg-gradient-to-r from-transparent via-brand-green to-transparent blur-sm shadow-[0_0_15px_rgba(57,255,20,0.8)]"
+            className="h-full w-24 bg-gradient-to-r from-transparent via-brand-green to-transparent blur-sm shadow-[0_0_15px_rgba(5,150,105,0.5)]"
             animate={{ x: ["-100%", "800%"] }}
             transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
           />
@@ -32,13 +32,13 @@ export function InteractiveFlowSimulation() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="bg-brand-dark/80 backdrop-blur-md rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center relative group hover:border-brand-green transition-colors"
+              className="bg-white/90 backdrop-blur-md rounded-xl p-6 border border-brand-border flex flex-col items-center text-center relative group hover:border-brand-green transition-colors"
             >
-              <div className="w-16 h-16 rounded-full bg-brand-blue flex items-center justify-center mb-4 group-hover:bg-brand-green/10 transition-colors border border-gray-800 group-hover:border-brand-green/50">
+              <div className="w-16 h-16 rounded-full bg-brand-surface-alt flex items-center justify-center mb-4 group-hover:bg-brand-green-soft transition-colors border border-brand-border group-hover:border-brand-green/50">
                 <step.icon className="w-8 h-8 text-brand-green group-hover:scale-110 transition-transform" />
               </div>
-              <h4 className="text-white font-bold mb-2">{step.title}</h4>
-              <p className="text-xs text-gray-400 uppercase tracking-widest">{step.detail}</p>
+              <h4 className="text-brand-ink font-bold mb-2">{step.title}</h4>
+              <p className="text-xs text-brand-subtle uppercase tracking-widest">{step.detail}</p>
 
               {/* Connector dots for mobile */}
               {index < steps.length - 1 && (

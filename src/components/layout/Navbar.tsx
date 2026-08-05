@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Flame } from "lucide-react";
+import { Menu, X, Flame, ChevronDown } from "lucide-react";
+import { ProductsMenu } from "@/components/layout/ProductsMenu";
+import { productMenu, categoryHref, productHref } from "@/data/productMenu";
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
-  { name: "Products", href: "/products" },
+  { name: "Products", href: "/products", hasMenu: true },
   { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
 ];
@@ -17,7 +19,15 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
+  const [openMobileCategory, setOpenMobileCategory] = useState<string | null>(null);
   const pathname = usePathname();
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsMobileProductsOpen(false);
+    setOpenMobileCategory(null);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,25 +40,25 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-md py-3" 
-          : "bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm py-5"
+        isScrolled
+          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-brand-border py-3"
+          : "bg-white/60 backdrop-blur-sm py-5"
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 max-w-7xl flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <motion.div 
-            whileHover={{ scale: 1.1 }} 
+          <motion.div
+            whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.3 }}
-            className="p-1.5 bg-gradient-to-tr from-green-400 via-yellow-300 to-sky-400 rounded-lg shadow-sm"
+            className="p-1.5 bg-gradient-to-tr from-brand-green via-brand-teal to-emerald-400 rounded-lg shadow-sm"
           >
-            <div className="bg-white dark:bg-slate-900 rounded-md p-1">
-              <Flame className="w-5 h-5 text-sky-500" strokeWidth={2.5} />
+            <div className="bg-white rounded-md p-1">
+              <Flame className="w-5 h-5 text-brand-green" strokeWidth={2.5} />
             </div>
           </motion.div>
           <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tight text-slate-800 dark:text-white group-hover:text-sky-500 transition-colors">
+            <span className="text-xl font-bold tracking-tight text-brand-ink group-hover:text-brand-green transition-colors">
               Gas Flow Solutions
             </span>
           </div>
@@ -58,19 +68,24 @@ export function Navbar() {
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
+
+            if (link.hasMenu) {
+              return <ProductsMenu key={link.name} />;
+            }
+
             return (
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative text-sm font-semibold tracking-wide transition-colors hover:text-sky-500"
+                className="relative text-sm font-semibold tracking-wide transition-colors hover:text-brand-green"
               >
-                <span className={isActive ? "text-sky-500" : "text-slate-600 dark:text-slate-300"}>
+                <span className={isActive ? "text-brand-green" : "text-brand-muted"}>
                   {link.name}
                 </span>
                 {isActive && (
                   <motion.div
                     layoutId="navbar-indicator"
-                    className="absolute -bottom-2 left-0 right-0 h-0.5 bg-sky-500 rounded-full"
+                    className="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand-green rounded-full"
                     initial={false}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
@@ -80,7 +95,7 @@ export function Navbar() {
           })}
           <Link
             href="/contact"
-            className="ml-4 px-6 py-2.5 rounded-full bg-sky-500 text-white text-sm font-bold hover:bg-sky-600 hover:shadow-lg hover:shadow-sky-500/30 transition-all transform hover:-translate-y-0.5"
+            className="ml-4 px-6 py-2.5 rounded-full bg-brand-green text-white text-sm font-bold hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/25 transition-all transform hover:-translate-y-0.5"
           >
             Get a Quote
           </Link>
@@ -88,8 +103,8 @@ export function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-slate-600 dark:text-slate-300 hover:text-sky-500 transition-colors"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden text-brand-muted hover:text-brand-green transition-colors"
+          onClick={() => (isMobileMenuOpen ? closeMobileMenu() : setIsMobileMenuOpen(true))}
           aria-label="Toggle mobile menu"
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -104,18 +119,121 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 absolute w-full left-0 top-full shadow-lg"
+            className="md:hidden overflow-hidden bg-white border-t border-brand-border absolute w-full left-0 top-full shadow-lg"
           >
-            <div className="flex flex-col px-6 py-4 gap-4">
+            <div className="flex flex-col px-6 py-4 gap-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
+
+                // Products expands in place — a hover flyout has no touch equivalent.
+                if (link.hasMenu) {
+                  return (
+                    <div key={link.name} className="flex flex-col">
+                      <button
+                        type="button"
+                        onClick={() => setIsMobileProductsOpen((open) => !open)}
+                        aria-expanded={isMobileProductsOpen}
+                        className={`flex items-center justify-between text-lg font-semibold transition-colors ${
+                          isActive ? "text-brand-green" : "text-brand-muted"
+                        }`}
+                      >
+                        {link.name}
+                        <ChevronDown
+                          className={`w-5 h-5 transition-transform duration-200 ${
+                            isMobileProductsOpen ? "rotate-180 text-brand-green" : "text-brand-subtle"
+                          }`}
+                        />
+                      </button>
+
+                      <AnimatePresence initial={false}>
+                        {isMobileProductsOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="mt-3 pl-4 border-l-2 border-brand-border flex flex-col gap-1">
+                              {productMenu.map((category) => {
+                                const hasItems = Boolean(category.items?.length);
+                                const isCategoryOpen = openMobileCategory === category.slug;
+
+                                if (!hasItems) {
+                                  return (
+                                    <Link
+                                      key={category.slug}
+                                      href={categoryHref(category.slug)}
+                                      onClick={closeMobileMenu}
+                                      className="py-2 text-base text-brand-muted hover:text-brand-green transition-colors"
+                                    >
+                                      {category.name}
+                                    </Link>
+                                  );
+                                }
+
+                                return (
+                                  <div key={category.slug} className="flex flex-col">
+                                    <button
+                                      type="button"
+                                      onClick={() =>
+                                        setOpenMobileCategory(isCategoryOpen ? null : category.slug)
+                                      }
+                                      aria-expanded={isCategoryOpen}
+                                      className={`flex items-center justify-between py-2 text-base transition-colors ${
+                                        isCategoryOpen ? "text-brand-green" : "text-brand-muted"
+                                      }`}
+                                    >
+                                      {category.name}
+                                      <ChevronDown
+                                        className={`w-4 h-4 transition-transform duration-200 ${
+                                          isCategoryOpen ? "rotate-180" : "text-brand-subtle"
+                                        }`}
+                                      />
+                                    </button>
+
+                                    <AnimatePresence initial={false}>
+                                      {isCategoryOpen && (
+                                        <motion.div
+                                          initial={{ height: 0, opacity: 0 }}
+                                          animate={{ height: "auto", opacity: 1 }}
+                                          exit={{ height: 0, opacity: 0 }}
+                                          transition={{ duration: 0.2 }}
+                                          className="overflow-hidden"
+                                        >
+                                          <div className="pl-4 pb-2 flex flex-col gap-1">
+                                            {category.items?.map((item) => (
+                                              <Link
+                                                key={item.slug}
+                                                href={productHref(category.slug, item.slug)}
+                                                onClick={closeMobileMenu}
+                                                className="py-1.5 text-sm text-brand-subtle hover:text-brand-green transition-colors"
+                                              >
+                                                {item.name}
+                                              </Link>
+                                            ))}
+                                          </div>
+                                        </motion.div>
+                                      )}
+                                    </AnimatePresence>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
+
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={closeMobileMenu}
                     className={`text-lg font-semibold transition-colors ${
-                      isActive ? "text-sky-500" : "text-slate-600 dark:text-slate-300 hover:text-sky-500"
+                      isActive ? "text-brand-green" : "text-brand-muted hover:text-brand-green"
                     }`}
                   >
                     {link.name}
@@ -124,8 +242,8 @@ export function Navbar() {
               })}
               <Link
                 href="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-2 w-full text-center px-6 py-3 rounded-xl bg-sky-500 text-white font-bold hover:bg-sky-600 transition-colors shadow-md shadow-sky-500/20"
+                onClick={closeMobileMenu}
+                className="mt-2 w-full text-center px-6 py-3 rounded-xl bg-brand-green text-white font-bold hover:bg-brand-green-dark transition-colors shadow-md shadow-brand-green/20"
               >
                 Get a Quote
               </Link>

@@ -43,7 +43,7 @@ export default function Products() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-brand-dark pt-28 pb-20">
+    <div className="flex flex-col min-h-screen bg-brand-bg pt-28 pb-20">
 
       <div className="container mx-auto px-6 max-w-7xl mb-20 text-center">
         <motion.div
@@ -51,15 +51,15 @@ export default function Products() {
           animate={{ opacity: 1, scale: 1 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
         >
-          <span className="text-brand-orange text-sm font-bold tracking-widest uppercase">Hardware Portfolio</span>
+          <span className="text-brand-green text-sm font-bold tracking-widest uppercase">Hardware Portfolio</span>
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-5xl md:text-7xl font-extrabold text-white mb-6"
+          className="text-5xl md:text-7xl font-extrabold text-brand-ink mb-6"
         >
-          Engineered to <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-red-500">Outperform</span>
+          Engineered to <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-brand-teal">Outperform</span>
         </motion.h1>
       </div>
 
@@ -78,7 +78,7 @@ export default function Products() {
                 >
                   <div className="relative w-full h-full rounded-2xl overflow-hidden">
                     <Image src={product.img} alt={product.title} fill className="object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent" />
                   </div>
                 </motion.div>
               </div>
@@ -90,22 +90,22 @@ export default function Products() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  <product.icon className="w-12 h-12 text-brand-orange mb-6 bg-brand-orange/10 p-2 rounded-xl" />
-                  <h2 className="text-4xl font-bold text-white mb-6">{product.title}</h2>
-                  <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+                  <product.icon className="w-12 h-12 text-brand-green mb-6 bg-brand-green-soft p-2 rounded-xl" />
+                  <h2 className="text-4xl font-bold text-brand-ink mb-6">{product.title}</h2>
+                  <p className="text-xl text-brand-muted mb-8 leading-relaxed">
                     {product.desc}
                   </p>
 
                   <ul className="space-y-4 mb-10">
                     {product.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-4 text-gray-300">
+                      <li key={i} className="flex items-center gap-4 text-brand-muted">
                         <div className="w-2 h-2 rounded-full bg-brand-green" />
                         {feature}
                       </li>
                     ))}
                   </ul>
 
-                  <Link href="/contact" className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-brand-orange text-white font-bold rounded-full transition-all group border border-gray-700 hover:border-brand-orange">
+                  <Link href="/contact" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-brand-ink hover:bg-brand-green hover:text-white font-bold rounded-full transition-all group border border-brand-border hover:border-brand-green shadow-sm">
                     Request Specifications <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                   </Link>
                 </motion.div>
