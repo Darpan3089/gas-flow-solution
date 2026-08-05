@@ -1,121 +1,115 @@
-"use client";
-
-import Image from "next/image";
+import { Suspense } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Section } from "@/components/ui/Section";
-import { ArrowRight, Settings2, Gauge, Shield, Droplet } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { CatalogBrowser } from "@/components/products/CatalogBrowser";
+import { CategoryIcon } from "@/components/products/CategoryIcon";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { catalogEntries, categories, totalProductCount } from "@/data/catalog";
 
-export default function Products() {
-  const products = [
-    {
-      id: "metering",
-      title: "Turbine Gas Meters – FMT Series",
-      desc: "High-flow turbine meters for industrial usage and precision custody transfer.",
-      features: ["0.05% Accuracy Class", "Cryogenic to +400°C", "Integrated Flow Computers"],
-      icon: Gauge,
-      img: "https://www.kimpexflow.com/img/kimpex-product/Turbine-Type-Gas-Meters.png"
-    },
-    {
-      id: "regulation",
-      title: "Pressure Regulators – ERG-SR Series",
-      desc: "High-performance double-stage regulator capable of handling volatile grid fluctuations autonomously.",
-      features: ["Redundant Safety Shut-offs", "Silent Operation Tech", "Smart Grid Ready"],
-      icon: Settings2,
-      img: "https://www.kimpexflow.com/img/kimpex-product/ERG-SR.png"
-    },
-    {
-      id: "logging",
-      title: "MacR6 – Gas Meter Data Logger",
-      desc: "Compact and reliable logging device for complete telemetry and continuous duty operations.",
-      features: ["Anti-Surge Control", "Vibration Analytics", "Zero-Emission Seals"],
-      icon: Droplet,
-      img: "https://www.kimpexflow.com/img/kimpex-product/macr6_1.png"
-    },
-    {
-      id: "detection",
-      title: "Gas Leak Detectors – GDPC",
-      desc: "Durable detector for harsh environments and multi-stage heavy industrial facilities.",
-      features: ["ASME U-Stamp Certified", "Quick-Opening Closures", "Automated Draining"],
-      icon: Shield,
-      img: "https://www.kimpexflow.com/img/kimpex-product/GDPC.png"
-    }
-  ];
+export const metadata: Metadata = {
+  title: "Product Catalogue | Gas Flow Solutions",
+  description:
+    "Gas pressure regulators, filters, solenoid and safety valves, metering systems, control stations and combustion equipment for industrial gas installations.",
+  alternates: { canonical: "/products" },
+  openGraph: {
+    title: "Product Catalogue | Gas Flow Solutions",
+    description:
+      "Regulation, filtration, safety, metering and control equipment for industrial and utility gas networks.",
+    type: "website",
+  },
+};
 
+export default function ProductsPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-brand-bg pt-28 pb-20">
-
-      <div className="container mx-auto px-6 max-w-7xl mb-20 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
-        >
-          <span className="text-brand-green text-sm font-bold tracking-widest uppercase">Hardware Portfolio</span>
-        </motion.div>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-5xl md:text-7xl font-extrabold text-brand-ink mb-6"
-        >
-          Engineered to <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-brand-teal">Outperform</span>
-        </motion.h1>
+    <div className="bg-brand-bg">
+      <div className="container mx-auto max-w-7xl px-6 pt-8 md:px-12">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Products" }]} />
       </div>
 
-      <div className="container mx-auto px-6 max-w-7xl space-y-32">
-        {products.map((product, idx) => (
-          <Section key={product.id} className="!py-0">
-            <div className={`flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 lg:gap-20 items-center`}>
+      {/* Hero */}
+      <header className="container mx-auto max-w-7xl px-6 pt-10 pb-14 md:px-12">
+        <p className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-green">
+          Product Catalogue
+        </p>
+        <h1 className="mb-6 max-w-4xl text-4xl font-extrabold tracking-tight text-brand-ink md:text-6xl">
+          Equipment for every stage of the{" "}
+          <span className="bg-gradient-to-r from-brand-green to-brand-teal bg-clip-text text-transparent">
+            gas chain
+          </span>
+        </h1>
+        <p className="max-w-2xl text-lg leading-relaxed text-brand-muted">
+          {totalProductCount} products across {categories.length} categories — regulation,
+          filtration, safety, measurement and complete control stations. Everything is sized against
+          your actual duty rather than sold from a shelf, so tell us the conditions and we will
+          specify the unit.
+        </p>
+      </header>
 
-              <div className="w-full md:w-1/2">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95, rotate: idx % 2 === 0 ? -2 : 2 }}
-                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="relative h-[400px] lg:h-[600px] w-full rounded-3xl overflow-hidden glass p-2"
+      {/* Category shortcuts */}
+      <section aria-labelledby="browse-heading" className="border-y border-brand-border bg-brand-surface-alt py-12">
+        <div className="container mx-auto max-w-7xl px-6 md:px-12">
+          <h2 id="browse-heading" className="mb-6 text-xs font-bold uppercase tracking-widest text-brand-subtle">
+            Browse by category
+          </h2>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {categories.map((category) => (
+              <li key={category.slug}>
+                <Link
+                  href={`/products/${category.slug}`}
+                  className="group flex h-full items-center gap-3 rounded-xl border border-brand-border bg-brand-surface px-4 py-3.5 transition-all hover:-translate-y-0.5 hover:border-brand-green/40 hover:shadow-lg hover:shadow-brand-green/10"
                 >
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden">
-                    <Image src={product.img} alt={product.title} fill className="object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent" />
-                  </div>
-                </motion.div>
-              </div>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-brand-green/20 bg-brand-green-soft">
+                    <CategoryIcon icon={category.icon} className="w-5 h-5 text-brand-green" />
+                  </span>
+                  <span className="flex-1 text-sm font-semibold leading-snug text-brand-ink transition-colors group-hover:text-brand-green">
+                    {category.name}
+                  </span>
+                  <ArrowRight
+                    className="w-4 h-4 shrink-0 text-brand-subtle transition-all group-hover:translate-x-0.5 group-hover:text-brand-green"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-              <div className="w-full md:w-1/2">
-                <motion.div
-                  initial={{ opacity: 0, x: idx % 2 === 1 ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <product.icon className="w-12 h-12 text-brand-green mb-6 bg-brand-green-soft p-2 rounded-xl" />
-                  <h2 className="text-4xl font-bold text-brand-ink mb-6">{product.title}</h2>
-                  <p className="text-xl text-brand-muted mb-8 leading-relaxed">
-                    {product.desc}
-                  </p>
+      {/* Browser */}
+      <section aria-label="Product results" className="container mx-auto max-w-7xl px-6 py-16 md:px-12">
+        {/* useSearchParams inside CatalogBrowser needs a boundary for static prerender. */}
+        <Suspense
+          fallback={
+            <div
+              className="h-96 animate-pulse rounded-xl border border-brand-border bg-brand-surface"
+              aria-hidden="true"
+            />
+          }
+        >
+          <CatalogBrowser entries={catalogEntries} />
+        </Suspense>
+      </section>
 
-                  <ul className="space-y-4 mb-10">
-                    {product.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-4 text-brand-muted">
-                        <div className="w-2 h-2 rounded-full bg-brand-green" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Link href="/contact" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-brand-ink hover:bg-brand-green hover:text-white font-bold rounded-full transition-all group border border-brand-border hover:border-brand-green shadow-sm">
-                    Request Specifications <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                  </Link>
-                </motion.div>
-              </div>
-
-            </div>
-          </Section>
-        ))}
-      </div>
-
+      {/* Closing CTA */}
+      <section className="border-t border-brand-border bg-brand-surface-alt py-16">
+        <div className="container mx-auto max-w-3xl px-6 text-center md:px-12">
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-brand-ink">
+            Not sure which unit fits your duty?
+          </h2>
+          <p className="mb-8 text-brand-muted">
+            Send us inlet and outlet pressure, required flow, line size and gas composition. Our
+            application engineers will size the equipment and return a costed proposal.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-brand-green px-8 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/25"
+          >
+            Talk to an engineer
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
