@@ -11,6 +11,7 @@
 /** Key into the lucide icon map in `CategoryIcon`. */
 export type IconKey =
   | "regulator"
+  | "governor"
   | "filter"
   | "solenoid"
   | "shutoff"
@@ -65,8 +66,10 @@ export interface Product {
   specs: SpecRow[];
   applications: string[];
   /**
-   * Remote image URL. Omit to render the generated schematic placeholder —
-   * any host added here must also be allowlisted in `next.config.ts`.
+   * Image src: either a root-relative path into `public/` (e.g.
+   * "/products/r-series/main.webp") or a remote URL — remote hosts must also
+   * be allowlisted in `next.config.ts`. Omit to render the generated
+   * schematic placeholder.
    */
   image?: string;
   gallery?: string[];

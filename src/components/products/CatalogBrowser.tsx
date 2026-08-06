@@ -52,10 +52,11 @@ export function CatalogBrowser({
   const [quickView, setQuickView] = useState<CatalogEntry | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
-  // The URL is the source of truth for the category, so deep links like
-  // /products?category=gas-filters and browser back/forward work without an
-  // effect mirroring the param into state.
+  // The URL is the source of truth for the category and group, so deep links
+  // like /products?category=gas-filters or a nav-menu link to a product group
+  // and browser back/forward work without an effect mirroring params into state.
   const activeCategory = searchParams.get("category") ?? ALL;
+  const activeGroup = searchParams.get("group");
 
   const indexed = useMemo(
     () => entries.map((entry) => ({ entry, haystack: searchIndex(entry) })),
@@ -66,9 +67,10 @@ export function CatalogBrowser({
     const needle = query.trim().toLowerCase();
     return indexed
       .filter(({ entry }) => activeCategory === ALL || entry.category.slug === activeCategory)
+      .filter(({ entry }) => !activeGroup || entry.product.group === activeGroup)
       .filter(({ haystack }) => !needle || haystack.includes(needle))
       .map(({ entry }) => entry);
-  }, [indexed, activeCategory, query]);
+  }, [indexed, activeCategory, activeGroup, query]);
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
   // Clamp rather than reset: a filter change that shortens the list keeps the
@@ -87,6 +89,16 @@ export function CatalogBrowser({
     const params = new URLSearchParams(searchParams.toString());
     if (slug === ALL) params.delete("category");
     else params.set("category", slug);
+    // A group belongs to one category, so any category change invalidates it.
+    params.delete("group");
+    const qs = params.toString();
+    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+  };
+
+  const clearGroup = () => {
+    setPage(1);
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("group");
     const qs = params.toString();
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
   };
@@ -96,7 +108,8 @@ export function CatalogBrowser({
     if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const hasActiveFilters = activeCategory !== ALL || query.trim().length > 0;
+  const hasActiveFilters =
+    activeCategory !== ALL || activeGroup !== null || query.trim().length > 0;
 
   return (
     <div>
@@ -171,6 +184,21 @@ export function CatalogBrowser({
           </div>
         </div>
       </div>
+
+      {activeGroup && (
+        <div className="mb-8 flex flex-wrap items-center gap-3">
+          <span className="text-sm text-brand-subtle">Showing range:</span>
+          <button
+            type="button"
+            onClick={clearGroup}
+            className="inline-flex items-center gap-2 rounded-full border border-brand-green/30 bg-brand-green-soft px-4 py-1.5 text-sm font-semibold text-brand-green transition-colors hover:border-brand-green"
+          >
+            {activeGroup}
+            <X className="w-3.5 h-3.5" aria-hidden="true" />
+            <span className="sr-only">Remove range filter</span>
+          </button>
+        </div>
+      )}
 
       <div className={cn("gap-8", showCategoryFilter && "lg:grid lg:grid-cols-[15rem_1fr]")}>
         {showCategoryFilter && (

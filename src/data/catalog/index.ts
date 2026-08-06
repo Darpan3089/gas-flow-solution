@@ -1,33 +1,33 @@
 /**
  * Assembles the product catalog and exposes the lookup helpers every product
- * route uses. Category order here is the order shown in the nav and on the
- * listing page — it runs from the core control hardware outward to systems,
- * instrumentation and consumables.
+ * route uses.
+ *
+ * Scope note: the catalog is deliberately limited to ranges verified against
+ * the reference supplier's published catalogue. Categories that were dropped in
+ * that audit — safety shut-off valves, pressure control stations, gas train
+ * components and spare parts — are intentionally absent rather than pending.
  */
 
 import type { CatalogEntry, Category, Product } from "./types";
 import { gasPressureRegulators } from "./regulators";
 import { gasFilters } from "./filtration";
-import { reliefValves, safetyShutOffValves, slamShutValves, solenoidValves } from "./valves";
-import { gasMeasurementEquipment, gasMeteringSystems } from "./metering";
-import { gasTrainComponents, pressureControlStations } from "./systems";
-import { accessoriesAndSpares, burnerEquipment } from "./components";
+import { safetyReliefValves, slumShutValves, solenoidValves } from "./valves";
+import { gasAirPressureSwitch, gasMeters } from "./metering";
+import { burnerEquipments, zeroGovernor } from "./components";
 
 export * from "./types";
 
+/** Order here is the order of the Products dropdown and the listing page. */
 export const categories: Category[] = [
   gasPressureRegulators,
   gasFilters,
   solenoidValves,
-  safetyShutOffValves,
-  reliefValves,
-  slamShutValves,
-  gasMeteringSystems,
-  pressureControlStations,
-  gasTrainComponents,
-  gasMeasurementEquipment,
-  burnerEquipment,
-  accessoriesAndSpares,
+  gasMeters,
+  safetyReliefValves,
+  slumShutValves,
+  zeroGovernor,
+  gasAirPressureSwitch,
+  burnerEquipments,
 ];
 
 /** Flat list of every product paired with its category — the listing page's source. */

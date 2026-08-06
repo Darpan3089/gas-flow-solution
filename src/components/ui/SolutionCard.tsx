@@ -23,12 +23,12 @@ export function SolutionCard({ title, description, icon: Icon, imgUrl, delay = 0
     >
       {/* Heavy Industrial Image Block */}
       <div className="relative h-64 w-full overflow-hidden">
-        <Image src={imgUrl} alt={title} fill className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 filter grayscale group-hover:grayscale-0" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
+        <Image src={imgUrl} alt={title} fill className="object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 filter grayscale group-hover:grayscale-0" />
+        <div className="absolute inset-0 group-hover:opacity-70 transition-opacity duration-500" />
       </div>
 
       {/* Content Block */}
-      <div className="p-8 relative z-10 flex flex-col flex-grow -mt-16">
+      <div className="p-8 relative z-10 flex flex-col grow -mt-16">
         <div className="w-16 h-16 bg-white border-r border-t border-brand-green/30 flex items-center justify-center mb-6 shadow-sm group-hover:border-brand-green/80 transition-colors">
           <Icon className="w-8 h-8 text-brand-green" />
         </div>

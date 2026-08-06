@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Flame, ChevronDown } from "lucide-react";
 import { ProductsMenu } from "@/components/layout/ProductsMenu";
-import { productMenu, categoryHref, productHref } from "@/data/productMenu";
+import { productMenu, categoryHref } from "@/data/productMenu";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -204,8 +204,8 @@ export function Navbar() {
                                           <div className="pl-4 pb-2 flex flex-col gap-1">
                                             {category.items?.map((item) => (
                                               <Link
-                                                key={item.slug}
-                                                href={productHref(category.slug, item.slug)}
+                                                key={item.href}
+                                                href={item.href}
                                                 onClick={closeMobileMenu}
                                                 className="py-1.5 text-sm text-brand-subtle hover:text-brand-green transition-colors"
                                               >

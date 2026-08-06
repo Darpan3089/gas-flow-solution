@@ -17,8 +17,8 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-brand-bg overflow-hidden">
       {/* 🔹 1. HERO SECTION & STATS BAR */}
       <section className="relative h-[90vh] flex items-center border-b border-brand-border">
-        <Image src="https://www.kimpexflow.com/img/banner1.png" alt="Industrial Flow Systems" fill className="object-cover opacity-25" priority />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-bg via-brand-bg/85 to-brand-bg/30 z-10" />
+        <Image src="https://www.kimpexflow.com/img/banner1.png" alt="Industrial Flow Systems" fill className="object-cover opacity-40" priority />
+        <div className="absolute inset-0  z-10" />
 
         <div className="container relative z-20 px-6 max-w-7xl mx-auto pt-20">
           <motion.div

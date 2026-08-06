@@ -1,4 +1,5 @@
 import {
+  ArrowDownToLine,
   Boxes,
   Filter,
   Flame,
@@ -22,6 +23,7 @@ import { cn } from "@/lib/cn";
  */
 const ICONS = {
   regulator: SlidersHorizontal,
+  governor: ArrowDownToLine,
   filter: Filter,
   solenoid: Zap,
   shutoff: ShieldCheck,

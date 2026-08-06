@@ -8,11 +8,11 @@ export const solenoidValves: Category = {
   tagline:
     "Electrically commanded isolation that closes the moment the control system — or the power — says stop.",
   overview:
-    "A solenoid valve is the interface between the gas line and the safety logic around it. Ours are normally-closed fail-safe designs: de-energise the coil, whether by burner controller command, gas-detection trip or a power cut, and the valve shuts. Coil duty, opening characteristic and reset behaviour are all selectable, because a furnace that needs a soft two-stage opening has very different requirements from an emergency isolation valve that must slam shut in under a second.",
+    "A solenoid valve is the interface between the gas line and the safety logic around it. Ours are normally-closed fail-safe designs: de-energise the coil, whether by burner controller command, gas-detection trip or a power cut, and the valve shuts. Coil duty and reset behaviour are selectable, because a valve that may re-open the moment power returns has very different requirements from one that must stay shut until an engineer has been to site.",
   features: [
     "Normally-closed fail-safe action on loss of power",
     "Continuous-duty encapsulated coils rated for permanent energisation",
-    "Fast, slow-opening and two-stage characteristics available",
+    "Fast-acting closure in under one second",
     "Manual-reset variants that require deliberate on-site intervention",
     "Position-indication microswitch option for proof-of-closure",
     "Coil replaceable without breaking the pressure envelope",
@@ -72,9 +72,9 @@ export const solenoidValves: Category = {
         "An automatic-reset valve reopens as soon as its coil is re-energised. A manual-reset valve stays closed until someone physically operates the reset lever, which is normally required for gas-detection and emergency-shutdown duties so that a plant cannot re-gas unattended.",
     },
     {
-      question: "Why choose a slow-opening valve?",
+      question: "Should the valve be normally open or normally closed?",
       answer:
-        "Admitting full flow instantly into a large furnace volume can produce a rough light-up and pressure shock. A slow-opening or two-stage valve ramps flow so ignition is stable and pipework is not hammered.",
+        "Normally closed is the default for fuel lines, since the de-energised state is the safe one. Normally open variants exist for vent and relief duty, where the safe state is an open path to atmosphere — the choice follows which condition is safe, not which is convenient.",
     },
     {
       question: "Can the coil be left energised permanently?",
@@ -84,37 +84,8 @@ export const solenoidValves: Category = {
   ],
   products: [
     {
-      slug: "fast-acting-solenoid-valves",
-      name: "Fast-Acting Solenoid Valves",
-      series: "SV-F",
-      tagline: "Sub-second closure for safety loops that cannot wait.",
-      overview:
-        "The SV-F closes in under a second on loss of coil power, which is what emergency shutdown and flame-failure logic require. A direct-acting armature with no pilot dependency means closure does not rely on line pressure being present.",
-      features: [
-        "Closing time under one second",
-        "Direct-acting — closes with or without line pressure",
-        "Encapsulated IP65 coil, 100 % duty",
-        "Optional closed-position proof switch",
-        "Automatic reset on re-energisation",
-      ],
-      specs: [
-        { label: "Design pressure", value: "Up to 6 bar" },
-        { label: "Sizes", value: "DN 15 – DN 100" },
-        { label: "Closing time", value: "< 1 s" },
-        { label: "Coil voltage", value: "230 V AC / 110 V AC / 24 V DC" },
-        { label: "Connections", value: "Threaded BSP / NPT, PN16 flanged" },
-        { label: "Body material", value: "Aluminium alloy" },
-      ],
-      applications: [
-        "Burner gas train safety shut-off",
-        "Gas-detection emergency isolation",
-        "Automated process line isolation",
-      ],
-      documents: docsFor("SV-F Fast-Acting Solenoid Valve"),
-    },
-    {
-      slug: "manual-reset-solenoid-valves",
-      name: "Manual Reset Solenoid Valves",
+      slug: "manually-reset-solenoid-valves",
+      name: "Manually Reset Solenoid Valves",
       series: "SV-MR",
       tagline: "Once it trips, gas does not return until a person decides it should.",
       overview:
@@ -122,6 +93,7 @@ export const solenoidValves: Category = {
       features: [
         "Mechanical latch — no automatic re-opening",
         "Reset lever cannot be held against an active trip",
+        "Closing time under one second on loss of coil power",
         "Visual open/closed position indicator",
         "Optional proof-of-closure switch",
         "Fail-safe closed on power loss",
@@ -139,215 +111,14 @@ export const solenoidValves: Category = {
         "School and laboratory gas safety",
         "Boiler-house emergency shut-off",
       ],
-      documents: docsFor("SV-MR Manual Reset Solenoid Valve"),
-    },
-    {
-      slug: "slow-opening-solenoid-valves",
-      name: "Slow-Opening Solenoid Valves",
-      series: "SV-SO",
-      tagline: "Ramped admission for smooth light-up on large combustion volumes.",
-      overview:
-        "The SV-SO opens against an adjustable hydraulic restrictor so flow rises over a set interval rather than instantly. On large furnaces and kilns that turns a harsh light-up into a controlled one, protecting refractory and eliminating the pressure shock that trips downstream switches.",
-      features: [
-        "Adjustable opening time",
-        "Optional first-stage rapid step then slow ramp",
-        "Fast fail-safe closure regardless of opening setting",
-        "Encapsulated IP65 coil, 100 % duty",
-        "Adjustment accessible without depressurising",
-      ],
-      specs: [
-        { label: "Design pressure", value: "Up to 6 bar" },
-        { label: "Sizes", value: "DN 25 – DN 200" },
-        { label: "Opening time", value: "Adjustable, typically 3 – 20 s" },
-        { label: "Closing time", value: "< 1 s" },
-        { label: "Coil voltage", value: "230 V AC / 110 V AC / 24 V DC" },
-        { label: "Connections", value: "Threaded BSP / NPT, PN16 flanged" },
-      ],
-      applications: [
-        "Furnace and kiln light-up",
-        "Large boiler main gas valve",
-        "Any train where instant admission causes pressure shock",
-      ],
-      documents: docsFor("SV-SO Slow-Opening Solenoid Valve"),
+      documents: docsFor("SV-MR Manually Reset Solenoid Valve"),
     },
   ],
 };
 
-export const safetyShutOffValves: Category = {
-  slug: "safety-shut-off-valves",
-  name: "Safety Shut-off Valves",
-  icon: "shutoff",
-  tagline:
-    "The commanded last line of defence — isolate the line on any trip signal the plant can generate.",
-  overview:
-    "Safety shut-off valves close on an external command: a fire signal, a gas-detection trip, an ESD button or a loss of instrument air. Unlike a slam-shut, which reacts autonomously to pressure, an SSOV does what the safety system tells it to, which makes it the enforcement point for plant-wide shutdown logic. Actuation can be electric, pneumatic or thermal, and every variant fails to the closed position.",
-  features: [
-    "Fail-closed on loss of power, signal or actuating air",
-    "Electric, pneumatic and thermal-fusible actuation options",
-    "Fire-safe seat and stem-seal construction available",
-    "Limit switches for open and closed position proof",
-    "Partial-stroke test capability on actuated models",
-    "Manual override for controlled commissioning",
-  ],
-  specs: [
-    { label: "Design pressure", value: "Up to 100 bar" },
-    { label: "Sizes", value: "DN 25 – DN 400 / 1\" – 16\"" },
-    { label: "Closing time", value: "< 2 s typical, application configurable" },
-    { label: "Actuation", value: "Electric 24 V DC / 230 V AC, pneumatic 4 – 7 bar, thermal fuse" },
-    { label: "Leakage class", value: "Class VI / bubble-tight shut-off" },
-    { label: "Connections", value: "PN16 – PN100 flanged, ANSI 150 – 600" },
-    { label: "Operating temperature", value: "−20 °C to +200 °C (fire-safe variants)" },
-    { label: "Body materials", value: "Cast steel, ductile iron, stainless" },
-  ],
-  applications: [
-    "Plant-wide emergency shutdown systems",
-    "Fire-triggered isolation at building risers",
-    "Battery-limit isolation on process units",
-    "Compressor station block valves",
-    "Storage and loading facility isolation",
-  ],
-  industries: [
-    "Oil and gas production",
-    "Chemicals and petrochemicals",
-    "Power generation",
-    "Heavy manufacturing",
-    "Marine and offshore",
-    "Commercial and institutional buildings",
-  ],
-  benefits: [
-    {
-      title: "Single enforcement point for shutdown logic",
-      description:
-        "Every trip source in the plant can be routed to one valve, so the shutdown path is auditable rather than distributed across a dozen devices.",
-    },
-    {
-      title: "Testable without a shutdown",
-      description:
-        "Partial-stroke testing exercises the actuator and confirms the valve is free to move while production continues, closing the biggest gap in shut-off reliability.",
-    },
-    {
-      title: "Survives the event it is there for",
-      description:
-        "Fire-safe construction keeps the valve sealing after elastomer seats have been destroyed, which is precisely when isolation matters most.",
-    },
-    {
-      title: "Proof of position",
-      description:
-        "Limit switches give the safety system positive confirmation of closure instead of an assumption based on command state.",
-    },
-  ],
-  cta: quoteCta,
-  faqs: [
-    {
-      question: "How is a safety shut-off valve different from a slam-shut valve?",
-      answer:
-        "A slam-shut is autonomous: it senses downstream pressure itself and trips on its own when limits are exceeded. A safety shut-off valve is commanded — it closes when an external system tells it to. Most stations use both, because they cover different failure modes.",
-    },
-    {
-      question: "What does fire-safe construction actually guarantee?",
-      answer:
-        "That the valve still provides a defined, limited leakage rate after its soft seats have burned away, because a secondary metal-to-metal seat and graphite stem packing take over. It is a tested condition, not a claim about surviving fire undamaged.",
-    },
-    {
-      question: "What is partial-stroke testing and why does it matter?",
-      answer:
-        "The actuator moves the valve through a small part of its travel — typically 10–20 % — and returns it, proving the assembly is not seized without interrupting flow. Shut-off valves fail most often by sticking after long periods without movement, and this catches that.",
-    },
-  ],
-  products: [
-    {
-      slug: "electric-actuated-shut-off-valves",
-      name: "Electric Actuated Shut-off Valves",
-      series: "SSV-E",
-      tagline: "Cable in, isolation out — no compressed-air infrastructure required.",
-      overview:
-        "The SSV-E pairs a quarter-turn valve with a spring-return electric actuator, so a single control cable delivers both command and fail-safe behaviour. Where a site has no instrument air, this removes an entire utility from the safety path.",
-      features: [
-        "Spring-return actuator fails closed on power loss",
-        "No instrument air required",
-        "Integral limit switches for open and closed proof",
-        "Manual override handwheel",
-        "Partial-stroke test input",
-      ],
-      specs: [
-        { label: "Design pressure", value: "Up to 40 bar" },
-        { label: "Sizes", value: "DN 25 – DN 300" },
-        { label: "Closing time", value: "< 2 s" },
-        { label: "Supply voltage", value: "24 V DC / 230 V AC" },
-        { label: "Enclosure", value: "IP66, ATEX option" },
-        { label: "Connections", value: "PN16 – PN40 flanged, ANSI 150 – 300" },
-      ],
-      applications: [
-        "Building riser fire isolation",
-        "Process unit battery limits",
-        "Sites without instrument air",
-      ],
-      documents: docsFor("SSV-E Electric Actuated Shut-off Valve"),
-    },
-    {
-      slug: "pneumatic-actuated-shut-off-valves",
-      name: "Pneumatic Actuated Shut-off Valves",
-      series: "SSV-P",
-      tagline: "Fast, high-torque isolation for large bores and hazardous areas.",
-      overview:
-        "For large-bore duty the SSV-P's spring-return pneumatic actuator delivers the torque and speed that electric units struggle to match, and with no electrical energy in the actuator it suits hazardous-area installation with minimal certification burden.",
-      features: [
-        "High torque for large-bore valves",
-        "Spring-return fails closed on air loss",
-        "Rapid closure independent of stroke length",
-        "Solenoid pilot with manual reset option",
-        "Fire-safe construction available",
-      ],
-      specs: [
-        { label: "Design pressure", value: "Up to 100 bar" },
-        { label: "Sizes", value: "DN 50 – DN 400" },
-        { label: "Closing time", value: "< 2 s" },
-        { label: "Actuating air", value: "4 – 7 bar instrument air" },
-        { label: "Leakage class", value: "Class VI" },
-        { label: "Connections", value: "PN25 – PN100 flanged, ANSI 150 – 600" },
-      ],
-      applications: [
-        "Compressor station block valves",
-        "Large process isolation",
-        "Hazardous-area emergency shutdown",
-      ],
-      documents: docsFor("SSV-P Pneumatic Actuated Shut-off Valve"),
-    },
-    {
-      slug: "thermal-shut-off-valves",
-      name: "Thermal Shut-off Valves",
-      series: "SSV-T",
-      tagline: "Closes on heat alone — no cable, no air, no control system.",
-      overview:
-        "The SSV-T holds open on a fusible element that melts at a defined temperature, releasing a spring and isolating the line. Because it needs no external service of any kind, it keeps working when fire has already taken out power and control wiring.",
-      features: [
-        "Fusible element trips at a defined temperature",
-        "Requires no power, air or signal",
-        "Mechanical latch — no automatic reopening",
-        "Selectable trip temperature",
-        "Compact, fits inside riser and meter enclosures",
-      ],
-      specs: [
-        { label: "Design pressure", value: "Up to 16 bar" },
-        { label: "Sizes", value: "DN 15 – DN 100" },
-        { label: "Trip temperature", value: "95 °C / 100 °C selectable" },
-        { label: "Reset", value: "Element replacement" },
-        { label: "Connections", value: "Threaded BSP / NPT, PN16 flanged" },
-        { label: "Body material", value: "Brass or ductile iron" },
-      ],
-      applications: [
-        "Meter set and riser fire protection",
-        "Appliance-local thermal isolation",
-        "Retrofit fire safety on existing installations",
-      ],
-      documents: docsFor("SSV-T Thermal Shut-off Valve"),
-    },
-  ],
-};
-
-export const reliefValves: Category = {
-  slug: "relief-valves",
-  name: "Relief Valves",
+export const safetyReliefValves: Category = {
+  slug: "safety-relief-valves",
+  name: "Safety Relief Valves",
   icon: "relief",
   tagline:
     "Bleed off a small overpressure before it becomes a shutdown — then reseat and carry on.",
@@ -355,28 +126,27 @@ export const reliefValves: Category = {
     "Most overpressure events are small and transient: a regulator seat picks up a particle, or thermal expansion lifts a locked-in section. A relief valve vents just enough gas to clear the excursion and reseats, which keeps the station running instead of tripping a slam-shut and dispatching an engineer. Sizing matters more here than anywhere: undersized relief cannot protect, oversized relief chatters and destroys its own seat.",
   features: [
     "Reseats automatically once pressure returns to normal",
-    "Direct-spring and pilot-operated designs across the pressure range",
+    "Direct-spring design with immediate response to pressure rise",
     "Set points adjustable in the field within the fitted spring range",
     "Vent connection for piping discharge to a safe location",
     "Soft seats for tight seal below set point",
     "Test-lift facility for in-service function checks",
   ],
   specs: [
-    { label: "Set pressure range", value: "20 mbar – 100 bar" },
-    { label: "Sizes", value: "DN 15 – DN 150 / ½\" – 6\"" },
-    { label: "Reseat pressure", value: "Typically 90 – 95 % of set point" },
+    { label: "Set pressure range", value: "20 mbar – 16 bar" },
+    { label: "Sizes", value: "DN 15 – DN 50 / ½\" – 2\"" },
+    { label: "Reseat pressure", value: "Typically 90 % of set point" },
     { label: "Discharge capacity", value: "Sized per installation and relieving scenario" },
-    { label: "Connections", value: "Threaded BSP/NPT, PN16 – PN100 flanged" },
+    { label: "Connections", value: "Threaded BSP / NPT" },
     { label: "Operating temperature", value: "−20 °C to +60 °C" },
-    { label: "Body materials", value: "Aluminium alloy, ductile iron, cast steel" },
-    { label: "Seat materials", value: "NBR, HNBR, FKM" },
+    { label: "Body materials", value: "Aluminium alloy, brass" },
+    { label: "Seat materials", value: "NBR, HNBR" },
   ],
   applications: [
     "Downstream protection at regulating stations",
     "Thermal-expansion relief on isolated pipe sections",
     "Meter set overpressure protection",
     "Burner gas train relief",
-    "Storage vessel and tanker offloading protection",
   ],
   industries: [
     "Gas distribution utilities",
@@ -389,7 +159,7 @@ export const reliefValves: Category = {
     {
       title: "Prevents nuisance shutdowns",
       description:
-        "A correctly sized relief absorbs small excursions so the slam-shut never trips, avoiding a site visit and a supply interruption for an event that lasted seconds.",
+        "A correctly sized relief absorbs small excursions so the slum-shut never trips, avoiding a site visit and a supply interruption for an event that lasted seconds.",
     },
     {
       title: "Protects downstream pipe ratings",
@@ -410,9 +180,9 @@ export const reliefValves: Category = {
   cta: quoteCta,
   faqs: [
     {
-      question: "Should a relief valve be used instead of a slam-shut?",
+      question: "Should a relief valve be used instead of a slum-shut?",
       answer:
-        "They are complementary, not alternatives. Relief handles small, self-clearing excursions; a slam-shut handles genuine regulator failure where venting could never keep up. Stations commonly carry both, with the relief set below the slam-shut trip point.",
+        "They are complementary, not alternatives. Relief handles small, self-clearing excursions; a slum-shut handles genuine regulator failure where venting could never keep up. Stations commonly carry both, with the relief set below the slum-shut trip point.",
     },
     {
       question: "Why does an oversized relief valve cause problems?",
@@ -427,8 +197,8 @@ export const reliefValves: Category = {
   ],
   products: [
     {
-      slug: "direct-spring-relief-valves",
-      name: "Direct Spring Relief Valves",
+      slug: "safety-relief-valves",
+      name: "Safety Relief Valves",
       series: "RV-D",
       tagline: "Simple, immediate relief for small excursions and thermal expansion.",
       overview:
@@ -453,77 +223,19 @@ export const reliefValves: Category = {
         "Meter set protection",
         "Small commercial regulating installations",
       ],
-      documents: docsFor("RV-D Direct Spring Relief Valve"),
-    },
-    {
-      slug: "pilot-operated-relief-valves",
-      name: "Pilot Operated Relief Valves",
-      series: "RV-P",
-      tagline: "Full capacity right at set point, with a tight seal just below it.",
-      overview:
-        "A direct-spring valve begins leaking as line pressure approaches set point. The RV-P uses line pressure to hold itself shut, so sealing actually improves the closer it gets — then it opens fully and fast once the pilot trips. That combination is what high-pressure, high-capacity relief duty needs.",
-      features: [
-        "Seal tightness increases as pressure approaches set point",
-        "Rapid full-lift once the pilot releases",
-        "High discharge capacity for the body size",
-        "Field-adjustable pilot set point",
-        "Back-pressure tolerant",
-      ],
-      specs: [
-        { label: "Set pressure", value: "1 – 100 bar" },
-        { label: "Sizes", value: "DN 25 – DN 150" },
-        { label: "Reseat pressure", value: "≈ 95 % of set point" },
-        { label: "Connections", value: "PN25 – PN100 flanged, ANSI 150 – 600" },
-        { label: "Body material", value: "Cast steel" },
-        { label: "Seat material", value: "HNBR or FKM" },
-      ],
-      applications: [
-        "High-pressure transmission station relief",
-        "Large district regulating stations",
-        "Storage and loading facility protection",
-      ],
-      documents: docsFor("RV-P Pilot Operated Relief Valve"),
-    },
-    {
-      slug: "creep-relief-valves",
-      name: "Creep Relief Valves",
-      series: "RV-C",
-      tagline: "Handles the slow seat weep that would otherwise trip the station overnight.",
-      overview:
-        "A regulator seat that passes a tiny amount of gas will slowly pressurise a no-flow network until the slam-shut trips — typically at 3 a.m. The RV-C is deliberately small, vents that creep as it accumulates and keeps the station on line until the seat is serviced at the next planned visit.",
-      features: [
-        "Low discharge rate matched to seat-weep magnitude",
-        "Prevents nuisance slam-shut trips during no-flow periods",
-        "Compact body suited to skid mounting",
-        "Adjustable set point below the slam-shut trip",
-        "Soft seat for tight closure at rest",
-      ],
-      specs: [
-        { label: "Set pressure", value: "50 mbar – 25 bar" },
-        { label: "Sizes", value: "DN 15 – DN 25" },
-        { label: "Discharge", value: "Low rate, creep duty only" },
-        { label: "Connections", value: "Threaded BSP / NPT" },
-        { label: "Body material", value: "Aluminium alloy or stainless" },
-        { label: "Seat material", value: "NBR, HNBR or FKM" },
-      ],
-      applications: [
-        "District regulating stations with long no-flow periods",
-        "Seasonal and standby installations",
-        "Any station with a history of overnight slam-shut trips",
-      ],
-      documents: docsFor("RV-C Creep Relief Valve"),
+      documents: docsFor("RV-D Safety Relief Valve"),
     },
   ],
 };
 
-export const slamShutValves: Category = {
-  slug: "slam-shut-valves",
-  name: "Slam Shut Valves",
+export const slumShutValves: Category = {
+  slug: "slum-shut-valves",
+  name: "Slum Shut Valves",
   icon: "slamshut",
   tagline:
     "Autonomous overpressure protection that trips on its own and stays shut until someone checks why.",
   overview:
-    "A slam-shut is the station's independent judgement. It monitors downstream pressure through its own sensing line and latches closed the instant limits are exceeded — no control system, no power, no operator. Critically, it does not reset itself: gas stays off until an engineer has established why the regulator failed. That latching behaviour is the entire point, and it is why slam-shuts are mandated where a regulator failure could overpressure a lower-rated network.",
+    "A slum-shut is the station's independent judgement. It monitors downstream pressure through its own sensing line and latches closed the instant limits are exceeded — no control system, no power, no operator. Critically, it does not reset itself: gas stays off until an engineer has established why the regulator failed. That latching behaviour is the entire point, and it is why slum-shuts are mandated where a regulator failure could overpressure a lower-rated network.",
   features: [
     "Fully autonomous — independent sensing line, no external energy",
     "Mechanical latch, manual reset only",
@@ -560,7 +272,7 @@ export const slamShutValves: Category = {
     {
       title: "Independent of everything else",
       description:
-        "Because it senses and acts entirely on its own, a slam-shut still protects when the control system, the power supply and the regulator have all failed together.",
+        "Because it senses and acts entirely on its own, a slum-shut still protects when the control system, the power supply and the regulator have all failed together.",
     },
     {
       title: "Forces a root-cause investigation",
@@ -586,74 +298,49 @@ export const slamShutValves: Category = {
         "Far enough that normal lock-up and transient swings never reach it, and comfortably below the downstream maximum allowable pressure. The gap is set from the regulator's lock-up class and the pipe rating, so it is calculated per station rather than taken from a default.",
     },
     {
-      question: "Should the slam-shut be integrated or standalone?",
+      question: "Should the slum-shut be integrated or standalone?",
       answer:
         "Integrated units are shorter, cheaper and simpler to install. Standalone units let the trip device be selected, tested and replaced independently of the regulator, which is preferred on high-consequence stations and where different maintenance intervals apply.",
     },
     {
-      question: "How is a slam-shut tested without shutting down the station?",
+      question: "How is a slum-shut tested without shutting down the station?",
       answer:
         "Through the test connection on the sensing line: a portable source raises pressure at the sensing port only, verifying the trip point while the main line stays in normal service.",
     },
   ],
   products: [
     {
-      slug: "integrated-slam-shut-valves",
-      name: "Integrated Slam Shut Valves",
-      series: "SS-I",
-      tagline: "Trip protection built into the regulator body — shorter skid, fewer leak paths.",
+      slug: "slum-shut-valves",
+      name: "Slum Shut Valves",
+      series: "SS",
+      tagline: "Latching overpressure trip, supplied integrated in the regulator or standalone.",
       overview:
-        "The SS-I is fitted inside the regulator's own body, sharing the inlet passage. That removes a flange pair, a spool and a set of gaskets from the station and shortens the run considerably, which matters most in kiosks and cabinets where length is the binding constraint.",
+        "The SS senses downstream pressure through its own line and latches closed the moment the trip point is passed, using nothing but spring force — no power, no controller, no operator. It is supplied two ways: the SS-I sits inside the regulator body for compact kiosks, and the SS-X is an independent in-line valve with its own maintenance record for high-consequence stations. Both reset only by hand.",
       features: [
-        "Shares the regulator body — no additional flanged joints",
-        "Over- and under-pressure trip",
-        "Manual reset lever on the outside of the body",
-        "Trip point set independently of regulator set point",
-        "Test connection on the sensing line",
+        "Fully autonomous — independent sensing line, no external energy",
+        "Mechanical latch, manual reset lever only",
+        "Over- and under-pressure trip on the same device",
+        "Integrated (SS-I) or standalone (SS-X) execution",
+        "Trip point set independently of the regulator set point",
+        "Test connection on the sensing line for in-service proving",
       ],
       specs: [
-        { label: "Design pressure", value: "Up to 25 bar" },
-        { label: "Over-pressure trip", value: "30 mbar – 16 bar" },
-        { label: "Sizes", value: "Matched to host regulator, DN 25 – DN 150" },
-        { label: "Trip accuracy", value: "AG 2.5 – AG 5" },
+        { label: "Design pressure", value: "Up to 100 bar (SS-X), up to 25 bar (SS-I)" },
+        { label: "Over-pressure trip", value: "30 mbar – 60 bar" },
+        { label: "Under-pressure trip", value: "10 mbar – 30 bar (optional)" },
+        { label: "Sizes", value: "DN 25 – DN 300" },
+        { label: "Trip accuracy", value: "AG 1 – AG 5" },
         { label: "Closing time", value: "< 1 s" },
+        { label: "Connections", value: "Threaded, PN16 – PN100 flanged, ANSI 150 – 600" },
         { label: "Reset", value: "Manual lever" },
       ],
       applications: [
-        "Compact district regulating kiosks",
-        "Commercial meter sets",
-        "Space-constrained plant rooms",
-      ],
-      documents: docsFor("SS-I Integrated Slam Shut Valve"),
-    },
-    {
-      slug: "standalone-slam-shut-valves",
-      name: "Standalone Slam Shut Valves",
-      series: "SS-X",
-      tagline: "A separate trip device you can select, test and replace on its own schedule.",
-      overview:
-        "The SS-X is an independent in-line valve upstream of the regulator, with its own sensing line and its own maintenance record. Keeping the protective function physically separate from the thing it protects against is the conventional choice for high-consequence stations, and it lets the trip device be swapped without touching regulation.",
-      features: [
-        "Fully independent of the regulator",
-        "Separate maintenance and test schedule",
-        "Over- and under-pressure trip",
-        "High trip accuracy class",
-        "Available across the full pressure range",
-      ],
-      specs: [
-        { label: "Design pressure", value: "Up to 100 bar" },
-        { label: "Over-pressure trip", value: "50 mbar – 60 bar" },
-        { label: "Under-pressure trip", value: "10 mbar – 30 bar (optional)" },
-        { label: "Sizes", value: "DN 25 – DN 300" },
-        { label: "Trip accuracy", value: "AG 1 – AG 2.5" },
-        { label: "Connections", value: "PN16 – PN100 flanged, ANSI 150 – 600" },
-      ],
-      applications: [
         "City-gate and transmission stations",
+        "Compact district regulating kiosks",
         "Custody-transfer skids",
         "High-consequence industrial intake",
       ],
-      documents: docsFor("SS-X Standalone Slam Shut Valve"),
+      documents: docsFor("SS Slum Shut Valve"),
     },
   ],
 };
