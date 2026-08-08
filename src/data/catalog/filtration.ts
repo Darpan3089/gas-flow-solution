@@ -110,6 +110,14 @@ export const gasFilters: Category = {
         "Commercial service-line protection",
         "Boiler-house and plant-room installations",
       ],
+      image:
+        "/products/gas-filter/gas-filters-pmax-6-bar/gf-series-aluminium-body-6-bar/gf-series-aluminium-body-main-photo.webp",
+      gallery: [
+        "/products/gas-filter/gas-filters-pmax-6-bar/gf-series-aluminium-body-6-bar/gf-series-aluminium-body1.webp",
+        "/products/gas-filter/gas-filters-pmax-6-bar/gf-series-aluminium-body-6-bar/gf-series-aluminium-body2.webp",
+        "/products/gas-filter/gas-filters-pmax-6-bar/gf-series-aluminium-body-6-bar/gf-series-aluminium-body3.webp",
+        "/products/gas-filter/gas-filters-pmax-6-bar/gf-series-aluminium-body-6-bar/gf-series-aluminium-body4.webp",
+      ],
       documents: docsFor("GF-6 Gas Filter Pmax 6 Bar"),
     },
     {
@@ -139,6 +147,14 @@ export const gasFilters: Category = {
         "Industrial intake filtration",
         "Retrofit into existing skids",
       ],
+      image:
+        "/products/gas-filter/gas-filters-pmax-25-bar/gs-series-pmax-25-bar-gas-filters/gs-series-pmax-25-bar-gas-filters-main-photo.webp",
+      gallery: [
+        "/products/gas-filter/gas-filters-pmax-25-bar/gs-series-pmax-25-bar-gas-filters/gs-series-pmax-25-bar-gas-filters1.webp",
+        "/products/gas-filter/gas-filters-pmax-25-bar/gs-series-pmax-25-bar-gas-filters/gs-series-pmax-25-bar-gas-filters2.webp",
+        "/products/gas-filter/gas-filters-pmax-25-bar/gs-series-pmax-25-bar-gas-filters/gs-series-pmax-25-bar-gas-filters3.webp",
+        "/products/gas-filter/gas-filters-pmax-25-bar/gs-series-pmax-25-bar-gas-filters/gs-series-pmax-25-bar-gas-filters4.webp",
+      ],
       documents: docsFor("GF-25 Gas Filter Pmax 25 Bar"),
     },
     {
@@ -167,6 +183,12 @@ export const gasFilters: Category = {
         "City-gate and transmission stations",
         "Custody-transfer skid pre-filtration",
         "Power-plant fuel-gas conditioning",
+      ],
+      image:
+        "/products/gas-filter/gas-filters-pmax-50-bar/gh-series-pmax-50-bar-gas-filters/gh-series-pmax-50-bar-gas-filters-main-photo.webp",
+      gallery: [
+        "/products/gas-filter/gas-filters-pmax-50-bar/gh-series-pmax-50-bar-gas-filters/gh-series-pmax-50-bar-gas-filters1.webp",
+        "/products/gas-filter/gas-filters-pmax-50-bar/gh-series-pmax-50-bar-gas-filters/gh-series-pmax-50-bar-gas-filters2.webp",
       ],
       documents: docsFor("GF-50 Gas Filter Pmax 50 Bar"),
     },

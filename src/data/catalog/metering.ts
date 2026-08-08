@@ -111,6 +111,8 @@ export const gasMeters: Category = {
         "Commercial custody transfer",
         "District station measurement",
       ],
+      image: "/products/gas-meters/rotarymeter/rotarymeter-main-photo.webp",
+      gallery: ["/products/gas-meters/rotarymeter/rotarymeter1.webp"],
       documents: docsFor("MT-R Rotarymeter"),
     },
     {
@@ -140,6 +142,8 @@ export const gasMeters: Category = {
         "Power-station fuel-gas metering",
         "Large industrial intake",
       ],
+      image: "/products/gas-meters/turbinmeter/turbinmeter-main-photo.webp",
+      gallery: ["/products/gas-meters/turbinmeter/turbinmeter1.webp"],
       documents: docsFor("MT-T Turbinmeter"),
       faqs: [
         {
@@ -176,6 +180,8 @@ export const gasMeters: Category = {
         "Boiler-house consumption tracking",
         "Internal cost allocation",
       ],
+      image: "/products/gas-meters/quantometers/quantometers-main-photo.webp",
+      gallery: ["/products/gas-meters/quantometers/quantometers1.webp"],
       documents: docsFor("MT-Q Quantometer"),
     },
     {
@@ -205,6 +211,8 @@ export const gasMeters: Category = {
         "Industrial billing meters",
         "District station measurement",
       ],
+      image: "/products/gas-meters/volume-correctors/volume-correctors-main-photo.webp",
+      gallery: ["/products/gas-meters/volume-correctors/volume-correctors1.webp"],
       documents: docsFor("ME-V Volume Corrector"),
     },
   ],
@@ -319,6 +327,8 @@ export const gasAirPressureSwitch: Category = {
         "Combustion air proving",
         "Filter differential-pressure alarm",
       ],
+      image: "/products/gas-air-pressure-switch/gas-air-pressure-switch-main-photo.webp",
+      gallery: ["/products/gas-air-pressure-switch/gas-air-pressure-switch1.webp"],
       documents: docsFor("ME-S Gas/Air Pressure Switch"),
     },
   ],

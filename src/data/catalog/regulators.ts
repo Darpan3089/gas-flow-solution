@@ -129,13 +129,14 @@ export const gasPressureRegulators: Category = {
         "Industrial plant service lines",
         "Secondary reduction downstream of a district station",
       ],
-      image: "/products/r-series/main.webp",
+      image:
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/r-series-gas-pressure-regulator-threaded-connection/r-series-gas-pressure-regulator-threaded-connection-main-photo.webp",
       gallery: [
-        "/products/r-series/1.webp",
-        "/products/r-series/2.webp",
-        "/products/r-series/3.webp",
-        "/products/r-series/4.webp",
-        "/products/r-series/5.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/r-series-gas-pressure-regulator-threaded-connection/r-series-gas-pressure-regulator-threaded-connection1.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/r-series-gas-pressure-regulator-threaded-connection/r-series-gas-pressure-regulator-threaded-connection2.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/r-series-gas-pressure-regulator-threaded-connection/r-series-gas-pressure-regulator-threaded-connection3.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/r-series-gas-pressure-regulator-threaded-connection/r-series-gas-pressure-regulator-threaded-connection4.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/r-series-gas-pressure-regulator-threaded-connection/r-series-gas-pressure-regulator-threaded-connection5.webp",
       ],
       documents: docsFor("R Series Gas Pressure Regulator"),
       faqs: [
@@ -190,14 +191,15 @@ export const gasPressureRegulators: Category = {
         "Power-station fuel-gas supply",
         "High-capacity commercial installations",
       ],
-      image: "/products/f-series/main.webp",
+      image:
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/f-series-gas-pressure-regulators-flanged-connection/f-series-gas-pressure-regulators-flanged-connection-main-photo.webp",
       gallery: [
-        "/products/f-series/1.webp",
-        "/products/f-series/2.webp",
-        "/products/f-series/3.webp",
-        "/products/f-series/4.webp",
-        "/products/f-series/5.webp",
-        "/products/f-series/6.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/f-series-gas-pressure-regulators-flanged-connection/f-series-gas-pressure-regulators-flanged-connection1.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/f-series-gas-pressure-regulators-flanged-connection/f-series-gas-pressure-regulators-flanged-connection2.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/f-series-gas-pressure-regulators-flanged-connection/f-series-gas-pressure-regulators-flanged-connection3.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/f-series-gas-pressure-regulators-flanged-connection/f-series-gas-pressure-regulators-flanged-connection4.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/f-series-gas-pressure-regulators-flanged-connection/f-series-gas-pressure-regulators-flanged-connection5.webp",
+        "/products/gas-pressure-regulators/spring-loaded-gas-pressure-regulators/f-series-gas-pressure-regulators-flanged-connection/f-series-gas-pressure-regulators-flanged-connection6.webp",
       ],
       documents: docsFor("F Series Gas Pressure Regulator"),
     },
@@ -232,6 +234,12 @@ export const gasPressureRegulators: Category = {
         "Custody-transfer metering skids",
         "Large industrial plant intake",
         "Power-station fuel-gas conditioning",
+      ],
+      image:
+        "/products/gas-pressure-regulators/pilot-operated-gas-pressure-regulators/f-p-series-pilot-loaded-gas-pressure-regulators/f-p-series-pilot-loaded-gas-pressure-regulators-main-photo.webp",
+      gallery: [
+        "/products/gas-pressure-regulators/pilot-operated-gas-pressure-regulators/f-p-series-pilot-loaded-gas-pressure-regulators/f-p-series-pilot-loaded-gas-pressure-regulators1.webp",
+        "/products/gas-pressure-regulators/pilot-operated-gas-pressure-regulators/f-p-series-pilot-loaded-gas-pressure-regulators/f-p-series-pilot-loaded-gas-pressure-regulators2.webp",
       ],
       documents: docsFor("GR-P Pilot Operated Regulator"),
       faqs: [
@@ -278,6 +286,14 @@ export const gasPressureRegulators: Category = {
         "Residential and light-commercial meter sets",
         "Laboratory and test-bench gas supply",
         "Catering and commercial kitchen equipment",
+      ],
+      image:
+        "/products/gas-pressure-regulators/low-gas-pressure-regulators/rl-series-low-pressure-regulators/rl-series-low-pressure-regulators-main-photo.webp",
+      gallery: [
+        "/products/gas-pressure-regulators/low-gas-pressure-regulators/rl-series-low-pressure-regulators/rl-series-low-pressure-regulators1.webp",
+        "/products/gas-pressure-regulators/low-gas-pressure-regulators/rl-series-low-pressure-regulators/rl-series-low-pressure-regulators2.webp",
+        "/products/gas-pressure-regulators/low-gas-pressure-regulators/rl-series-low-pressure-regulators/rl-series-low-pressure-regulators3.webp",
+        "/products/gas-pressure-regulators/low-gas-pressure-regulators/rl-series-low-pressure-regulators/rl-series-low-pressure-regulators4.webp",
       ],
       documents: docsFor("GR-L Low Pressure Regulator"),
     },

@@ -104,40 +104,61 @@ export default async function ProductPage({ params }: ProductPageProps) {
         />
       </div>
 
-      {/* Hero: gallery + summary */}
-      <header className="container mx-auto max-w-7xl px-6 pt-10 pb-16 md:px-12">
+      {/* Hero Banner */}
+      <div
+        className="relative h-64 md:h-80 overflow-hidden bg-linear-to-r from-brand-ink/70 to-brand-ink/50"
+        style={{
+          backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.5)), url(${product.image || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1200" height="400"%3E%3Crect fill="%23f1f5f9" width="1200" height="400"/%3E%3C/svg%3E'})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="container mx-auto max-w-7xl px-6 h-full flex items-center md:px-12">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            {product.name}
+          </h1>
+        </div>
+      </div>
+
+      {/* Product Gallery + Details */}
+      <section className="container mx-auto max-w-7xl px-6 py-16 md:px-12">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-          <ProductGallery
-            name={product.name}
-            series={product.series}
-            icon={category.icon}
-            image={product.image}
-            gallery={product.gallery}
-            slug={product.slug}
-          />
-
+          {/* Gallery */}
           <div>
-            <Link
-              href={`/products/${category.slug}`}
-              className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-green transition-colors hover:text-brand-green-dark"
-            >
-              <CategoryIcon icon={category.icon} className="w-4 h-4" />
-              {category.name}
-            </Link>
+            <ProductGallery
+              name={product.name}
+              series={product.series}
+              icon={category.icon}
+              gallery={product.gallery}
+              slug={product.slug}
+            />
+          </div>
 
-            <h1 className="mb-3 text-4xl font-extrabold tracking-tight text-brand-ink md:text-5xl">
+          {/* Product Details */}
+          <div>
+            <p className="mb-2 text-sm font-semibold text-brand-red">
               {product.name}
-            </h1>
-
-            <p className="mb-5 font-mono text-sm font-semibold text-brand-subtle">
-              Series {product.series}
-              {product.group && <span className="text-brand-subtle"> · {product.group}</span>}
             </p>
 
-            <p className="mb-6 text-lg leading-relaxed text-brand-muted">{product.tagline}</p>
-            <p className="mb-8 leading-relaxed text-brand-muted">{product.overview}</p>
+            <h2 className="mb-4 text-2xl font-bold tracking-tight text-brand-ink">
+              {product.tagline}
+            </h2>
 
-            <div className="mb-8 flex flex-wrap gap-3">
+            <p className="mb-6 leading-relaxed text-brand-muted">{product.overview}</p>
+
+            <div className="mb-8 space-y-2">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-brand-subtle">Features</h3>
+              <ul className="space-y-2">
+                {product.features.slice(0, 8).map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-sm text-brand-muted">
+                    <span className="text-brand-green">•</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
               <Link
                 href="#inquiry"
                 className="inline-flex items-center gap-2 rounded-full bg-brand-green px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/25"
@@ -153,21 +174,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 Datasheets
               </Link>
             </div>
-
-            {/* Headline figures, so the key numbers are visible without scrolling */}
-            <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-brand-border bg-brand-border">
-              {product.specs.slice(0, 4).map((spec) => (
-                <div key={spec.label} className="bg-brand-surface p-4">
-                  <dt className="mb-1 text-xs font-semibold uppercase tracking-wider text-brand-subtle">
-                    {spec.label}
-                  </dt>
-                  <dd className="text-sm font-bold text-brand-ink">{spec.value}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </div>
-      </header>
+      </section>
 
       {/* Features + applications */}
       <section

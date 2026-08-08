@@ -7,6 +7,7 @@ import { CatalogBrowser } from "@/components/products/CatalogBrowser";
 import { CategoryIcon } from "@/components/products/CategoryIcon";
 import { FaqAccordion } from "@/components/products/FaqAccordion";
 import { SpecTable } from "@/components/products/SpecTable";
+import { SubCategoryGrid } from "@/components/products/SubCategoryGrid";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { catalogEntries, categories, getCategory } from "@/data/catalog";
 
@@ -70,53 +71,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         />
       </div>
 
-      {/* Hero */}
-      <header className="container mx-auto max-w-7xl px-6 pt-10 pb-14 md:px-12">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
-          <div>
-            <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-green/20 bg-brand-green-soft">
-              <CategoryIcon icon={category.icon} className="w-7 h-7 text-brand-green" />
-            </span>
 
-            <h1 className="mb-5 text-4xl font-extrabold tracking-tight text-brand-ink md:text-5xl">
-              {category.name}
-            </h1>
-            <p className="mb-6 text-xl leading-relaxed text-brand-muted">{category.tagline}</p>
-            <p className="max-w-2xl leading-relaxed text-brand-muted">{category.overview}</p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href={category.cta.href}
-                className="inline-flex items-center gap-2 rounded-full bg-brand-green px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/25"
-              >
-                {category.cta.label}
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </Link>
-              <Link
-                href="#range"
-                className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-surface px-7 py-3.5 text-sm font-bold text-brand-ink transition-colors hover:border-brand-green hover:text-brand-green"
-              >
-                View the range ({category.products.length})
-              </Link>
-            </div>
-          </div>
-
-          {/* Key features */}
-          <div className="rounded-2xl border border-brand-border bg-brand-surface p-7">
-            <h2 className="mb-5 text-xs font-bold uppercase tracking-widest text-brand-subtle">
-              Key features
-            </h2>
-            <ul className="space-y-3.5">
-              {category.features.map((feature) => (
-                <li key={feature} className="flex items-start gap-3 text-sm leading-relaxed text-brand-muted">
-                  <CheckCircle2 className="mt-0.5 w-4 h-4 shrink-0 text-brand-green" aria-hidden="true" />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </header>
+      {/* Sub-Categories */}
+      <SubCategoryGrid products={category.products} categorySlug={category.slug} icon={category.icon} />
 
       {/* Specifications */}
       <section

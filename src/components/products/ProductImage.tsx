@@ -15,6 +15,10 @@ interface ProductImageProps {
   /** Sets `priority` on the underlying next/image for above-the-fold usage. */
   priority?: boolean;
   sizes?: string;
+  /** "cover" crops to fill (cards, thumbnails); "contain" shows the whole photo, letterboxed. */
+  fit?: "cover" | "contain";
+  /** Card views fade to white for legible overlaid text; the lightbox doesn't need that. */
+  overlay?: boolean;
 }
 
 /** Cheap deterministic hash so a given product always draws the same schematic. */
@@ -43,10 +47,18 @@ export function ProductImage({
   className,
   priority = false,
   sizes = "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw",
+  fit = "cover",
+  overlay = true,
 }: ProductImageProps) {
   if (src) {
     return (
-      <div className={cn("relative overflow-hidden bg-brand-surface-alt", className)}>
+      <div
+        className={cn(
+          "relative overflow-hidden",
+          fit === "contain" ? "bg-brand-ink/5" : "bg-brand-surface-alt",
+          className,
+        )}
+      >
         <Image
           src={src}
           alt={alt}
@@ -54,10 +66,9 @@ export function ProductImage({
           sizes={sizes}
           priority={priority}
           loading={priority ? undefined : "lazy"}
-          className="object-cover"
+          className={fit === "contain" ? "object-contain" : "object-cover"}
         />
-        {/* Light theme: fade to white so ink-coloured text stays legible on top. */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent" />
+        {overlay && <div className="absolute inset-0 " />}
       </div>
     );
   }
@@ -69,7 +80,7 @@ export function ProductImage({
   return (
     <div
       className={cn(
-        "relative overflow-hidden bg-gradient-to-br from-brand-surface-alt to-brand-green-soft",
+        "relative overflow-hidden ",
         className,
       )}
       role="img"
