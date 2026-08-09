@@ -185,6 +185,8 @@ export function ProductGallery({ name, series, icon, gallery, slug }: ProductGal
               priority
               className="h-full w-full"
               sizes="(max-width: 1024px) 100vw, 50vw"
+              fit="contain"
+              overlay={false}
             />
           </motion.button>
         </AnimatePresence>
@@ -238,6 +240,8 @@ export function ProductGallery({ name, series, icon, gallery, slug }: ProductGal
                 seed={view.seed}
                 className="aspect-4/3 w-full"
                 sizes="(max-width: 1024px) 30vw, 160px"
+                fit="contain"
+                overlay={false}
               />
             </button>
           ))}
@@ -418,6 +422,8 @@ export function ProductGallery({ name, series, icon, gallery, slug }: ProductGal
                       seed={view.seed}
                       className="h-full w-full"
                       sizes="64px"
+                      fit="contain"
+                      overlay={false}
                     />
                   </button>
                 ))}

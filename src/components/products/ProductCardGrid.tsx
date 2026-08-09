@@ -35,6 +35,7 @@ export function ProductCardGrid({ entry, onQuickView, index = 0 }: ProductCardGr
           seed={product.slug}
           className="h-48 w-full"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          fit="contain"
         />
 
         {/* Quick view sits above the image and is reachable by keyboard at all times. */}
@@ -98,6 +99,7 @@ export function ProductCardList({ entry, onQuickView, index = 0 }: ProductCardGr
         seed={product.slug}
         className="h-40 w-full shrink-0 rounded-lg sm:h-32 sm:w-48"
         sizes="(max-width: 640px) 100vw, 192px"
+        fit="contain"
       />
 
       <div className="flex flex-1 flex-col">

@@ -67,7 +67,9 @@ export function ProductImage({
           priority={priority}
           loading={priority ? undefined : "lazy"}
           className={fit === "contain" ? "object-contain" : "object-cover"}
-        />
+
+
+/>
         {overlay && <div className="absolute inset-0 " />}
       </div>
     );
