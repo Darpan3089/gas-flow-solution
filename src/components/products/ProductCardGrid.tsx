@@ -24,7 +24,7 @@ export function ProductCardGrid({ entry, onQuickView, index = 0 }: ProductCardGr
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay: Math.min(index, 8) * 0.04 }}
-      className="group relative flex flex-col h-full overflow-hidden rounded-xl border border-brand-border bg-brand-surface transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-green/30 hover-glow"
+      className="group relative flex flex-col h-full overflow-hidden rounded-xl border border-brand-border bg-brand-surface transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-navy/30 hover-glow"
     >
       <div className="relative">
         <ProductImage
@@ -42,7 +42,7 @@ export function ProductCardGrid({ entry, onQuickView, index = 0 }: ProductCardGr
         <button
           type="button"
           onClick={() => onQuickView(entry)}
-          className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-brand-border bg-white/90 px-3 py-1.5 text-xs font-bold text-brand-ink opacity-0 shadow-sm backdrop-blur-sm transition-all hover:bg-brand-green hover:text-white focus-visible:opacity-100 group-hover:opacity-100"
+          className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-brand-border bg-white/90 px-3 py-1.5 text-xs font-bold text-brand-ink opacity-0 shadow-sm backdrop-blur-sm transition-all hover:bg-brand-navy hover:text-white focus-visible:opacity-100 group-hover:opacity-100"
         >
           <Eye className="w-3.5 h-3.5" aria-hidden="true" />
           Quick view
@@ -53,12 +53,12 @@ export function ProductCardGrid({ entry, onQuickView, index = 0 }: ProductCardGr
       <div className="flex flex-1 flex-col p-6">
         <Link
           href={`/products/${category.slug}`}
-          className="mb-2 self-start text-[11px] font-bold uppercase tracking-widest text-brand-green hover:text-brand-green-dark transition-colors"
+          className="mb-2 self-start text-[11px] font-bold uppercase tracking-widest text-brand-navy hover:text-brand-navy-dark transition-colors"
         >
           {category.name}
         </Link>
 
-        <h3 className="mb-2 text-lg font-bold tracking-tight text-brand-ink transition-colors group-hover:text-brand-green">
+        <h3 className="mb-2 text-lg font-bold tracking-tight text-brand-ink transition-colors group-hover:text-brand-navy">
           {/* Stretched link: the whole card is the primary target, but Quick View
               and the category link sit above it via z-index. */}
           <Link href={productHref(category.slug, product.slug)} className="before:absolute before:inset-0">
@@ -70,7 +70,7 @@ export function ProductCardGrid({ entry, onQuickView, index = 0 }: ProductCardGr
 
         <div className="mt-auto flex items-center justify-between border-t border-brand-border pt-4">
           <span className="font-mono text-xs font-semibold text-brand-subtle">{product.series}</span>
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-green">
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-navy">
             View details
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </span>
@@ -89,7 +89,7 @@ export function ProductCardList({ entry, onQuickView, index = 0 }: ProductCardGr
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: Math.min(index, 8) * 0.03 }}
-      className="group relative flex flex-col gap-5 overflow-hidden rounded-xl border border-brand-border bg-brand-surface p-5 transition-all duration-300 hover:border-brand-green/30 hover-glow sm:flex-row"
+      className="group relative flex flex-col gap-5 overflow-hidden rounded-xl border border-brand-border bg-brand-surface p-5 transition-all duration-300 hover:border-brand-navy/30 hover-glow sm:flex-row"
     >
       <ProductImage
         src={product.image}
@@ -106,14 +106,14 @@ export function ProductCardList({ entry, onQuickView, index = 0 }: ProductCardGr
         <div className="mb-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
           <Link
             href={`/products/${category.slug}`}
-            className="relative z-10 text-[11px] font-bold uppercase tracking-widest text-brand-green hover:text-brand-green-dark transition-colors"
+            className="relative z-10 text-[11px] font-bold uppercase tracking-widest text-brand-navy hover:text-brand-navy-dark transition-colors"
           >
             {category.name}
           </Link>
           <span className="font-mono text-xs text-brand-subtle">{product.series}</span>
         </div>
 
-        <h3 className="mb-1.5 text-lg font-bold tracking-tight text-brand-ink transition-colors group-hover:text-brand-green">
+        <h3 className="mb-1.5 text-lg font-bold tracking-tight text-brand-ink transition-colors group-hover:text-brand-navy">
           <Link href={productHref(category.slug, product.slug)} className="before:absolute before:inset-0">
             {product.name}
           </Link>
@@ -124,7 +124,7 @@ export function ProductCardList({ entry, onQuickView, index = 0 }: ProductCardGr
         <div className="mt-auto flex flex-wrap items-center gap-3">
           <Link
             href={productHref(category.slug, product.slug)}
-            className="relative z-10 inline-flex items-center gap-1.5 rounded-full bg-brand-green px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-brand-green-dark"
+            className="relative z-10 inline-flex items-center gap-1.5 rounded-full bg-brand-navy px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-brand-navy-dark"
           >
             View details
             <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -134,7 +134,7 @@ export function ProductCardList({ entry, onQuickView, index = 0 }: ProductCardGr
             onClick={() => onQuickView(entry)}
             className={cn(
               "relative z-10 inline-flex items-center gap-1.5 rounded-full border border-brand-border px-4 py-2",
-              "text-xs font-bold text-brand-ink transition-colors hover:border-brand-green hover:text-brand-green",
+              "text-xs font-bold text-brand-ink transition-colors hover:border-brand-navy hover:text-brand-navy",
             )}
           >
             <Eye className="w-3.5 h-3.5" aria-hidden="true" />

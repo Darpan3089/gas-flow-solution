@@ -103,7 +103,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </p>
           <Link
             href={category.cta.href}
-            className="inline-flex items-center gap-2 rounded-full bg-brand-green px-8 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/25"
+            className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-8 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-navy-dark hover:shadow-lg hover:shadow-brand-navy/25"
           >
             {category.cta.label}
             <ArrowRight className="w-4 h-4" aria-hidden="true" />

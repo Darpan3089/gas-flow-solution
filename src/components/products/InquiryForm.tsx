@@ -15,8 +15,8 @@ type Status = "idle" | "sending" | "sent";
 
 const FIELD_CLASS =
   "w-full rounded-lg border border-brand-border bg-brand-surface px-4 py-2.5 text-sm text-brand-ink " +
-  "placeholder:text-brand-subtle focus:border-brand-green focus:outline-none focus:ring-2 " +
-  "focus:ring-brand-green/20 transition-colors";
+  "placeholder:text-brand-subtle focus:border-brand-navy focus:outline-none focus:ring-2 " +
+  "focus:ring-brand-navy/20 transition-colors";
 
 /**
  * Product enquiry form.
@@ -41,11 +41,11 @@ export function InquiryForm({ productName, className }: InquiryFormProps) {
         animate={{ opacity: 1, y: 0 }}
         role="status"
         className={cn(
-          "flex flex-col items-center text-center gap-3 rounded-xl border border-brand-green/25 bg-brand-green-soft p-8",
+          "flex flex-col items-center text-center gap-3 rounded-xl border border-brand-navy/25 bg-brand-navy-soft p-8",
           className,
         )}
       >
-        <CheckCircle2 className="w-10 h-10 text-brand-green" aria-hidden="true" />
+        <CheckCircle2 className="w-10 h-10 text-brand-navy" aria-hidden="true" />
         <p className="text-lg font-bold text-brand-ink">Enquiry received</p>
         <p className="text-sm text-brand-muted max-w-sm">
           Our application engineers will review your requirements for {productName} and respond
@@ -68,7 +68,7 @@ export function InquiryForm({ productName, className }: InquiryFormProps) {
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="inquiry-name" className="block mb-1.5 text-sm font-semibold text-brand-ink">
-            Full name <span className="text-brand-green">*</span>
+            Full name <span className="text-brand-navy">*</span>
           </label>
           <input id="inquiry-name" name="name" type="text" required autoComplete="name" className={FIELD_CLASS} />
         </div>
@@ -88,7 +88,7 @@ export function InquiryForm({ productName, className }: InquiryFormProps) {
 
         <div>
           <label htmlFor="inquiry-email" className="block mb-1.5 text-sm font-semibold text-brand-ink">
-            Email <span className="text-brand-green">*</span>
+            Email <span className="text-brand-navy">*</span>
           </label>
           <input
             id="inquiry-email"
@@ -123,7 +123,7 @@ export function InquiryForm({ productName, className }: InquiryFormProps) {
 
         <div className="sm:col-span-2">
           <label htmlFor="inquiry-message" className="block mb-1.5 text-sm font-semibold text-brand-ink">
-            Application details <span className="text-brand-green">*</span>
+            Application details <span className="text-brand-navy">*</span>
           </label>
           <textarea
             id="inquiry-message"
@@ -139,7 +139,7 @@ export function InquiryForm({ productName, className }: InquiryFormProps) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-7 py-3 text-sm font-bold text-white transition-all hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/25 disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-brand-navy px-7 py-3 text-sm font-bold text-white transition-all hover:bg-brand-navy-dark hover:shadow-lg hover:shadow-brand-navy/25 disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === "sending" ? (
           <>

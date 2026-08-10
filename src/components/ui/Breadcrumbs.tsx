@@ -33,7 +33,7 @@ export function Breadcrumbs({ items, className, origin = "" }: BreadcrumbsProps)
 
   return (
     <>
-      <nav aria-label="Breadcrumb" className={cn("text-sm", className)}>
+      <nav aria-label="Breadcrumb" className={cn("text-sm mb-1", className)}>
         <ol className="flex flex-wrap items-center gap-1.5 text-brand-subtle">
           {items.map((item, index) => {
             const isLast = index === items.length - 1;
@@ -41,7 +41,7 @@ export function Breadcrumbs({ items, className, origin = "" }: BreadcrumbsProps)
               <li key={`${item.label}-${index}`} className="flex items-center gap-1.5">
                 {index > 0 && <ChevronRight className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />}
                 {item.href && !isLast ? (
-                  <Link href={item.href} className="hover:text-brand-green transition-colors">
+                  <Link href={item.href} className="hover:text-brand-navy transition-colors">
                     {item.label}
                   </Link>
                 ) : (

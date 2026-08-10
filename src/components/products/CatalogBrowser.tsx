@@ -132,7 +132,7 @@ export function CatalogBrowser({
               setPage(1);
             }}
             placeholder="Search by product, series or application…"
-            className="w-full rounded-full border border-brand-border bg-brand-surface py-3 pl-11 pr-4 text-sm text-brand-ink placeholder:text-brand-subtle transition-colors focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20"
+            className="w-full rounded-full border border-brand-border bg-brand-surface py-3 pl-11 pr-4 text-sm text-brand-ink placeholder:text-brand-subtle transition-colors focus:border-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-navy/20"
           />
         </div>
 
@@ -142,7 +142,7 @@ export function CatalogBrowser({
               type="button"
               onClick={() => setFiltersOpen((open) => !open)}
               aria-expanded={filtersOpen}
-              className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-surface px-4 py-2.5 text-sm font-semibold text-brand-ink transition-colors hover:border-brand-green hover:text-brand-green lg:hidden"
+              className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-surface px-4 py-2.5 text-sm font-semibold text-brand-ink transition-colors hover:border-brand-navy hover:text-brand-navy lg:hidden"
             >
               <SlidersHorizontal className="w-4 h-4" aria-hidden="true" />
               Filter
@@ -174,8 +174,8 @@ export function CatalogBrowser({
                 className={cn(
                   "rounded-full p-2 transition-colors",
                   view === mode
-                    ? "bg-brand-green text-white"
-                    : "text-brand-subtle hover:text-brand-green",
+                    ? "bg-brand-navy text-white"
+                    : "text-brand-subtle hover:text-brand-navy",
                 )}
               >
                 <Icon className="w-4 h-4" aria-hidden="true" />
@@ -191,7 +191,7 @@ export function CatalogBrowser({
           <button
             type="button"
             onClick={clearGroup}
-            className="inline-flex items-center gap-2 rounded-full border border-brand-green/30 bg-brand-green-soft px-4 py-1.5 text-sm font-semibold text-brand-green transition-colors hover:border-brand-green"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-navy/30 bg-brand-navy-soft px-4 py-1.5 text-sm font-semibold text-brand-navy transition-colors hover:border-brand-navy"
           >
             {activeGroup}
             <X className="w-3.5 h-3.5" aria-hidden="true" />
@@ -221,7 +221,7 @@ export function CatalogBrowser({
                       setQuery("");
                       selectCategory(ALL);
                     }}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-brand-green hover:text-brand-green-dark"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-brand-navy hover:text-brand-navy-dark"
                   >
                     <X className="w-3 h-3" aria-hidden="true" />
                     Clear
@@ -238,8 +238,8 @@ export function CatalogBrowser({
                     className={cn(
                       "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors",
                       activeCategory === ALL
-                        ? "bg-brand-green-soft text-brand-green"
-                        : "text-brand-muted hover:bg-brand-green-soft hover:text-brand-green",
+                        ? "bg-brand-navy-soft text-brand-navy"
+                        : "text-brand-muted hover:bg-brand-navy-soft hover:text-brand-navy",
                     )}
                   >
                     All products
@@ -260,8 +260,8 @@ export function CatalogBrowser({
                         className={cn(
                           "flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors",
                           isActive
-                            ? "bg-brand-green-soft text-brand-green"
-                            : "text-brand-muted hover:bg-brand-green-soft hover:text-brand-green",
+                            ? "bg-brand-navy-soft text-brand-navy"
+                            : "text-brand-muted hover:bg-brand-navy-soft hover:text-brand-navy",
                         )}
                       >
                         <CategoryIcon icon={category.icon} className="w-4 h-4 shrink-0" />
@@ -295,7 +295,7 @@ export function CatalogBrowser({
                   setQuery("");
                   selectCategory(ALL);
                 }}
-                className="inline-flex items-center gap-2 rounded-full bg-brand-green px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-green-dark"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-navy-dark"
               >
                 Clear filters
               </button>
@@ -334,7 +334,7 @@ export function CatalogBrowser({
                 onClick={() => goToPage(currentPage - 1)}
                 disabled={currentPage === 1}
                 aria-label="Previous page"
-                className="rounded-full border border-brand-border p-2.5 text-brand-muted transition-colors hover:border-brand-green hover:text-brand-green disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-border disabled:hover:text-brand-muted"
+                className="rounded-full border border-brand-border p-2.5 text-brand-muted transition-colors hover:border-brand-navy hover:text-brand-navy disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-border disabled:hover:text-brand-muted"
               >
                 <ChevronLeft className="w-4 h-4" aria-hidden="true" />
               </button>
@@ -352,8 +352,8 @@ export function CatalogBrowser({
                     className={cn(
                       "min-w-10 rounded-full px-3.5 py-2 text-sm font-bold transition-colors",
                       isCurrent
-                        ? "bg-brand-green text-white"
-                        : "border border-brand-border text-brand-muted hover:border-brand-green hover:text-brand-green",
+                        ? "bg-brand-navy text-white"
+                        : "border border-brand-border text-brand-muted hover:border-brand-navy hover:text-brand-navy",
                     )}
                   >
                     {pageNumber}
@@ -366,7 +366,7 @@ export function CatalogBrowser({
                 onClick={() => goToPage(currentPage + 1)}
                 disabled={currentPage === pageCount}
                 aria-label="Next page"
-                className="rounded-full border border-brand-border p-2.5 text-brand-muted transition-colors hover:border-brand-green hover:text-brand-green disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-border disabled:hover:text-brand-muted"
+                className="rounded-full border border-brand-border p-2.5 text-brand-muted transition-colors hover:border-brand-navy hover:text-brand-navy disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-border disabled:hover:text-brand-muted"
               >
                 <ChevronRight className="w-4 h-4" aria-hidden="true" />
               </button>

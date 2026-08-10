@@ -31,7 +31,7 @@ export function ProductCategoryTabs({ categories, initialSlug }: ProductCategory
           <h2 className="text-3xl font-bold tracking-tight text-brand-ink">Product Categories</h2>
           <div className="mt-4 flex items-center justify-center gap-3" aria-hidden="true">
             <span className="h-px w-16 bg-brand-border" />
-            <span className="h-1 w-10 rounded-full bg-brand-green" />
+            <span className="h-1 w-10 rounded-full bg-brand-navy" />
             <span className="h-px w-16 bg-brand-border" />
           </div>
         </div>
@@ -52,7 +52,7 @@ export function ProductCategoryTabs({ categories, initialSlug }: ProductCategory
                 "shrink-0 border-r border-brand-border px-5 py-4 text-sm font-bold whitespace-nowrap transition-colors last:border-r-0",
                 category.slug === activeSlug
                   ? "bg-brand-ink text-white"
-                  : "text-brand-muted hover:bg-brand-surface-alt hover:text-brand-green",
+                  : "text-brand-muted hover:bg-brand-surface-alt hover:text-brand-navy",
               )}
             >
               {category.name}
@@ -65,7 +65,7 @@ export function ProductCategoryTabs({ categories, initialSlug }: ProductCategory
             <Link
               key={product.slug}
               href={productHref(active.slug, product.slug)}
-              className="group flex flex-col items-center rounded-2xl border border-brand-border bg-brand-surface p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-lg"
+              className="group flex flex-col items-center rounded-2xl border border-brand-border bg-brand-surface p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-brand-navy/30 hover:shadow-lg"
             >
               <div className="relative mb-5 h-40 w-full overflow-hidden rounded-lg">
                 <ProductImage
@@ -81,16 +81,16 @@ export function ProductCategoryTabs({ categories, initialSlug }: ProductCategory
                 />
               </div>
 
-              <span className="mb-4 h-0.5 w-10 rounded-full bg-brand-green/40" aria-hidden="true" />
+              <span className="mb-4 h-0.5 w-10 rounded-full bg-brand-navy/40" aria-hidden="true" />
 
-              <h3 className="mb-2 line-clamp-2 text-base font-bold text-brand-ink transition-colors group-hover:text-brand-green">
+              <h3 className="mb-2 line-clamp-2 text-base font-bold text-brand-ink transition-colors group-hover:text-brand-navy">
                 {product.name}
               </h3>
               <p className="mb-5 line-clamp-2 text-sm leading-relaxed text-brand-muted">
                 {product.tagline}
               </p>
 
-              <span className="mt-auto inline-flex items-center gap-2 rounded-lg bg-brand-ink px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-colors group-hover:bg-brand-green">
+              <span className="mt-auto inline-flex items-center gap-2 rounded-lg bg-brand-ink px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-colors group-hover:bg-brand-navy">
                 Details
                 <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
               </span>

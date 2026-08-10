@@ -108,7 +108,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div
         className="relative h-64 md:h-80 overflow-hidden bg-linear-to-r from-brand-ink/70 to-brand-ink/50"
         style={{
-          backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.5)), url(${product.image || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1200" height="400"%3E%3Crect fill="%23f1f5f9" width="1200" height="400"/%3E%3C/svg%3E'})`,
+          backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.5)), url(/bnr5.jpg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -151,7 +151,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <ul className="space-y-2">
                 {product.features.slice(0, 8).map((feature) => (
                   <li key={feature} className="flex items-start gap-2 text-sm text-brand-muted">
-                    <span className="text-brand-green">•</span>
+                    <span className="text-brand-navy">•</span>
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -161,14 +161,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="#inquiry"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-green px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/25"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-navy-dark hover:shadow-lg hover:shadow-brand-navy/25"
               >
                 Request a quote
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
               <Link
                 href="#documents"
-                className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-surface px-7 py-3.5 text-sm font-bold text-brand-ink transition-colors hover:border-brand-green hover:text-brand-green"
+                className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-surface px-7 py-3.5 text-sm font-bold text-brand-ink transition-colors hover:border-brand-navy hover:text-brand-navy"
               >
                 <FileText className="w-4 h-4" aria-hidden="true" />
                 Datasheets
@@ -192,7 +192,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <ul className="grid gap-4 sm:grid-cols-2">
                 {product.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 text-sm leading-relaxed text-brand-muted">
-                    <CheckCircle2 className="mt-0.5 w-4 h-4 shrink-0 text-brand-green" aria-hidden="true" />
+                    <CheckCircle2 className="mt-0.5 w-4 h-4 shrink-0 text-brand-navy" aria-hidden="true" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -201,13 +201,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             <div className="rounded-2xl border border-brand-border bg-brand-surface p-8">
               <div className="mb-6 flex items-center gap-3">
-                <Wrench className="w-5 h-5 text-brand-green" aria-hidden="true" />
+                <Wrench className="w-5 h-5 text-brand-navy" aria-hidden="true" />
                 <h2 className="text-2xl font-bold tracking-tight text-brand-ink">Applications</h2>
               </div>
               <ul className="space-y-3">
                 {product.applications.map((application) => (
                   <li key={application} className="flex items-start gap-3 text-sm text-brand-muted">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green" aria-hidden="true" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-navy" aria-hidden="true" />
                     <span>{application}</span>
                   </li>
                 ))}
@@ -259,7 +259,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {related.map((entry) => (
                 <article
                   key={`${entry.category.slug}-${entry.product.slug}`}
-                  className="group relative flex flex-col overflow-hidden rounded-xl border border-brand-border bg-brand-surface transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-green/30 hover-glow"
+                  className="group relative flex flex-col overflow-hidden rounded-xl border border-brand-border bg-brand-surface transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-navy/30 hover-glow"
                 >
                   <ProductImage
                     src={entry.product.image}
@@ -271,10 +271,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="flex flex-1 flex-col p-6">
-                    <p className="mb-2 text-[11px] font-bold uppercase tracking-widest text-brand-green">
+                    <p className="mb-2 text-[11px] font-bold uppercase tracking-widest text-brand-navy">
                       {entry.category.name}
                     </p>
-                    <h3 className="mb-2 text-lg font-bold tracking-tight text-brand-ink transition-colors group-hover:text-brand-green">
+                    <h3 className="mb-2 text-lg font-bold tracking-tight text-brand-ink transition-colors group-hover:text-brand-navy">
                       <Link
                         href={productHref(entry.category.slug, entry.product.slug)}
                         className="before:absolute before:inset-0"

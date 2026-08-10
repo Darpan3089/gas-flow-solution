@@ -24,18 +24,18 @@ export function DocumentList({ documents, productName }: DocumentListProps) {
               <a
                 href={doc.href}
                 download
-                className="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-brand-green-soft"
+                className="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-brand-navy-soft"
               >
-                <FileText className="w-5 h-5 shrink-0 text-brand-green" aria-hidden="true" />
+                <FileText className="w-5 h-5 shrink-0 text-brand-navy" aria-hidden="true" />
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-semibold text-brand-ink transition-colors group-hover:text-brand-green">
+                  <span className="block truncate text-sm font-semibold text-brand-ink transition-colors group-hover:text-brand-navy">
                     {doc.title}
                   </span>
                   <span className="block text-xs text-brand-subtle">
                     {doc.kind} · {doc.meta}
                   </span>
                 </span>
-                <Download className="w-4 h-4 shrink-0 text-brand-subtle transition-colors group-hover:text-brand-green" aria-hidden="true" />
+                <Download className="w-4 h-4 shrink-0 text-brand-subtle transition-colors group-hover:text-brand-navy" aria-hidden="true" />
               </a>
             ) : (
               <div className="flex items-center gap-4 px-5 py-4">
@@ -57,7 +57,7 @@ export function DocumentList({ documents, productName }: DocumentListProps) {
         <p className="text-xs leading-relaxed text-brand-muted">
           Documentation for {productName} is issued on request against the confirmed
           specification.{" "}
-          <Link href="/contact" className="font-semibold text-brand-green hover:text-brand-green-dark">
+          <Link href="/contact" className="font-semibold text-brand-navy hover:text-brand-navy-dark">
             Request the document pack
           </Link>
           .

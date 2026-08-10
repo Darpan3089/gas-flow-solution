@@ -75,7 +75,7 @@ export function SubCategoryGrid({ products, categorySlug, icon }: SubCategoryGri
           <h2 className="text-3xl font-bold tracking-tight text-brand-ink">Sub-Categories</h2>
           <div className="mt-4 flex items-center justify-center gap-3" aria-hidden="true">
             <span className="h-px w-16 bg-brand-border" />
-            <span className="h-1 w-10 rounded-full bg-brand-green" />
+            <span className="h-1 w-10 rounded-full bg-brand-navy" />
             <span className="h-px w-16 bg-brand-border" />
           </div>
           <p className="mt-4 text-brand-muted">Browse our range by product type.</p>
@@ -86,7 +86,7 @@ export function SubCategoryGrid({ products, categorySlug, icon }: SubCategoryGri
             <Link
               key={tile.key}
               href={tile.href}
-              className="group flex flex-col items-center rounded-2xl border border-brand-border bg-brand-surface p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-lg"
+              className="group flex flex-col items-center rounded-2xl border border-brand-border bg-brand-surface p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-brand-navy/30 hover:shadow-lg"
             >
               <div className="relative mb-5 h-44 w-full overflow-hidden rounded-lg">
                 <ProductImage
@@ -102,13 +102,13 @@ export function SubCategoryGrid({ products, categorySlug, icon }: SubCategoryGri
                 />
               </div>
 
-              <span className="mb-4 h-0.5 w-10 rounded-full bg-brand-green/40" aria-hidden="true" />
+              <span className="mb-4 h-0.5 w-10 rounded-full bg-brand-navy/40" aria-hidden="true" />
 
-              <h3 className="mb-5 min-h-[3.5rem] text-lg font-bold text-brand-ink transition-colors group-hover:text-brand-green">
+              <h3 className="mb-5 min-h-[3.5rem] text-lg font-bold text-brand-ink transition-colors group-hover:text-brand-navy">
                 {tile.name}
               </h3>
 
-              <span className="mt-auto inline-flex items-center gap-2 rounded-lg bg-brand-ink px-7 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-colors group-hover:bg-brand-green">
+              <span className="mt-auto inline-flex items-center gap-2 rounded-lg bg-brand-ink px-7 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-colors group-hover:bg-brand-navy">
                 Details
                 <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
               </span>

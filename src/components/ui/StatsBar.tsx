@@ -29,7 +29,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
 
   return (
     <div ref={ref} className="text-4xl md:text-5xl font-black text-brand-ink tracking-tighter">
-      {count}<span className="text-brand-green">{suffix}</span>
+      {count}<span className="text-brand-navy">{suffix}</span>
     </div>
   );
 }
@@ -51,7 +51,7 @@ export function StatsBar() {
     >
       <div className="border border-brand-border rounded-none shadow-[0_20px_50px_rgba(15,23,42,0.08)] grid grid-cols-4 divide-x divide-brand-border overflow-hidden">
         {stats.map((stat, idx) => (
-          <div key={idx} className="p-8 text-center bg-white/90 backdrop-blur-xl hover:bg-brand-green-soft transition-colors duration-500">
+          <div key={idx} className="p-8 text-center bg-white/90 backdrop-blur-xl hover:bg-brand-navy-soft transition-colors duration-500">
             <AnimatedNumber value={stat.value} suffix={stat.suffix} />
             <div className="text-xs text-brand-subtle font-bold uppercase tracking-widest mt-2">{stat.label}</div>
           </div>

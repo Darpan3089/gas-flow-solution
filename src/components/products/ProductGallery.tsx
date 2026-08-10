@@ -229,8 +229,8 @@ export function ProductGallery({ name, series, icon, gallery, slug }: ProductGal
               className={cn(
                 "overflow-hidden rounded-xl border transition-all",
                 index === active
-                  ? "border-brand-green ring-2 ring-brand-green/20"
-                  : "border-brand-border hover:border-brand-green/40",
+                  ? "border-brand-navy ring-2 ring-brand-navy/20"
+                  : "border-brand-border hover:border-brand-navy/40",
               )}
             >
               <ProductImage
@@ -412,7 +412,7 @@ export function ProductGallery({ name, series, icon, gallery, slug }: ProductGal
                     aria-label={`Show ${view.label}`}
                     className={cn(
                       "h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-all",
-                      index === active ? "border-brand-green" : "border-white/20 hover:border-white/50",
+                      index === active ? "border-brand-navy" : "border-white/20 hover:border-white/50",
                     )}
                   >
                     <ProductImage

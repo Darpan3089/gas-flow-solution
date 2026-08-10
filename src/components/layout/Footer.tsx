@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Facebook, Twitter, Linkedin, Instagram, Factory, Mail, Phone, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,31 +12,32 @@ export function Footer() {
 
           {/* Brand Col */}
           <div className="flex flex-col gap-6">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="p-2 bg-brand-green rounded-lg text-white">
-                <Factory className="w-5 h-5" />
-              </div>
-              <span className="text-xl font-bold tracking-tight text-brand-ink">
-                GasFlow <span className="font-light">Solutions</span>
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/GFS_LOGO.svg"
+                alt="Gas Flow Solutions"
+                width={241}
+                height={142}
+                className="h-14 w-auto"
+              />
             </Link>
             <p className="text-brand-muted text-sm leading-relaxed">
               Engineering the future of gas plants and industrial machinery with precision, safety, and scalable innovation.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="p-2 rounded-full bg-white border border-brand-border text-brand-subtle hover:text-brand-green hover:border-brand-green/40 transition-colors">
+              <a href="#" className="p-2 rounded-full bg-white border border-brand-border text-brand-subtle hover:text-brand-navy hover:border-brand-navy/40 transition-colors">
                 <Linkedin className="w-4 h-4" />
                 <span className="sr-only">LinkedIn</span>
               </a>
-              <a href="#" className="p-2 rounded-full bg-white border border-brand-border text-brand-subtle hover:text-brand-green hover:border-brand-green/40 transition-colors">
+              <a href="#" className="p-2 rounded-full bg-white border border-brand-border text-brand-subtle hover:text-brand-navy hover:border-brand-navy/40 transition-colors">
                 <Twitter className="w-4 h-4" />
                 <span className="sr-only">Twitter</span>
               </a>
-              <a href="#" className="p-2 rounded-full bg-white border border-brand-border text-brand-subtle hover:text-brand-green hover:border-brand-green/40 transition-colors">
+              <a href="#" className="p-2 rounded-full bg-white border border-brand-border text-brand-subtle hover:text-brand-navy hover:border-brand-navy/40 transition-colors">
                 <Facebook className="w-4 h-4" />
                 <span className="sr-only">Facebook</span>
               </a>
-              <a href="#" className="p-2 rounded-full bg-white border border-brand-border text-brand-subtle hover:text-brand-green hover:border-brand-green/40 transition-colors">
+              <a href="#" className="p-2 rounded-full bg-white border border-brand-border text-brand-subtle hover:text-brand-navy hover:border-brand-navy/40 transition-colors">
                 <Instagram className="w-4 h-4" />
                 <span className="sr-only">Instagram</span>
               </a>
@@ -46,11 +48,11 @@ export function Footer() {
           <div>
             <h3 className="text-brand-ink font-semibold mb-6">Quick Links</h3>
             <ul className="flex flex-col gap-4">
-              <li><Link href="/about" className="text-brand-muted hover:text-brand-green text-sm transition-colors">About Us</Link></li>
-              <li><Link href="/products" className="text-brand-muted hover:text-brand-green text-sm transition-colors">Our Products</Link></li>
-              <li><Link href="/services" className="text-brand-muted hover:text-brand-green text-sm transition-colors">Engineering Services</Link></li>
-              <li><Link href="/projects" className="text-brand-muted hover:text-brand-green text-sm transition-colors">Case Studies</Link></li>
-              <li><Link href="/contact" className="text-brand-muted hover:text-brand-green text-sm transition-colors">Contact Support</Link></li>
+              <li><Link href="/about" className="text-brand-muted hover:text-brand-navy text-sm transition-colors">About Us</Link></li>
+              <li><Link href="/products" className="text-brand-muted hover:text-brand-navy text-sm transition-colors">Our Products</Link></li>
+              <li><Link href="/services" className="text-brand-muted hover:text-brand-navy text-sm transition-colors">Engineering Services</Link></li>
+              <li><Link href="/projects" className="text-brand-muted hover:text-brand-navy text-sm transition-colors">Case Studies</Link></li>
+              <li><Link href="/contact" className="text-brand-muted hover:text-brand-navy text-sm transition-colors">Contact Support</Link></li>
             </ul>
           </div>
 
@@ -71,15 +73,15 @@ export function Footer() {
             <h3 className="text-brand-ink font-semibold mb-6">Get in Touch</h3>
             <ul className="flex flex-col gap-4">
               <li className="flex items-start gap-3 text-brand-muted text-sm">
-                <MapPin className="w-5 h-5 text-brand-green shrink-0" />
+                <MapPin className="w-5 h-5 text-brand-navy shrink-0" />
                 <span>123 Industrial Ave, Tech District, CityCorp, 90210</span>
               </li>
               <li className="flex items-center gap-3 text-brand-muted text-sm">
-                <Phone className="w-5 h-5 text-brand-green shrink-0" />
+                <Phone className="w-5 h-5 text-brand-navy shrink-0" />
                 <span>+1 (800) 555-FLOW</span>
               </li>
               <li className="flex items-center gap-3 text-brand-muted text-sm">
-                <Mail className="w-5 h-5 text-brand-green shrink-0" />
+                <Mail className="w-5 h-5 text-brand-navy shrink-0" />
                 <span>engineering@gasflow.com</span>
               </li>
             </ul>
@@ -93,8 +95,8 @@ export function Footer() {
             &copy; {currentYear} GasFlow Solutions Inc. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs text-brand-subtle">
-            <Link href="/privacy" className="hover:text-brand-green transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-brand-green transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-brand-navy transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-brand-navy transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

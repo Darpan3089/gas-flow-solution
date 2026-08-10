@@ -12,11 +12,11 @@
   --color-brand-muted: #475569;        /* Body copy */
   --color-brand-subtle: #64748b;       /* Captions, meta */
 
-  /* Accent — emerald, readable on white */
-  --color-brand-green: #059669;
-  --color-brand-green-dark: #047857;   /* Hover / pressed */
-  --color-brand-green-soft: #ecfdf5;   /* Tinted fills */
-  --color-brand-teal: #0d9488;         /* Gradient partner */
+  /* Accent — navy, matches the GFS logo wordmark */
+  --color-brand-navy: #1b508d;
+  --color-brand-navy-dark: #153e6e;    /* Hover / pressed */
+  --color-brand-navy-soft: #eaf2fb;    /* Tinted fills */
+  --color-brand-navy-light: #2f6fae;   /* Gradient partner */
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -62,15 +62,15 @@ body {
   box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
 }
 
-.glass-green {
-  background: rgba(5, 150, 105, 0.06);
+.glass-navy {
+  background: rgba(27, 80, 141, 0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(5, 150, 105, 0.18);
-  box-shadow: 0 4px 24px rgba(5, 150, 105, 0.08);
+  border: 1px solid rgba(27, 80, 141, 0.18);
+  box-shadow: 0 4px 24px rgba(27, 80, 141, 0.08);
 }
 
 /* Lift on hover — replaces the dark theme's neon glow */
 .hover-glow:hover {
-  box-shadow: 0 12px 32px rgba(5, 150, 105, 0.16);
+  box-shadow: 0 12px 32px rgba(27, 80, 141, 0.16);
 }

@@ -6,14 +6,14 @@ export function AnimatedPipelineBg() {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-60">
       {/* Faint schematic grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(5,150,105,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(5,150,105,0.06)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,#000_20%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(27, 80, 141,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(27, 80, 141,0.06)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,#000_20%,transparent_100%)]" />
 
       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 left-0">
         <defs>
           <linearGradient id="glowLine" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(5, 150, 105, 0)" />
-            <stop offset="50%" stopColor="rgba(5, 150, 105, 0.9)" />
-            <stop offset="100%" stopColor="rgba(5, 150, 105, 0)" />
+            <stop offset="0%" stopColor="rgba(27, 80, 141, 0)" />
+            <stop offset="50%" stopColor="rgba(27, 80, 141, 0.9)" />
+            <stop offset="100%" stopColor="rgba(27, 80, 141, 0)" />
           </linearGradient>
           <filter id="neonSubtle">
             <feGaussianBlur stdDeviation="2" result="coloredBlur" />

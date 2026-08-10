@@ -76,7 +76,7 @@ export function QuickViewModal({ entry, onClose }: QuickViewModalProps) {
               type="button"
               onClick={onClose}
               aria-label="Close quick view"
-              className="absolute right-4 top-4 z-10 rounded-full border border-brand-border bg-white/90 p-2 text-brand-muted backdrop-blur-sm transition-colors hover:border-brand-green hover:text-brand-green"
+              className="absolute right-4 top-4 z-10 rounded-full border border-brand-border bg-white/90 p-2 text-brand-muted backdrop-blur-sm transition-colors hover:border-brand-navy hover:text-brand-navy"
             >
               <X className="w-4 h-4" aria-hidden="true" />
             </button>
@@ -92,7 +92,7 @@ export function QuickViewModal({ entry, onClose }: QuickViewModalProps) {
             />
 
             <div className="p-6 md:p-8">
-              <p className="mb-2 text-[11px] font-bold uppercase tracking-widest text-brand-green">
+              <p className="mb-2 text-[11px] font-bold uppercase tracking-widest text-brand-navy">
                 {entry.category.name} · {entry.product.series}
               </p>
 
@@ -110,7 +110,7 @@ export function QuickViewModal({ entry, onClose }: QuickViewModalProps) {
                   <ul className="space-y-2">
                     {entry.product.features.slice(0, 4).map((feature) => (
                       <li key={feature} className="flex items-start gap-2.5 text-sm text-brand-muted">
-                        <CheckCircle2 className="mt-0.5 w-4 h-4 shrink-0 text-brand-green" aria-hidden="true" />
+                        <CheckCircle2 className="mt-0.5 w-4 h-4 shrink-0 text-brand-navy" aria-hidden="true" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -136,7 +136,7 @@ export function QuickViewModal({ entry, onClose }: QuickViewModalProps) {
                 <Link
                   href={productHref(entry.category.slug, entry.product.slug)}
                   onClick={onClose}
-                  className="inline-flex items-center gap-2 rounded-full bg-brand-green px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-green-dark"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-navy-dark"
                 >
                   Full specifications
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -144,7 +144,7 @@ export function QuickViewModal({ entry, onClose }: QuickViewModalProps) {
                 <Link
                   href="/contact"
                   onClick={onClose}
-                  className="inline-flex items-center gap-2 rounded-full border border-brand-border px-6 py-3 text-sm font-bold text-brand-ink transition-colors hover:border-brand-green hover:text-brand-green"
+                  className="inline-flex items-center gap-2 rounded-full border border-brand-border px-6 py-3 text-sm font-bold text-brand-ink transition-colors hover:border-brand-navy hover:text-brand-navy"
                 >
                   Request a quote
                 </Link>

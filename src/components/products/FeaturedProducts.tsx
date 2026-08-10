@@ -27,7 +27,7 @@ export function FeaturedProducts({ products, categorySlug, icon }: FeaturedProdu
           <h2 className="text-3xl font-bold tracking-tight text-brand-ink">Featured Products</h2>
           <div className="mt-4 flex items-center justify-center gap-3" aria-hidden="true">
             <span className="h-px w-16 bg-brand-border" />
-            <span className="h-1 w-10 rounded-full bg-brand-green" />
+            <span className="h-1 w-10 rounded-full bg-brand-navy" />
             <span className="h-px w-16 bg-brand-border" />
           </div>
         </div>
@@ -40,7 +40,7 @@ export function FeaturedProducts({ products, categorySlug, icon }: FeaturedProdu
 
           <Link
             href={productHref(categorySlug, product.slug)}
-            className="group flex w-full max-w-sm flex-col items-center rounded-2xl border border-brand-border bg-brand-surface p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-lg"
+            className="group flex w-full max-w-sm flex-col items-center rounded-2xl border border-brand-border bg-brand-surface p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-brand-navy/30 hover:shadow-lg"
           >
             <div className="relative mb-5 h-44 w-full overflow-hidden rounded-lg">
               <ProductImage
@@ -56,16 +56,16 @@ export function FeaturedProducts({ products, categorySlug, icon }: FeaturedProdu
               />
             </div>
 
-            <span className="mb-4 h-0.5 w-10 rounded-full bg-brand-green/40" aria-hidden="true" />
+            <span className="mb-4 h-0.5 w-10 rounded-full bg-brand-navy/40" aria-hidden="true" />
 
-            <h3 className="mb-2 text-lg font-bold text-brand-ink transition-colors group-hover:text-brand-green">
+            <h3 className="mb-2 text-lg font-bold text-brand-ink transition-colors group-hover:text-brand-navy">
               {product.name}
             </h3>
             <p className="mb-5 text-sm leading-relaxed text-brand-muted line-clamp-2">
               {product.tagline}
             </p>
 
-            <span className="mt-auto inline-flex items-center gap-2 rounded-lg bg-brand-ink px-7 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-colors group-hover:bg-brand-green">
+            <span className="mt-auto inline-flex items-center gap-2 rounded-lg bg-brand-ink px-7 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-colors group-hover:bg-brand-navy">
               Details
               <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
             </span>

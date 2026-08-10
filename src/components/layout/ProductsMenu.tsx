@@ -106,20 +106,20 @@ export function ProductsMenu() {
         onClick={() => (isOpen ? close() : open())}
         aria-expanded={isOpen}
         aria-haspopup="true"
-        className="relative flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors hover:text-brand-green"
+        className="relative flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors hover:text-brand-navy"
       >
-        <span className={isActive || isOpen ? "text-brand-green" : "text-brand-muted"}>
+        <span className={isActive || isOpen ? "text-brand-navy" : "text-brand-muted"}>
           Products
         </span>
         <ChevronDown
           className={`w-4 h-4 transition-transform duration-200 ${
-            isOpen ? "rotate-180 text-brand-green" : "text-brand-subtle"
+            isOpen ? "rotate-180 text-brand-navy" : "text-brand-subtle"
           }`}
         />
         {isActive && (
           <motion.div
             layoutId="navbar-indicator"
-            className="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand-green rounded-full"
+            className="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand-navy rounded-full"
             initial={false}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
@@ -140,7 +140,7 @@ export function ProductsMenu() {
             <div className="relative">
               <div className="w-80 bg-white border border-brand-border rounded-xl shadow-xl shadow-brand-ink/5 py-3">
                 {/* Accent rail echoing the active-tab underline */}
-                <div className="absolute -top-px left-6 w-16 h-0.5 bg-brand-green rounded-full" />
+                <div className="absolute -top-px left-6 w-16 h-0.5 bg-brand-navy rounded-full" />
 
                 {productMenu.map((category) => {
                   const hasItems = Boolean(category.items?.length);
@@ -154,8 +154,8 @@ export function ProductsMenu() {
                       onClick={close}
                       className={`flex items-center justify-between gap-4 px-6 py-2.5 text-sm font-medium transition-colors ${
                         isHighlighted
-                          ? "bg-brand-green-soft text-brand-green"
-                          : "text-brand-muted hover:bg-brand-green-soft hover:text-brand-green"
+                          ? "bg-brand-navy-soft text-brand-navy"
+                          : "text-brand-muted hover:bg-brand-navy-soft hover:text-brand-navy"
                       }`}
                     >
                       <span>{category.name}</span>
@@ -190,7 +190,7 @@ export function ProductsMenu() {
                           key={item.href}
                           href={item.href}
                           onClick={close}
-                          className="block px-6 py-2.5 text-sm text-brand-muted hover:bg-brand-green-soft hover:text-brand-green transition-colors"
+                          className="block px-6 py-2.5 text-sm text-brand-muted hover:bg-brand-navy-soft hover:text-brand-navy transition-colors"
                         >
                           {item.name}
                         </Link>

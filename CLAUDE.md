@@ -59,15 +59,15 @@ no theme toggle. Semantic brand tokens defined there become utilities:
 | `brand-ink` | `#0f172a` | Headings |
 | `brand-muted` | `#475569` | Body copy |
 | `brand-subtle` | `#64748b` | Captions, meta |
-| `brand-green` | `#059669` | Sole accent (emerald) |
-| `brand-green-dark` | `#047857` | Hover / pressed |
-| `brand-green-soft` | `#ecfdf5` | Tinted fills, icon chips |
-| `brand-teal` | `#0d9488` | Gradient partner only |
+| `brand-navy` | `#1b508d` | Sole accent (matches the GFS logo wordmark) |
+| `brand-navy-dark` | `#153e6e` | Hover / pressed |
+| `brand-navy-soft` | `#eaf2fb` | Tinted fills, icon chips |
+| `brand-navy-light` | `#2f6fae` | Gradient partner only |
 
-Hand-written utility classes in the same file: `.glass` (frosted white panel), `.glass-green`
-(emerald-tinted), `.hover-glow` (emerald lift shadow).
+Hand-written utility classes in the same file: `.glass` (frosted white panel), `.glass-navy`
+(navy-tinted), `.hover-glow` (navy lift shadow).
 
-Emerald is the only accent — there is deliberately no secondary color. Depth comes from borders
+Navy is the only accent — there is deliberately no secondary color. Depth comes from borders
 and soft shadows (`shadow-sm`, `hover:shadow-lg`), not glows. Sections alternate `brand-bg` and
 `brand-surface-alt` for rhythm. Never use raw `gray-*`/`slate-*` or hex literals for theme colors;
 reach for the `brand-*` tokens so a future palette change stays a one-file edit.

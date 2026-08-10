@@ -41,7 +41,7 @@ export function FaqAccordion({ items, className }: FaqAccordionProps) {
                 <span
                   className={cn(
                     "text-base font-semibold transition-colors",
-                    isOpen ? "text-brand-green" : "text-brand-ink group-hover:text-brand-green",
+                    isOpen ? "text-brand-navy" : "text-brand-ink group-hover:text-brand-navy",
                   )}
                 >
                   {item.question}
@@ -49,7 +49,7 @@ export function FaqAccordion({ items, className }: FaqAccordionProps) {
                 <Plus
                   className={cn(
                     "w-5 h-5 shrink-0 mt-0.5 transition-transform duration-200",
-                    isOpen ? "rotate-45 text-brand-green" : "text-brand-subtle",
+                    isOpen ? "rotate-45 text-brand-navy" : "text-brand-subtle",
                   )}
                   aria-hidden="true"
                 />

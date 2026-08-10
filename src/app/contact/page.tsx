@@ -19,7 +19,7 @@ export default function Contact() {
     }, 1500);
   };
 
-  const inputClasses = "w-full bg-white border border-brand-border rounded-xl px-5 py-4 text-brand-ink placeholder-brand-subtle focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-all";
+  const inputClasses = "w-full bg-white border border-brand-border rounded-xl px-5 py-4 text-brand-ink placeholder-brand-subtle focus:outline-none focus:ring-2 focus:ring-brand-navy focus:border-transparent transition-all";
 
   return (
     <div className="flex flex-col min-h-screen bg-brand-bg pt-32 pb-20">
@@ -31,7 +31,7 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-6xl font-bold text-brand-ink mb-6"
           >
-            Initiate a <span className="text-brand-green">Consultation</span>
+            Initiate a <span className="text-brand-navy">Consultation</span>
           </motion.h1>
           <motion.p
              initial={{ opacity: 0, y: 20 }}
@@ -56,15 +56,15 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-brand-green text-sm font-semibold uppercase tracking-wider mb-2">Location</h4>
+                  <h4 className="text-brand-navy text-sm font-semibold uppercase tracking-wider mb-2">Location</h4>
                   <p className="text-brand-muted">123 Industrial Ave, Tech District<br/>CityCorp Sector, 90210</p>
                 </div>
                 <div>
-                  <h4 className="text-brand-green text-sm font-semibold uppercase tracking-wider mb-2">Direct Line</h4>
+                  <h4 className="text-brand-navy text-sm font-semibold uppercase tracking-wider mb-2">Direct Line</h4>
                   <p className="text-brand-muted text-lg">+1 (800) 555-FLOW</p>
                 </div>
                 <div>
-                  <h4 className="text-brand-green text-sm font-semibold uppercase tracking-wider mb-2">Technical Support</h4>
+                  <h4 className="text-brand-navy text-sm font-semibold uppercase tracking-wider mb-2">Technical Support</h4>
                   <p className="text-brand-muted">engineering@gasflow.com</p>
                 </div>
               </div>
@@ -83,7 +83,7 @@ export default function Contact() {
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                   className="absolute inset-0 bg-white/95 backdrop-blur z-10 flex flex-col items-center justify-center text-center p-8"
                 >
-                  <CheckCircle2 className="w-20 h-20 text-brand-green mb-6" />
+                  <CheckCircle2 className="w-20 h-20 text-brand-navy mb-6" />
                   <h3 className="text-3xl font-bold text-brand-ink mb-4">Request Received</h3>
                   <p className="text-brand-muted">An engineering consultant will contact you within 24 operational hours.</p>
                 </motion.div>
@@ -111,7 +111,7 @@ export default function Contact() {
               <button 
                 type="submit" 
                 disabled={status === "submitting"}
-                className="w-full bg-brand-green text-white font-bold py-5 rounded-xl flex items-center justify-center gap-3 hover:bg-brand-green-dark transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-brand-navy text-white font-bold py-5 rounded-xl flex items-center justify-center gap-3 hover:bg-brand-navy-dark transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {status === "submitting" ? (
                   <>Processing <motion.span animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }}><AlertCircle className="w-5 h-5" /></motion.span></>

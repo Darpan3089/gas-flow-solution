@@ -34,7 +34,7 @@ export function TestimonialSlider() {
 
   return (
     <div className="relative w-full max-w-4xl mx-auto text-center px-6">
-      <Quote className="w-16 h-16 text-brand-green/25 mx-auto mb-8" />
+      <Quote className="w-16 h-16 text-brand-navy/25 mx-auto mb-8" />
       
       <div className="h-[200px] md:h-[150px] relative">
         <AnimatePresence mode="wait">
@@ -49,7 +49,7 @@ export function TestimonialSlider() {
             <blockquote className="text-xl md:text-3xl text-brand-ink font-light italic mb-8 leading-snug">
               "{testimonials[current].quote}"
             </blockquote>
-            <div className="text-brand-green font-bold uppercase tracking-widest text-sm">
+            <div className="text-brand-navy font-bold uppercase tracking-widest text-sm">
               {testimonials[current].author}
               <span className="text-brand-border font-medium mx-2">|</span>
               <span className="text-brand-subtle">{testimonials[current].company}</span>
@@ -63,7 +63,7 @@ export function TestimonialSlider() {
           <button
             key={idx}
             onClick={() => setCurrent(idx)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${current === idx ? "bg-brand-green w-6" : "bg-brand-border"}`}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${current === idx ? "bg-brand-navy w-6" : "bg-brand-border"}`}
             aria-label={`Go to slide ${idx + 1}`}
           />
         ))}

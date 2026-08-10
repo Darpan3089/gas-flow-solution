@@ -34,7 +34,7 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-extrabold text-brand-ink tracking-tight mb-6"
           >
-            Pioneers in <span className="text-brand-green">Precision.</span>
+            Pioneers in <span className="text-brand-navy">Precision.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -57,9 +57,9 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glass p-8 rounded-2xl text-center border-t-2 border-t-brand-green/25 hover:border-t-brand-green/60 transition-colors"
+              className="glass p-8 rounded-2xl text-center border-t-2 border-t-brand-navy/25 hover:border-t-brand-navy/60 transition-colors"
             >
-              <stat.icon className="w-8 h-8 text-brand-green mx-auto mb-4" />
+              <stat.icon className="w-8 h-8 text-brand-navy mx-auto mb-4" />
               <h3 className="text-4xl font-bold text-brand-ink mb-2">{stat.value}</h3>
               <p className="text-brand-subtle text-sm font-medium uppercase tracking-wider">{stat.label}</p>
             </motion.div>
@@ -92,9 +92,9 @@ export default function About() {
                 From sub-zero Siberian compression units to high-pressure desert transfer stations, our proprietary alloys and patented sensor networks have redefined what it means to be operational under extreme duress.
               </p>
               <div className="pt-6 border-t border-brand-border">
-                <blockquote className="italic text-brand-subtle pl-4 border-l-4 border-brand-green">
+                <blockquote className="italic text-brand-subtle pl-4 border-l-4 border-brand-navy">
                   &quot;Engineering is not merely about constructing what works; it is about architecting systems that refuse to fail.&quot;
-                  <br /><span className="text-brand-green font-semibold not-italic text-sm mt-2 block">— Dr. O. L. Heinrich, Chief Technical Officer</span>
+                  <br /><span className="text-brand-navy font-semibold not-italic text-sm mt-2 block">— Dr. O. L. Heinrich, Chief Technical Officer</span>
                 </blockquote>
               </div>
             </div>

@@ -29,12 +29,12 @@ export default function ProductsPage() {
 
       {/* Hero */}
       <header className="container mx-auto max-w-7xl px-6 pt-10 pb-14 md:px-12">
-        <p className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-green">
+        <p className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-navy">
           Product Catalogue
         </p>
         <h1 className="mb-6 max-w-4xl text-4xl font-extrabold tracking-tight text-brand-ink md:text-6xl">
           Equipment for every stage of the{" "}
-          <span className="bg-gradient-to-r from-brand-green to-brand-teal bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-brand-navy to-brand-navy-light bg-clip-text text-transparent">
             gas chain
           </span>
         </h1>
@@ -57,16 +57,16 @@ export default function ProductsPage() {
               <li key={category.slug}>
                 <Link
                   href={`/products/${category.slug}`}
-                  className="group flex h-full items-center gap-3 rounded-xl border border-brand-border bg-brand-surface px-4 py-3.5 transition-all hover:-translate-y-0.5 hover:border-brand-green/40 hover:shadow-lg hover:shadow-brand-green/10"
+                  className="group flex h-full items-center gap-3 rounded-xl border border-brand-border bg-brand-surface px-4 py-3.5 transition-all hover:-translate-y-0.5 hover:border-brand-navy/40 hover:shadow-lg hover:shadow-brand-navy/10"
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-brand-green/20 bg-brand-green-soft">
-                    <CategoryIcon icon={category.icon} className="w-5 h-5 text-brand-green" />
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-brand-navy/20 bg-brand-navy-soft">
+                    <CategoryIcon icon={category.icon} className="w-5 h-5 text-brand-navy" />
                   </span>
-                  <span className="flex-1 text-sm font-semibold leading-snug text-brand-ink transition-colors group-hover:text-brand-green">
+                  <span className="flex-1 text-sm font-semibold leading-snug text-brand-ink transition-colors group-hover:text-brand-navy">
                     {category.name}
                   </span>
                   <ArrowRight
-                    className="w-4 h-4 shrink-0 text-brand-subtle transition-all group-hover:translate-x-0.5 group-hover:text-brand-green"
+                    className="w-4 h-4 shrink-0 text-brand-subtle transition-all group-hover:translate-x-0.5 group-hover:text-brand-navy"
                     aria-hidden="true"
                   />
                 </Link>
@@ -103,7 +103,7 @@ export default function ProductsPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-brand-green px-8 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/25"
+            className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-8 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-navy-dark hover:shadow-lg hover:shadow-brand-navy/25"
           >
             Talk to an engineer
             <ArrowRight className="w-4 h-4" aria-hidden="true" />

@@ -19,7 +19,7 @@ export function SolutionCard({ title, description, icon: Icon, imgUrl, delay = 0
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.7, delay }}
-      className="group relative flex flex-col bg-brand-surface border border-brand-border hover:border-brand-green/50 hover:shadow-lg hover:shadow-brand-green/5 transition-all duration-500 overflow-hidden"
+      className="group relative flex flex-col bg-brand-surface border border-brand-border hover:border-brand-navy/50 hover:shadow-lg hover:shadow-brand-navy/5 transition-all duration-500 overflow-hidden"
     >
       {/* Heavy Industrial Image Block */}
       <div className="relative h-64 w-full overflow-hidden">
@@ -29,20 +29,20 @@ export function SolutionCard({ title, description, icon: Icon, imgUrl, delay = 0
 
       {/* Content Block */}
       <div className="p-8 relative z-10 flex flex-col grow -mt-16">
-        <div className="w-16 h-16 bg-white border-r border-t border-brand-green/30 flex items-center justify-center mb-6 shadow-sm group-hover:border-brand-green/80 transition-colors">
-          <Icon className="w-8 h-8 text-brand-green" />
+        <div className="w-16 h-16 bg-white border-r border-t border-brand-navy/30 flex items-center justify-center mb-6 shadow-sm group-hover:border-brand-navy/80 transition-colors">
+          <Icon className="w-8 h-8 text-brand-navy" />
         </div>
 
-        <h3 className="text-2xl font-bold text-brand-ink mb-4 group-hover:text-brand-green transition-colors">{title}</h3>
+        <h3 className="text-2xl font-bold text-brand-ink mb-4 group-hover:text-brand-navy transition-colors">{title}</h3>
         <p className="text-brand-muted font-light leading-relaxed mb-8 flex-grow">{description}</p>
 
-        <button className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-ink group-hover:text-brand-green transition-colors">
+        <button className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-ink group-hover:text-brand-navy transition-colors">
           Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
 
       {/* Hover Accent Bottom Border */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-green scale-x-0 group-hover:scale-x-100 transform origin-left transition-transform duration-500" />
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-navy scale-x-0 group-hover:scale-x-100 transform origin-left transition-transform duration-500" />
     </motion.div>
   );
 }

@@ -90,7 +90,7 @@ export function ProductImage({
     >
       <svg
         viewBox="0 0 400 300"
-        className="absolute inset-0 w-full h-full text-brand-green"
+        className="absolute inset-0 w-full h-full text-brand-navy"
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
       >
@@ -156,8 +156,8 @@ export function ProductImage({
       </svg>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-        <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/80 border border-brand-green/20 shadow-sm">
-          <CategoryIcon icon={icon} className="w-6 h-6 text-brand-green" />
+        <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/80 border border-brand-navy/20 shadow-sm">
+          <CategoryIcon icon={icon} className="w-6 h-6 text-brand-navy" />
         </span>
         {series && (
           <span className="px-2.5 py-1 rounded-full bg-white/80 border border-brand-border text-[11px] font-bold tracking-widest uppercase text-brand-subtle">

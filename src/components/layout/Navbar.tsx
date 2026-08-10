@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Flame, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { ProductsMenu } from "@/components/layout/ProductsMenu";
 import { productMenu, categoryHref } from "@/data/productMenu";
 
@@ -47,21 +48,17 @@ export function Navbar() {
     >
       <div className="container mx-auto px-6 md:px-12 max-w-7xl flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
-            className="p-1.5 bg-gradient-to-tr from-brand-green via-brand-teal to-emerald-400 rounded-lg shadow-sm"
-          >
-            <div className="bg-white rounded-md p-1">
-              <Flame className="w-5 h-5 text-brand-green" strokeWidth={2.5} />
-            </div>
+        <Link href="/" className="flex items-center group">
+          <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+            <Image
+              src="/GFS_LOGO.svg"
+              alt="Gas Flow Solutions"
+              width={241}
+              height={142}
+              priority
+              className="h-12 md:h-14 w-auto"
+            />
           </motion.div>
-          <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tight text-brand-ink group-hover:text-brand-green transition-colors">
-              Gas Flow Solutions
-            </span>
-          </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -77,15 +74,15 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative text-sm font-semibold tracking-wide transition-colors hover:text-brand-green"
+                className="relative text-sm font-semibold tracking-wide transition-colors hover:text-brand-navy"
               >
-                <span className={isActive ? "text-brand-green" : "text-brand-muted"}>
+                <span className={isActive ? "text-brand-navy" : "text-brand-muted"}>
                   {link.name}
                 </span>
                 {isActive && (
                   <motion.div
                     layoutId="navbar-indicator"
-                    className="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand-green rounded-full"
+                    className="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand-navy rounded-full"
                     initial={false}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
@@ -95,7 +92,7 @@ export function Navbar() {
           })}
           <Link
             href="/contact"
-            className="ml-4 px-6 py-2.5 rounded-full bg-brand-green text-white text-sm font-bold hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/25 transition-all transform hover:-translate-y-0.5"
+            className="ml-4 px-6 py-2.5 rounded-full bg-brand-navy text-white text-sm font-bold hover:bg-brand-navy-dark hover:shadow-lg hover:shadow-brand-navy/25 transition-all transform hover:-translate-y-0.5"
           >
             Get a Quote
           </Link>
@@ -103,7 +100,7 @@ export function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-brand-muted hover:text-brand-green transition-colors"
+          className="md:hidden text-brand-muted hover:text-brand-navy transition-colors"
           onClick={() => (isMobileMenuOpen ? closeMobileMenu() : setIsMobileMenuOpen(true))}
           aria-label="Toggle mobile menu"
         >
@@ -134,13 +131,13 @@ export function Navbar() {
                         onClick={() => setIsMobileProductsOpen((open) => !open)}
                         aria-expanded={isMobileProductsOpen}
                         className={`flex items-center justify-between text-lg font-semibold transition-colors ${
-                          isActive ? "text-brand-green" : "text-brand-muted"
+                          isActive ? "text-brand-navy" : "text-brand-muted"
                         }`}
                       >
                         {link.name}
                         <ChevronDown
                           className={`w-5 h-5 transition-transform duration-200 ${
-                            isMobileProductsOpen ? "rotate-180 text-brand-green" : "text-brand-subtle"
+                            isMobileProductsOpen ? "rotate-180 text-brand-navy" : "text-brand-subtle"
                           }`}
                         />
                       </button>
@@ -165,7 +162,7 @@ export function Navbar() {
                                       key={category.slug}
                                       href={categoryHref(category.slug)}
                                       onClick={closeMobileMenu}
-                                      className="py-2 text-base text-brand-muted hover:text-brand-green transition-colors"
+                                      className="py-2 text-base text-brand-muted hover:text-brand-navy transition-colors"
                                     >
                                       {category.name}
                                     </Link>
@@ -181,7 +178,7 @@ export function Navbar() {
                                       }
                                       aria-expanded={isCategoryOpen}
                                       className={`flex items-center justify-between py-2 text-base transition-colors ${
-                                        isCategoryOpen ? "text-brand-green" : "text-brand-muted"
+                                        isCategoryOpen ? "text-brand-navy" : "text-brand-muted"
                                       }`}
                                     >
                                       {category.name}
@@ -207,7 +204,7 @@ export function Navbar() {
                                                 key={item.href}
                                                 href={item.href}
                                                 onClick={closeMobileMenu}
-                                                className="py-1.5 text-sm text-brand-subtle hover:text-brand-green transition-colors"
+                                                className="py-1.5 text-sm text-brand-subtle hover:text-brand-navy transition-colors"
                                               >
                                                 {item.name}
                                               </Link>
@@ -233,7 +230,7 @@ export function Navbar() {
                     href={link.href}
                     onClick={closeMobileMenu}
                     className={`text-lg font-semibold transition-colors ${
-                      isActive ? "text-brand-green" : "text-brand-muted hover:text-brand-green"
+                      isActive ? "text-brand-navy" : "text-brand-muted hover:text-brand-navy"
                     }`}
                   >
                     {link.name}
@@ -243,7 +240,7 @@ export function Navbar() {
               <Link
                 href="/contact"
                 onClick={closeMobileMenu}
-                className="mt-2 w-full text-center px-6 py-3 rounded-xl bg-brand-green text-white font-bold hover:bg-brand-green-dark transition-colors shadow-md shadow-brand-green/20"
+                className="mt-2 w-full text-center px-6 py-3 rounded-xl bg-brand-navy text-white font-bold hover:bg-brand-navy-dark transition-colors shadow-md shadow-brand-navy/20"
               >
                 Get a Quote
               </Link>
