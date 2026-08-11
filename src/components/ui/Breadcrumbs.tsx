@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { company } from "@/data/company";
 
 export interface Crumb {
   label: string;
@@ -11,7 +12,11 @@ export interface Crumb {
 interface BreadcrumbsProps {
   items: Crumb[];
   className?: string;
-  /** Absolute site origin, needed for valid BreadcrumbList item URLs. */
+  /**
+   * Absolute site origin. Google rejects relative URLs in a BreadcrumbList, so
+   * this defaults to the real origin rather than an empty string — an empty
+   * default silently produced structured data that never qualified.
+   */
   origin?: string;
 }
 
@@ -19,7 +24,7 @@ interface BreadcrumbsProps {
  * Server component: renders the visible trail plus a matching BreadcrumbList
  * JSON-LD block, so search results can show the hierarchy.
  */
-export function Breadcrumbs({ items, className, origin = "" }: BreadcrumbsProps) {
+export function Breadcrumbs({ items, className, origin = company.url }: BreadcrumbsProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

@@ -42,10 +42,16 @@ export const company = {
   ] as Phone[],
 
   /**
-   * Registered address. Left null until confirmed — components skip the block
-   * entirely rather than print a fictional one.
+   * Registered address. Keep the null union — every consumer guards on it, so an
+   * address can be pulled back out without touching the components.
    */
-  address: null as null | {
+  address: {
+    lines: ["736-A, Prime Industrial Estate", "Manjusar, Savali Road"],
+    city: "Vadodara",
+    state: "Gujarat",
+    postcode: "391775",
+    country: "India",
+  } as null | {
     lines: string[];
     city: string;
     state: string;
