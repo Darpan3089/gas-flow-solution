@@ -2,11 +2,12 @@
 
 import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { whatsAppHref } from "@/data/company";
 
 export function WhatsAppCTA() {
   return (
     <motion.a
-      href="https://wa.me/1234567890" // Placeholder number
+      href={whatsAppHref("Hello — I would like to enquire about your gas flow equipment.")}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 p-4 bg-brand-navy text-white rounded-full shadow-lg shadow-brand-navy/25 hover:bg-brand-navy-dark transition-colors focus:outline-none focus:ring-4 focus:ring-brand-navy/40"

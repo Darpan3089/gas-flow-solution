@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { submitInquiry } from "@/lib/inquiry/submit";
+import type { InquiryErrors } from "@/lib/inquiry/types";
 
 interface InquiryFormProps {
   /** Pre-fills the subject line so the enquiry arrives with context. */
@@ -18,20 +20,47 @@ const FIELD_CLASS =
   "placeholder:text-brand-subtle focus:border-brand-navy focus:outline-none focus:ring-2 " +
   "focus:ring-brand-navy/20 transition-colors";
 
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+  return <p className="mt-1.5 text-xs font-medium text-brand-navy">{message}</p>;
+}
+
 /**
- * Product enquiry form.
- *
- * PLACEHOLDER: like the site's contact form, this fakes success on a timer and
- * does not transmit anything. Wire the submit handler to a real endpoint (route
- * handler, form service or CRM webhook) before launch.
+ * Product enquiry form. Posts to `/api/inquiry`, which mails the enquiry on and
+ * logs it first so nothing is lost if the transport is down.
  */
 export function InquiryForm({ productName, className }: InquiryFormProps) {
   const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<InquiryErrors>({});
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = new FormData(event.currentTarget);
+
     setStatus("sending");
-    setTimeout(() => setStatus("sent"), 1200);
+    setError(null);
+    setFieldErrors({});
+
+    const result = await submitInquiry({
+      name: String(form.get("name") ?? ""),
+      email: String(form.get("email") ?? ""),
+      company: String(form.get("company") ?? ""),
+      phone: String(form.get("phone") ?? ""),
+      product: productName,
+      message: String(form.get("message") ?? ""),
+      website: String(form.get("website") ?? ""),
+      source: "Product enquiry",
+    });
+
+    if (result.ok) {
+      setStatus("sent");
+      return;
+    }
+
+    setStatus("idle");
+    setError(result.message);
+    setFieldErrors(result.errors ?? {});
   };
 
   if (status === "sent") {
@@ -65,12 +94,19 @@ export function InquiryForm({ productName, className }: InquiryFormProps) {
         Tell us the duty and we will come back with a sized proposal for {productName}.
       </p>
 
+      {/* Honeypot — hidden from humans, irresistible to bots. */}
+      <div aria-hidden="true" className="sr-only">
+        <label htmlFor="inquiry-website">Website</label>
+        <input id="inquiry-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="inquiry-name" className="block mb-1.5 text-sm font-semibold text-brand-ink">
             Full name <span className="text-brand-navy">*</span>
           </label>
           <input id="inquiry-name" name="name" type="text" required autoComplete="name" className={FIELD_CLASS} />
+          <FieldError message={fieldErrors.name} />
         </div>
 
         <div>
@@ -98,6 +134,7 @@ export function InquiryForm({ productName, className }: InquiryFormProps) {
             autoComplete="email"
             className={FIELD_CLASS}
           />
+          <FieldError message={fieldErrors.email} />
         </div>
 
         <div>
@@ -133,8 +170,19 @@ export function InquiryForm({ productName, className }: InquiryFormProps) {
             placeholder="Inlet and outlet pressure, required flow, line size, gas composition, ambient conditions…"
             className={cn(FIELD_CLASS, "resize-y")}
           />
+          <FieldError message={fieldErrors.message} />
         </div>
       </div>
+
+      {error && (
+        <p
+          role="alert"
+          className="mt-5 flex items-start gap-2 rounded-lg border border-brand-navy/25 bg-brand-navy-soft px-4 py-3 text-sm text-brand-ink"
+        >
+          <AlertCircle className="mt-0.5 w-4 h-4 shrink-0 text-brand-navy" aria-hidden="true" />
+          {error}
+        </p>
+      )}
 
       <button
         type="submit"

@@ -11,6 +11,8 @@ import { SolutionCard } from "@/components/ui/SolutionCard";
 import { TestimonialSlider } from "@/components/ui/TestimonialSlider";
 import { StatsBar } from "@/components/ui/StatsBar";
 import { ClientLogoSlider } from "@/components/ui/ClientLogoSlider";
+import { HomeContactForm } from "@/components/ui/HomeContactForm";
+import { addressLine, company } from "@/data/company";
 
 export default function Home() {
   return (
@@ -272,36 +274,28 @@ export default function Home() {
               <p className="text-xl text-brand-navy mb-12">Speak with our experts today.</p>
 
               <div className="space-y-8 text-brand-muted font-mono text-sm leading-loose">
-                <div>
-                  <strong className="text-brand-ink uppercase tracking-widest block mb-2 font-sans font-bold">Headquarters</strong>
-                  Industrial Zone, Sector 4<br />
-                  Tech Park Avenue, 40001
-                </div>
+                {addressLine() && (
+                  <div>
+                    <strong className="text-brand-ink uppercase tracking-widest block mb-2 font-sans font-bold">Address</strong>
+                    {addressLine()}
+                  </div>
+                )}
                 <div>
                   <strong className="text-brand-ink uppercase tracking-widest block mb-2 font-sans font-bold">Contact Direct</strong>
-                  Main: +91 800-GAS-FLOW<br />
-                  Support: support@gasflowsolutions.in
+                  {company.phones.map((phone) => (
+                    <a key={phone.e164} href={`tel:+${phone.e164}`} className="block hover:text-brand-navy transition-colors">
+                      {phone.display}
+                    </a>
+                  ))}
+                  <a href={`mailto:${company.email.sales}`} className="block hover:text-brand-navy transition-colors">
+                    {company.email.sales}
+                  </a>
                 </div>
               </div>
             </div>
 
             {/* Form */}
-            <div className="bg-brand-surface p-10 border border-brand-border shadow-sm">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input type="text" placeholder="Full Name *" className="w-full bg-brand-surface-alt border-b border-brand-border px-4 py-4 text-brand-ink focus:outline-none focus:border-brand-navy transition-colors placeholder:text-brand-subtle" />
-                  <input type="text" placeholder="Company Name" className="w-full bg-brand-surface-alt border-b border-brand-border px-4 py-4 text-brand-ink focus:outline-none focus:border-brand-navy transition-colors placeholder:text-brand-subtle" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input type="email" placeholder="Email Address *" className="w-full bg-brand-surface-alt border-b border-brand-border px-4 py-4 text-brand-ink focus:outline-none focus:border-brand-navy transition-colors placeholder:text-brand-subtle" />
-                  <input type="tel" placeholder="Phone Number" className="w-full bg-brand-surface-alt border-b border-brand-border px-4 py-4 text-brand-ink focus:outline-none focus:border-brand-navy transition-colors placeholder:text-brand-subtle" />
-                </div>
-                <textarea rows={4} placeholder="Tell us about your technical requirements..." className="w-full bg-brand-surface-alt border-b border-brand-border px-4 py-4 text-brand-ink focus:outline-none focus:border-brand-navy transition-colors resize-none placeholder:text-brand-subtle" />
-                <button type="button" className="w-full bg-brand-navy text-white font-black tracking-widest uppercase py-5 hover:bg-brand-navy-dark transition-all">
-                  Transmit Inquiry
-                </button>
-              </form>
-            </div>
+            <HomeContactForm />
 
           </div>
         </div>

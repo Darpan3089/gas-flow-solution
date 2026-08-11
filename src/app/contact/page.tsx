@@ -3,20 +3,34 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
-import { Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { company } from "@/data/company";
+import { submitInquiry } from "@/lib/inquiry/submit";
+import type { InquiryErrors } from "@/lib/inquiry/types";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", company: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [formData, setFormData] = useState({ name: "", email: "", company: "", message: "", website: "" });
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<InquiryErrors>({});
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
-    setTimeout(() => {
+    setError(null);
+    setFieldErrors({});
+
+    const result = await submitInquiry({ ...formData, source: "Contact page" });
+
+    if (result.ok) {
       setStatus("success");
-      setFormData({ name: "", email: "", company: "", message: "" });
-      setTimeout(() => setStatus("idle"), 5000);
-    }, 1500);
+      setFormData({ name: "", email: "", company: "", message: "", website: "" });
+      return;
+    }
+
+    setStatus("idle");
+    setError(result.message);
+    setFieldErrors(result.errors ?? {});
   };
 
   const inputClasses = "w-full bg-white border border-brand-border rounded-xl px-5 py-4 text-brand-ink placeholder-brand-subtle focus:outline-none focus:ring-2 focus:ring-brand-navy focus:border-transparent transition-all";
@@ -52,20 +66,31 @@ export default function Contact() {
             className="lg:col-span-1 space-y-8"
           >
             <div className="glass p-8 rounded-3xl h-full">
-              <h3 className="text-2xl font-bold text-brand-ink mb-8">Global Headquarters</h3>
+              <h3 className="text-2xl font-bold text-brand-ink mb-8">Talk to us</h3>
 
               <div className="space-y-6">
+                {company.address && (
+                  <div>
+                    <h4 className="text-brand-navy text-sm font-semibold uppercase tracking-wider mb-2">Address</h4>
+                    <p className="text-brand-muted">
+                      {company.address.lines.map((line) => <span key={line} className="block">{line}</span>)}
+                      <span className="block">{company.address.city}, {company.address.state} {company.address.postcode}</span>
+                    </p>
+                  </div>
+                )}
                 <div>
-                  <h4 className="text-brand-navy text-sm font-semibold uppercase tracking-wider mb-2">Location</h4>
-                  <p className="text-brand-muted">123 Industrial Ave, Tech District<br/>CityCorp Sector, 90210</p>
+                  <h4 className="text-brand-navy text-sm font-semibold uppercase tracking-wider mb-2">Phone</h4>
+                  {company.phones.map((phone) => (
+                    <p key={phone.e164} className="text-brand-muted text-lg">
+                      <a href={`tel:+${phone.e164}`} className="hover:text-brand-navy transition-colors">{phone.display}</a>
+                    </p>
+                  ))}
                 </div>
                 <div>
-                  <h4 className="text-brand-navy text-sm font-semibold uppercase tracking-wider mb-2">Direct Line</h4>
-                  <p className="text-brand-muted text-lg">+1 (800) 555-FLOW</p>
-                </div>
-                <div>
-                  <h4 className="text-brand-navy text-sm font-semibold uppercase tracking-wider mb-2">Technical Support</h4>
-                  <p className="text-brand-muted">engineering@gasflow.com</p>
+                  <h4 className="text-brand-navy text-sm font-semibold uppercase tracking-wider mb-2">Email</h4>
+                  <p className="text-brand-muted">
+                    <a href={`mailto:${company.email.sales}`} className="hover:text-brand-navy transition-colors">{company.email.sales}</a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -90,14 +115,29 @@ export default function Contact() {
              )}
 
             <form onSubmit={handleSubmit} className="space-y-6 relative z-0">
+              {/* Honeypot — hidden from humans, irresistible to bots. */}
+              <div aria-hidden="true" className="sr-only">
+                <label htmlFor="website">Website</label>
+                <input
+                  type="text"
+                  id="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.website}
+                  onChange={e => setFormData({...formData, website: e.target.value})}
+                />
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="sr-only">Full Name</label>
                   <input type="text" id="name" required placeholder="Full Name" className={inputClasses} value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
+                  {fieldErrors.name && <p className="mt-1.5 text-xs font-medium text-brand-navy">{fieldErrors.name}</p>}
                 </div>
                 <div>
                   <label htmlFor="email" className="sr-only">Corporate Email</label>
                   <input type="email" id="email" required placeholder="Corporate Email" className={inputClasses} value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
+                  {fieldErrors.email && <p className="mt-1.5 text-xs font-medium text-brand-navy">{fieldErrors.email}</p>}
                 </div>
               </div>
               <div>
@@ -107,16 +147,25 @@ export default function Contact() {
               <div>
                 <label htmlFor="message" className="sr-only">Project Specifications</label>
                 <textarea id="message" required rows={5} placeholder="Project Specifications & Requirements" className={`${inputClasses} resize-none`} value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} />
+                {fieldErrors.message && <p className="mt-1.5 text-xs font-medium text-brand-navy">{fieldErrors.message}</p>}
               </div>
-              <button 
-                type="submit" 
+
+              {error && (
+                <p role="alert" className="flex items-start gap-2 rounded-xl border border-brand-navy/25 bg-brand-navy-soft px-5 py-4 text-sm text-brand-ink">
+                  <AlertCircle className="mt-0.5 w-4 h-4 shrink-0 text-brand-navy" aria-hidden="true" />
+                  {error}
+                </p>
+              )}
+
+              <button
+                type="submit"
                 disabled={status === "submitting"}
                 className="w-full bg-brand-navy text-white font-bold py-5 rounded-xl flex items-center justify-center gap-3 hover:bg-brand-navy-dark transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {status === "submitting" ? (
-                  <>Processing <motion.span animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }}><AlertCircle className="w-5 h-5" /></motion.span></>
+                  <>Sending <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" /></>
                 ) : (
-                  <>Submit Inquiry <Send className="w-5 h-5" /></>
+                  <>Send enquiry <Send className="w-5 h-5" aria-hidden="true" /></>
                 )}
               </button>
             </form>
