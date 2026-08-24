@@ -8,11 +8,11 @@ import { ArrowRight, Settings, Maximize, Activity, ShieldAlert, CheckCircle2 } f
 // Components
 import { Section } from "@/components/ui/Section";
 import { SolutionCard } from "@/components/ui/SolutionCard";
-import { TestimonialSlider } from "@/components/ui/TestimonialSlider";
 import { StatsBar } from "@/components/ui/StatsBar";
 import { ClientLogoSlider } from "@/components/ui/ClientLogoSlider";
 import { HomeContactForm } from "@/components/ui/HomeContactForm";
 import { addressLine, company } from "@/data/company";
+import { categories, categoryHref, totalProductCount } from "@/data/catalog";
 
 export function HomeContent() {
   return (
@@ -111,37 +111,42 @@ export function HomeContent() {
             <div className="max-w-2xl">
               <h3 className="text-brand-navy font-bold text-sm tracking-widest uppercase mb-4">Industrial Hardware</h3>
               <h2 className="text-4xl md:text-5xl font-black text-brand-ink">Precision Instruments & Heavy Infrastructure</h2>
+              <p className="text-brand-muted font-light tracking-wide mt-5">
+                {totalProductCount} products across {categories.length} categories — regulation, filtration,
+                isolation and measurement, engineered for industrial and city-gas duty.
+              </p>
             </div>
-            <Link href="#contact" className="text-brand-navy font-bold uppercase tracking-widest text-sm hover:text-brand-navy-dark transition-colors border-b border-transparent hover:border-brand-navy pb-1 flex items-center gap-2">
+            <Link href="/products" className="text-brand-navy font-bold uppercase tracking-widest text-sm hover:text-brand-navy-dark transition-colors border-b border-transparent hover:border-brand-navy pb-1 flex items-center gap-2">
               View Full Catalog <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "Turbine Gas Meters – FMT Series", desc: "High-flow turbine meters engineered for precise industrial measurement." },
-              { title: "Pressure Regulators – ERG-SR", desc: "High-performance double-stage arrays with redundant safety." },
-              { title: "MacR6 – Gas Data Logger", desc: "Compact logging device and telemetry by ISO/AGA standards." }
-            ].map((prod, idx) => (
+            {categories.slice(0, 6).map((category, idx) => (
               <motion.div
-                key={idx}
+                key={category.slug}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group border border-brand-border bg-brand-surface p-10 hover:border-brand-navy/40 hover:shadow-lg hover:shadow-brand-navy/5 transition-all"
+                className="group border border-brand-border bg-brand-surface hover:border-brand-navy/40 hover:shadow-lg hover:shadow-brand-navy/5 transition-all"
               >
-                <div className="w-12 h-12 bg-brand-navy-soft border border-brand-navy/20 mb-8 font-mono text-brand-navy flex items-center justify-center text-xl font-bold">
-                  0{idx + 1}
-                </div>
-                <h4 className="text-2xl font-bold text-brand-ink mb-4">{prod.title}</h4>
-                <p className="text-brand-muted font-light tracking-wide">{prod.desc}</p>
-
-                <div className="mt-8 flex justify-end">
-                  <div className="w-10 h-10 rounded-full border border-brand-border flex items-center justify-center group-hover:bg-brand-navy group-hover:border-brand-navy transition-colors">
-                    <ArrowRight className="w-4 h-4 text-brand-subtle group-hover:text-white transition-colors" />
+                <Link href={categoryHref(category.slug)} className="flex h-full flex-col p-10">
+                  <div className="w-12 h-12 bg-brand-navy-soft border border-brand-navy/20 mb-8 font-mono text-brand-navy flex items-center justify-center text-xl font-bold">
+                    0{idx + 1}
                   </div>
-                </div>
+                  <h4 className="text-2xl font-bold text-brand-ink mb-4">{category.name}</h4>
+                  <p className="text-brand-muted font-light tracking-wide">{category.tagline}</p>
+
+                  <div className="mt-auto flex items-center justify-between gap-4 pt-8">
+                    <span className="text-xs font-bold uppercase tracking-widest text-brand-subtle">
+                      {category.products.length} {category.products.length === 1 ? "model" : "models"}
+                    </span>
+                    <div className="w-10 h-10 rounded-full border border-brand-border flex items-center justify-center group-hover:bg-brand-navy group-hover:border-brand-navy transition-colors">
+                      <ArrowRight className="w-4 h-4 text-brand-subtle group-hover:text-white transition-colors" />
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -246,10 +251,9 @@ export function HomeContent() {
         </div>
       </Section>
 
-      {/* 🔹 8 & 9. TESTIMONIALS & ABOUT */}
+      {/* 🔹 8 & 9. CLIENTS & ABOUT */}
       <Section className="py-24 bg-brand-surface-alt border-y border-brand-border">
-        <TestimonialSlider />
-        <div className="mt-20 pt-16 border-t border-brand-border max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <ClientLogoSlider />
           <div>
             <h3 className="text-brand-navy font-bold text-sm tracking-widest uppercase mb-4">Our Vision</h3>

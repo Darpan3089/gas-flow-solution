@@ -53,7 +53,7 @@ const organizationJsonLd = {
   name: company.name,
   legalName: company.legalName,
   url: company.url,
-  logo: `${company.url}/GFS_LOGO.svg`,
+  logo: `${company.url}/GFS_LOGO.png`,
   email: company.email.sales,
   telephone: company.phones.map((phone) => `+${phone.e164}`),
   ...(company.address

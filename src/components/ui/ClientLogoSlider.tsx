@@ -1,54 +1,30 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 
 type Client = {
-  /** Wordmark shown until a logo file exists, and the image's alt text. */
+  /** Alt text only — the strip is logos, no wordmarks. */
   name: string;
-  /** File under `public/logos/`. Drop the file in and it replaces the wordmark. */
+  /** File under `public/logos/`. */
   logo: string;
+  /** Intrinsic pixel size, so next/image reserves the right aspect ratio. */
+  width: number;
+  height: number;
 };
 
 const clients: Client[] = [
-  { name: "TATA STEEL", logo: "/logos/tata-steel.svg" },
-  { name: "RELIANCE INDUSTRIES", logo: "/logos/reliance-industries.svg" },
-  { name: "INDIAN OIL", logo: "/logos/indian-oil.svg" },
-  { name: "BHARAT PETROLEUM", logo: "/logos/bharat-petroleum.svg" },
-  { name: "GAIL INDIA", logo: "/logos/gail-india.svg" },
-  { name: "ADANI GAS", logo: "/logos/adani-gas.svg" },
-  { name: "JINDAL STEEL", logo: "/logos/jindal-steel.svg" },
-  { name: "L&T HYDROCARBON", logo: "/logos/lt-hydrocarbon.svg" },
-  { name: "HINDALCO", logo: "/logos/hindalco.svg" },
+  { name: "IRM Energy", logo: "/logos/irm-energy.svg", width: 112, height: 47 },
+  { name: "Indian Oil Corporation Limited", logo: "/logos/iocl.jpg", width: 420, height: 382 },
+  { name: "IOAGPL", logo: "/logos/ioagpl.png", width: 151, height: 98 },
+  { name: "Megha City Gas Distribution Pvt Ltd", logo: "/logos/megha-city-gas.png", width: 140, height: 67 },
+  { name: "HCG Distribution Pvt Ltd", logo: "/logos/hcg-distribution.jpg", width: 1888, height: 462 },
+  { name: "GNGPL", logo: "/logos/gngpl.png", width: 150, height: 113 },
+  { name: "HPOIL Gas", logo: "/logos/hpoil.png", width: 70, height: 79 },
+  { name: "Vadodara Gas Limited", logo: "/logos/vgl.png", width: 126, height: 126 },
+  { name: "Paharpur Cooling Towers", logo: "/logos/paharpur-cooling-towers.png", width: 142, height: 77 },
+  { name: "Haridwar Natural Gas", logo: "/logos/haridwar-natural-gas.png", width: 120, height: 120 },
+  { name: "KEC International", logo: "/logos/kec-international.png", width: 195, height: 108 },
+  { name: "Naveriya Gas Private Limited", logo: "/logos/naveriya-gas.png", width: 252, height: 122 },
+  { name: "L&T Special Steel and Heavy Forging", logo: "/logos/lt-special-steel.png", width: 531, height: 531 },
 ];
-
-/**
- * Renders the logo image, falling back to the plain wordmark if the file is
- * missing — so the strip stays intact while logos are still being collected.
- */
-function ClientLogo({ client }: { client: Client }) {
-  const [failed, setFailed] = useState(false);
-
-  if (failed) {
-    return (
-      <span className="text-2xl font-black text-brand-ink tracking-widest uppercase whitespace-nowrap">
-        {client.name}
-      </span>
-    );
-  }
-
-  return (
-    <Image
-      src={client.logo}
-      alt={client.name}
-      width={200}
-      height={64}
-      unoptimized
-      onError={() => setFailed(true)}
-      className="h-12 w-auto max-w-40 object-contain grayscale"
-    />
-  );
-}
 
 export function ClientLogoSlider() {
   return (
@@ -56,13 +32,27 @@ export function ClientLogoSlider() {
       <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-brand-surface to-transparent z-10" />
       <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-brand-surface to-transparent z-10" />
 
-      <div className="flex w-[200%] gap-12 items-center animate-[marquee_30s_linear_infinite]">
+      {/*
+        `w-max` (not a fixed percentage) is what keeps the loop seamless: the
+        list is rendered twice, so the duplicate starts at exactly -50%.
+      */}
+      <div className="flex w-max gap-12 items-center animate-[marquee_45s_linear_infinite]">
         {[...clients, ...clients].map((client, idx) => (
-          <div
-            key={idx}
-            className="flex-1 shrink-0 flex justify-center items-center h-16 opacity-50 hover:opacity-100 transition-opacity"
-          >
-            <ClientLogo client={client} />
+          /*
+            Fixed 160x64 slot with the logo capped inside it. The marks range
+            from square badges to a 4:1 wordmark, so capping both axes is what
+            keeps them optically the same weight — height alone would let the
+            wide ones run three times the width of the round ones.
+          */
+          <div key={idx} className="shrink-0 w-40 h-16 flex items-center justify-center">
+            <Image
+              src={client.logo}
+              alt={client.name}
+              width={client.width}
+              height={client.height}
+              unoptimized
+              className="max-h-14 max-w-36 w-auto h-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+            />
           </div>
         ))}
       </div>

@@ -13,7 +13,6 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Products", href: "/products", hasMenu: true },
-  { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -51,10 +50,10 @@ export function Navbar() {
         <Link href="/" className="flex items-center group">
           <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
             <Image
-              src="/GFS_LOGO.svg"
+              src="/GFS_LOGO.png"
               alt="Gas Flow Solutions"
-              width={241}
-              height={142}
+              width={720}
+              height={435}
               priority
               className="h-12 md:h-14 w-auto"
             />
