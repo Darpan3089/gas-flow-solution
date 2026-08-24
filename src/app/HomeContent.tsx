@@ -19,7 +19,7 @@ export function HomeContent() {
     <div className="flex flex-col min-h-screen bg-brand-bg overflow-hidden">
       {/* 🔹 1. HERO SECTION & STATS BAR */}
       <section className="relative h-[90vh] flex items-center border-b border-brand-border">
-        <Image src="https://www.kimpexflow.com/img/banner1.png" alt="Industrial Flow Systems" fill className="object-cover opacity-40" priority />
+        <Image src="/hero-banner.webp" alt="Industrial Flow Systems" fill sizes="100vw" className="object-cover opacity-40" priority />
         <div className="absolute inset-0  z-10" />
 
         <div className="container relative z-20 px-6 max-w-7xl mx-auto pt-20">
@@ -90,14 +90,14 @@ export function HomeContent() {
               title="Automation"
               description="Real-time cryptographic telemetry, SCADA integration, and predictive automation to optimize operational matrices."
               icon={Activity}
-              imgUrl="https://www.kimpexflow.com/img/solution3.jpg"
+              imgUrl="/solution-automation.webp"
               delay={0.2}
             />
             <SolutionCard
               title="Safety & Calibration"
               description="NABL-traceable calibration, slam-shut security implementation, and rigorous auditing to ensure zero-fail operations."
               icon={ShieldAlert}
-              imgUrl="https://www.kimpexflow.com/img/worker7.png"
+              imgUrl="/solution-safety.webp"
               delay={0.3}
             />
           </div>

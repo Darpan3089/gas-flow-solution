@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AboutContent } from "./AboutContent";
 
 const description =
-  "Gas Flow Solutions designs, manufactures and supports natural gas pressure regulating and metering systems — CGS, DRS, MRS, SRM and custom skids — for CGD, industrial and energy customers.";
+  "Gas Flow Solutions is a leading designer, manufacturer and supplier of natural gas pressure regulating and metering systems — CGS, DRS, MRS, SRM and custom skids — for CGD, industrial, commercial and energy customers.";
 
 export const metadata: Metadata = {
   title: "About Us | Gas Flow Solutions",

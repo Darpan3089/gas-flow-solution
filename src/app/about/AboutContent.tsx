@@ -129,8 +129,8 @@ export function AboutContent() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-brand-muted max-w-3xl mx-auto font-light"
           >
-            Reliable gas pressure regulation, metering and distribution systems —
-            engineered, manufactured and supported end to end.
+            Delivering reliable gas pressure regulation, metering and distribution
+            solutions.
           </motion.p>
         </div>
       </section>
@@ -183,18 +183,18 @@ export function AboutContent() {
             </h2>
             <div className="space-y-6 text-brand-muted leading-relaxed text-lg">
               <p>
-                {company.name} (GFS) is a designer, manufacturer and supplier of high-quality
-                natural gas pressure regulating and metering systems for the City Gas
-                Distribution (CGD), industrial, commercial and energy sectors. We provide
-                complete engineering solutions for safe, reliable and efficient gas
+                {company.name} (GFS) is a leading designer, manufacturer and supplier of
+                high-quality natural gas pressure regulating and metering systems for the
+                City Gas Distribution (CGD), industrial, commercial and energy sectors. We
+                provide complete engineering solutions for safe, reliable and efficient gas
                 distribution networks, ensuring optimum performance from source to end user.
               </p>
               <p>
                 With a strong focus on engineering excellence, product quality and customer
                 satisfaction, we manufacture customized gas pressure regulating stations and
-                metering skids that comply with national and international standards. Our team
-                delivers end-to-end solutions — from system design and manufacturing to
-                installation, commissioning, testing and after-sales service.
+                metering skids that comply with national and international standards. Our
+                experienced team delivers end-to-end solutions — from system design and
+                manufacturing to installation, commissioning, testing and after-sales service.
               </p>
             </div>
           </motion.div>

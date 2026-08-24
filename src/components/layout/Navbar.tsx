@@ -55,7 +55,7 @@ export function Navbar() {
               width={720}
               height={435}
               priority
-              className="h-12 md:h-14 w-auto"
+              className="h-14 md:h-18 w-auto"
             />
           </motion.div>
         </Link>

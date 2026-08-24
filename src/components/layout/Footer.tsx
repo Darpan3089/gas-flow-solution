@@ -27,7 +27,7 @@ export function Footer() {
                 alt="Gas Flow Solutions"
                 width={720}
                 height={435}
-                className="h-14 w-auto"
+                className="h-16 w-auto"
               />
             </Link>
             <p className="text-brand-muted text-sm leading-relaxed max-w-sm">
