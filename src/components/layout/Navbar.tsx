@@ -13,6 +13,8 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Products", href: "/products", hasMenu: true },
+  { name: "Solutions", href: "/solutions" },
+  { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -61,7 +63,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
 
@@ -99,7 +101,7 @@ export function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-brand-muted hover:text-brand-navy transition-colors"
+          className="lg:hidden text-brand-muted hover:text-brand-navy transition-colors"
           onClick={() => (isMobileMenuOpen ? closeMobileMenu() : setIsMobileMenuOpen(true))}
           aria-label="Toggle mobile menu"
         >
@@ -115,7 +117,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-white border-t border-brand-border absolute w-full left-0 top-full shadow-lg"
+            className="lg:hidden overflow-hidden bg-white border-t border-brand-border absolute w-full left-0 top-full shadow-lg"
           >
             <div className="flex flex-col px-6 py-4 gap-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
               {navLinks.map((link) => {

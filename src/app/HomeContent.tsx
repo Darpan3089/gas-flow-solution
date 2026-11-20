@@ -13,6 +13,7 @@ import { ClientLogoSlider } from "@/components/ui/ClientLogoSlider";
 import { HomeContactForm } from "@/components/ui/HomeContactForm";
 import { addressLine, company } from "@/data/company";
 import { categories, categoryHref, totalProductCount } from "@/data/catalog";
+import { commitment, differentiators, servicePhases, services } from "@/data/profile";
 
 export function HomeContent() {
   return (
@@ -166,24 +167,24 @@ export function HomeContent() {
               <h3 className="text-brand-navy font-bold text-sm tracking-widest uppercase mb-4">Lifecycle Support</h3>
               <h2 className="text-4xl md:text-5xl font-black text-brand-ink mb-10">End-to-End Engineering Services</h2>
 
+              {/* The three phases of `@/data/profile`; the nine services sit behind them on /services. */}
               <div className="space-y-8">
-                {[
-                  { title: "Calibration & Testing", detail: "Eliminating drift through certified laboratory-grade testing." },
-                  { title: "Turnkey Installation (EPC)", detail: "From schematics to welding and absolute commissioning." },
-                  { title: "Preventive Maintenance", detail: "Scheduled diagnostics, filter changes, and part servicing." },
-                  { title: "Engineering Consulting", detail: "Architectural design for optimal pressure drop & CAPEX efficiency." }
-                ].map((srv, idx) => (
-                  <div key={idx} className="flex gap-4 group">
+                {servicePhases.map((phase) => (
+                  <Link key={phase.slug} href={`/services#${phase.slug}`} className="flex gap-4 group">
                     <div className="w-8 h-8 rounded-full border-2 border-brand-navy/30 flex items-center justify-center shrink-0 group-hover:border-brand-navy transition-colors">
                       <div className="w-2 h-2 bg-brand-navy rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-brand-ink mb-1 group-hover:text-brand-navy transition-colors">{srv.title}</h4>
-                      <p className="text-brand-muted font-light">{srv.detail}</p>
+                      <h4 className="text-xl font-bold text-brand-ink mb-1 group-hover:text-brand-navy transition-colors">{phase.title}</h4>
+                      <p className="text-brand-muted font-light">{phase.blurb}</p>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
+
+              <Link href="/services" className="inline-flex items-center gap-2 mt-10 text-brand-navy font-bold uppercase tracking-widest text-sm hover:text-brand-navy-dark transition-colors">
+                All {services.length} services <ArrowRight className="w-4 h-4" />
+              </Link>
             </motion.div>
 
             {/* Why Choose Us */}
@@ -196,15 +197,13 @@ export function HomeContent() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-navy/5 blur-2xl" />
               <h3 className="text-2xl font-bold text-brand-ink mb-8">Why Choose Us</h3>
               <ul className="space-y-6">
-                {[
-                  "High Accuracy Systems (Zero-tolerance precision)",
-                  "Total Industry Compliance (ISO, OISD, PNGRB)",
-                  "Dedicated Expert Engineers (Rapid response team)",
-                  "End-to-End Reliable Support (From design to maintenance)"
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-4 text-brand-muted font-medium">
-                    <CheckCircle2 className="w-6 h-6 text-brand-navy shrink-0" />
-                    {item}
+                {differentiators.slice(0, 4).map((item) => (
+                  <li key={item.title} className="flex items-start gap-4">
+                    <CheckCircle2 className="w-6 h-6 text-brand-navy shrink-0 mt-0.5" />
+                    <div>
+                      <span className="text-brand-ink font-semibold block">{item.title}</span>
+                      <span className="text-brand-muted text-sm font-light">{item.body}</span>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -256,9 +255,9 @@ export function HomeContent() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <ClientLogoSlider />
           <div>
-            <h3 className="text-brand-navy font-bold text-sm tracking-widest uppercase mb-4">Our Vision</h3>
+            <h3 className="text-brand-navy font-bold text-sm tracking-widest uppercase mb-4">Our Commitment</h3>
             <p className="text-brand-muted font-light leading-relaxed mb-6">
-              We don't just supply equipment; we architect secure, fail-safe pulmonary systems for industrial operations. Our mission is to set the definitive standard for flow accuracy and safety across the subcontinent.
+              {commitment}
             </p>
             <Link href="/about" className="text-brand-ink font-bold underline decoration-brand-navy underline-offset-8 hover:text-brand-navy transition-colors">
               Read Our Full Story
